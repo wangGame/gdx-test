@@ -10,20 +10,16 @@ public class LoadingScreen extends BaseScreen {
     public LoadingScreen() {
         super();
 //        OrthOcamPostionDemo orthographicCamera = new OrthOcamPostionDemo();
-//        addActor(orthographicCamera);
+//        addActor(orthographicCamera);D
 //        orthographicCamera.init();
 
         AssetManager assetManager = new AssetManager();
-        assetManager.load("demo.png", Texture.class);
-        assetManager.load("demo.png", Texture.class);
 
+        assetManager.load("test.png", Texture.class);
         assetManager.finishLoading();
-        Texture text = assetManager.get("demo.png");
+        Texture text = assetManager.get("test.png");
         Image image = new Image(text);
         stage.addActor(image);
-
-        System.out.println("-----------------------");
-
 
     }
 
