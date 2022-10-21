@@ -19,7 +19,7 @@ public class DemoScreen extends BaseScreen {
 //        colorInvert();//4
 //        pix();//5
 //        hue();
-//        bright();
+        bright();
 //        grayScale();//8
 //        sepia();
 //        sharpen();//10
@@ -75,7 +75,7 @@ public class DemoScreen extends BaseScreen {
 //        amatorka();
 //        crosshatch();
 //        colorspace();
-        imageSketch();
+//        imageSketch();
 
     // 未作
 //        gaussianblur();
