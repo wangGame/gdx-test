@@ -10,8 +10,7 @@ uniform sampler2D u_texture;
 uniform float intensity;
 
 void main() {
-    mat4 colorMatrix =
-    mat4(0.0f, 0.0f, 0.0f, 0.0f,
+    mat4 colorMatrix = mat4(1.0f, 0.0f, 0.0f, 0.0f,
     0.0f, 1.0f, 0.0f, 0.0f,
     0.0f, 0.0f, 1.0f, 0.0f,
     0.0f, 0.0f, 0.0f, 1.0f);
