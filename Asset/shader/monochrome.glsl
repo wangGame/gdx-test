@@ -18,7 +18,7 @@ void main() {
         (desat.g < 0.5 ? (2.0 * desat.g * filterColor.g) : (1.0 - 2.0 * (1.0 - desat.g) * (1.0 - filterColor.g))),
         (desat.b < 0.5 ? (2.0 * desat.b * filterColor.b) : (1.0 - 2.0 * (1.0 - desat.b) * (1.0 - filterColor.b))),
         1.0);
-    gl_FragColor = vec4( mix(textureColor.rgb, outputColor.rgb, abs(6*sin(intensity))), textureColor.a);
+    gl_FragColor = vec4( mix(textureColor.rgb, outputColor.rgb, intensity), textureColor.a);
 
 //    gl_FragColor = textureColor;
 }

@@ -8,11 +8,9 @@ varying vec4 v_color;
 varying vec2 v_textCoords;
 uniform sampler2D u_texture;
 
-uniform float xxx;
-
 
 void main() {
-    float offset = xxx * 0.001;
+    float offset = 0.0005;
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y += offset;
     vec4 bottomColor = texture2D(u_texture, bottomTextureCoordinate);
