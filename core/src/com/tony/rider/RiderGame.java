@@ -72,7 +72,7 @@ public class RiderGame extends Game {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(0.4F, 0.4F, 0.4F, 1f);
+        Gdx.gl.glClearColor(229.0F/255, 208.0F/255, 190.0F/255,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         super.render();
     }

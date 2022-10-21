@@ -14,7 +14,6 @@ public class DemoScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
-//        threeXthree(); //1
 //        contract(); //2
 //        gamma();//3
 //        colorInvert();//4
@@ -23,18 +22,22 @@ public class DemoScreen extends BaseScreen {
 //        bright();
 //        grayScale();//8
 //        sepia();
-
 //        sharpen();//10
 //        edge();
 //        tholdEdge();//
+//        threeXthree(); //1
+//        emboss();
 //        poster();
 //        filterGroup();
 //        saturation();//15
 //        exposure();
 //        highlightShadow();
 //        monchrome();//18
-
 //        opacity();  //19
+//        rgb();
+//        whiteBalance();
+//        vignette();
+//        lumin();
 
 //        blendDifference();
 //        blendSourceOver();//21
@@ -59,7 +62,329 @@ public class DemoScreen extends BaseScreen {
 //        alpha();
 //        color();
 //        hue2();//36
-        lumin();
+//        saturation2();
+//        blendluminosity();
+//        blendLinearBurn();
+//        blendsoftlight();
+
+//        blendsubtract();
+//        blendChromeKeyBlend();
+//        blendNoneBlend();
+
+
+//        amatorka();
+//        crosshatch();
+//        colorspace();
+        imageSketch();
+
+    // 未作
+//        gaussianblur();
+//        boxblur();
+//        dilation();
+//        kuwahare();
+//        rgbdilation();
+//        imageSketch();
+//        GPUImageToonFilter
+    }
+
+    private void imageSketch() {
+
+    }
+
+    private void colorspace() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/colorSpace.glsl"));
+        }
+
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+    private void crosshatch() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/crosshatch.glsl"));
+        }
+
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+            private float time;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                time += delta;
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+
+    }
+
+    private void gaussianblur() {
+    }
+
+    private void amatorka() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/amatorka.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("lookup_amatorka.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            float time = 0;
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                int intensity = program.getUniformLocation("intensity");
+                program.setUniformf(intensity,time*0.1F);
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+                time += Gdx.graphics.getDeltaTime();
+            }
+        };
+        addActor(image);
+    }
+
+
+    private void blendNoneBlend() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/blendNone.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+
+    private void blendChromeKeyBlend() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/blendchroma.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+    private void blendsubtract() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/blendsubtract.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+
+    private void blendsoftlight(){
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/blendsoftlight.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+    private void blendLinearBurn(){
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/blendlinearburn.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+    private void blendluminosity() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/blendluminosity.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+
+    private void saturation2() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/blendsturation.glsl"));
+        }
+        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+    private void vignette() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/vignette.glsl"));
+        }
+
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+            private float time;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                time += delta;
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+
+    private void rgb() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/rgb.frag"));
+        }
+
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+            private float time;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                time += delta;
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int r = program.getUniformLocation("r");
+                int g = program.getUniformLocation("g");
+                int b = program.getUniformLocation("b");
+                float xx = 0.1F;
+                program.setUniformf(r,time * xx);
+                program.setUniformf(g,time * xx);
+                program.setUniformf(b,time * xx);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
+
+    private void emboss() {
+        //对 3x3改变了一下 摸具   改变了一下 intensity
     }
 
     private void lumin() {
@@ -68,7 +393,7 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/lumin.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
             private float time;
             @Override
             public void act(float delta) {
@@ -80,7 +405,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("threshold");
-                program.setUniformf(time1,time*0.3F);
+                program.setUniformf(time1,time*0.1F);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
@@ -496,7 +821,27 @@ public class DemoScreen extends BaseScreen {
         addActor(image);
     }
 
-    public void whiteBalance(){}
+    public void whiteBalance(){
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/whitebalance.glsl"));
+        }
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+            float time = 0;
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int temperature = program.getUniformLocation("temperature");
+                int tint = program.getUniformLocation("tint");
+                program.setUniformf(temperature,5000);
+                program.setUniformf(tint,time*0.5F);
+                super.draw(batch, parentAlpha);
+                time += Gdx.graphics.getDeltaTime();
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
+    }
 
     private void opacity() {
         if (program == null){
@@ -780,7 +1125,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("contrast");
-                program.setUniformf(time1,time);
+                program.setUniformf(time1,0.8F);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
