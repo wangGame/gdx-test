@@ -13,6 +13,7 @@ import com.esotericsoftware.spine.SkeletonRenderer;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.screen.DemoScreen;
 import com.tony.rider.screen.LoadingScreen;
+import com.tony.rider.screen.Transform;
 import com.tony.rider.utils.OrthoCamController;
 
 public class RiderGame extends Game {
@@ -44,7 +45,7 @@ public class RiderGame extends Game {
 
     private void loadingView() {
         Gdx.app.postRunnable(()->{
-            setScreen(new DemoScreen());
+            setScreen(new Transform());
         });
     }
 
