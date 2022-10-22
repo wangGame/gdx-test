@@ -14,5 +14,8 @@ void main() {
     vec4 base = v_color* texture2D(u_texture,v_textCoords);
     vec4 overlay = v_color* texture2D(u_texture1,v_textCoords);
 //    gl_FragColor = gl_FragColor = mix(textureColor, textureColor1, time);
-    gl_FragColor = vec4((overlay.rgb * base.a + base.rgb * overlay.a - 2.0 * overlay.rgb * base.rgb) + overlay.rgb * (1.0 - base.a) + base.rgb * (1.0 - overlay.a), base.a);
+    gl_FragColor = vec4((overlay.rgb * base.a +
+    base.rgb * overlay.a - 2.0 * overlay.rgb * base.rgb) +
+    overlay.rgb * (1.0 - base.a) +
+    base.rgb * (1.0 - overlay.a), base.a);
 }
