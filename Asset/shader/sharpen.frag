@@ -21,6 +21,7 @@ void main() {
     topTextureCoordinate.y += offset;
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y -= offset;
+
     float centerMultiplier = 1.0 + 4.0 * time;
     float edgeMultiplier = time;
     vec4 leftTextureColor = texture2D(u_texture,leftTextureCoordinate);

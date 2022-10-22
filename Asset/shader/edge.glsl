@@ -13,7 +13,9 @@ void main() {
     float offset = 0.0005;
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y += offset;
+
     vec4 bottomColor = texture2D(u_texture, bottomTextureCoordinate);
+
     vec2 bottomLeftTextureCoordinate = v_textCoords;
     bottomLeftTextureCoordinate.x -= offset;
     bottomLeftTextureCoordinate.y += offset;
@@ -53,13 +55,18 @@ void main() {
     topLeftTextureCoordinate.y -= offset;
     vec4 topLeftColor = texture2D(u_texture, topLeftTextureCoordinate);
 
+    /**
+    x x x
+    x x x
+    x x x
+    */
+    float h = -topLeftColor.g - 2.0 * topColor.g - topRightColor.g
+    + bottomLeftColor.g + 2.0 * bottomColor.g+ bottomRightColor.g;
 
-    float h = -topLeftColor.r - 2.0 * topColor.r - topRightColor.r
-    + bottomLeftColor.r + 2.0 * bottomColor.r + bottomRightColor.r;
-    float v = -bottomLeftColor.r - 2.0 * leftColor.r -
-    topLeftColor.r + bottomRightColor.r + 2.0 * rightColor.r+ topRightColor.r;
-    float mag = length(vec2(h, v));
+    float v = -bottomLeftColor.r - 2.0 * leftColor.r - topLeftColor.r
+    + bottomRightColor.r + 2.0 * rightColor.r+ topRightColor.r;
 
+    float mag = length(vec2(-h, -v));
 //
 //    "    float mag = 1.0 - length(vec2(h, v));\n" +
 //    "    mag = step(threshold, mag);\n" +

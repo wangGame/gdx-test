@@ -19,7 +19,7 @@ public class DemoScreen extends BaseScreen {
 //        colorInvert();//4
 //        pix();//5
 //        hue();
-        bright();
+//        bright();
 //        grayScale();//8
 //        sepia();
 //        sharpen();//10
@@ -39,7 +39,7 @@ public class DemoScreen extends BaseScreen {
 //        vignette();
 //        lumin();
 
-//        blendDifference();
+        blendDifference();
 //        blendSourceOver();//21
 //        blendburnblend();
 //        blendColorDoge();
@@ -1080,7 +1080,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("intensity");
-                program.setUniformf(time1,0);
+                program.setUniformf(time1,time);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
