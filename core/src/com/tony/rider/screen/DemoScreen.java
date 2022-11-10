@@ -588,8 +588,8 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendDivide.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("bg.png");
-        Image image = new Image(Asset.getAsset().getTexture("XPvTc.png")){
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
+        Image image = new Image(Asset.getAsset().getTexture("test.png")){
             float time = 0;
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -1036,7 +1036,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("threshold");
-                program.setUniformf(time1,time*0.1F);
+                program.setUniformf(time1,time*0.01F);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
