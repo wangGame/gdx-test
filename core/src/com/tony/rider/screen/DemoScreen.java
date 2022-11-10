@@ -23,7 +23,7 @@ public class DemoScreen extends BaseScreen {
 //        grayScale();//8
 //        sepia();
 //        sharpen();//10
-//        edge();
+        edge();
 //        tholdEdge();//
 //        threeXthree(); //1
 //        emboss();
@@ -39,7 +39,7 @@ public class DemoScreen extends BaseScreen {
 //        vignette();
 //        lumin();
 
-        blendDifference();
+//        blendDifference();
 //        blendSourceOver();//21
 //        blendburnblend();
 //        blendColorDoge();
@@ -85,10 +85,37 @@ public class DemoScreen extends BaseScreen {
 //        rgbdilation();
 //        imageSketch();
 //        GPUImageToonFilter
+//        imageSketch();
+
+
+    }
+
+    public void test1(){
+
     }
 
     private void imageSketch() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader2/BlurVertexShader.vs"),
+                    Gdx.files.internal("shader2/BlurFragmentShader.fs"));
+        }
 
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
     }
 
     private void colorspace() {
@@ -561,8 +588,8 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendDivide.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("no_bg.png");
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Texture texture = Asset.getAsset().getTexture("bg.png");
+        Image image = new Image(Asset.getAsset().getTexture("XPvTc.png")){
             float time = 0;
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -1009,7 +1036,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("threshold");
-                program.setUniformf(time1,time*0.01F);
+                program.setUniformf(time1,time*0.1F);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }

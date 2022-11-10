@@ -3,6 +3,7 @@ package kw.test.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.tony.rider.RiderGame;
+import com.tony.rider.screen.ShaderBlurTest;
 
 public class DesktopLauncher {
     public static void main(String[] arg) {
@@ -13,8 +14,8 @@ public class DesktopLauncher {
         config.x = 600;
         config.y = 100;
 
+//        new LwjglApplication(new ShaderBlurTest(), config);
         new LwjglApplication(new RiderGame(), config);
-//        new LwjglApplication(new SwiperImproved(), config);
 
     }
 }

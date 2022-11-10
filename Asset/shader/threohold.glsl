@@ -11,6 +11,7 @@ uniform float threshold;
 
 void main() {
     float offset = 0.0005;
+    vec4 finalV = v_color * texture2D(u_texture, v_textCoords);
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y += offset;
     vec4 bottomColor = texture2D(u_texture, bottomTextureCoordinate);
@@ -59,7 +60,12 @@ void main() {
     float v = -bottomLeftColor.r - 2.0 * leftColor.r -
     topLeftColor.r + bottomRightColor.r + 2.0 * rightColor.r+ topRightColor.r;
 //    float mag = length(vec2(h, v));
-    float mag = 1.0 - length(vec2(h, v));
-    mag = step(threshold, mag);
-    gl_FragColor = vec4(vec3(mag), 1.0);
+    float mag = length(vec2(h, v));
+    mag = step(0.001, mag);
+    if(mag <= 0.01){
+        gl_FragColor = vec4(vec3(mag), 0.0);
+    }else{
+//        gl_FragColor = vec4(vec3(mag), 1.0);
+        gl_FragColor = finalV;
+    }
 }
