@@ -71,5 +71,6 @@ void main() {
 //    "    float mag = 1.0 - length(vec2(h, v));\n" +
 //    "    mag = step(threshold, mag);\n" +
 
-    gl_FragColor = vec4(vec3(mag), 1.0);
+
+    gl_FragColor = vec4(vec3(1-mag)*vec3(229.0/255.0,208.0/255.0,190.0/255.0), 1.0);
 }

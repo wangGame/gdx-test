@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.screen.DemoScreen;
+import com.tony.rider.screen.DemoScreen2;
 import com.tony.rider.screen.LoadingScreen;
 import com.tony.rider.screen.Transform;
 import com.tony.rider.utils.OrthoCamController;

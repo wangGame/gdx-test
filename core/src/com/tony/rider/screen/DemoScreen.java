@@ -23,7 +23,7 @@ public class DemoScreen extends BaseScreen {
 //        grayScale();//8
 //        sepia();
 //        sharpen();//10
-//        edge();
+        edge();
 //        tholdEdge();//
 //        threeXthree(); //1
 //        emboss();
@@ -41,7 +41,7 @@ public class DemoScreen extends BaseScreen {
 
 //        blendDifference();
 //        blendSourceOver();//21
-        blendburnblend();
+//        blendburnblend();
 //        blendColorDoge();
 //        blendDarken();
 
@@ -85,10 +85,37 @@ public class DemoScreen extends BaseScreen {
 //        rgbdilation();
 //        imageSketch();
 //        GPUImageToonFilter
+//        imageSketch();
+
+
+    }
+
+    public void test1(){
+
     }
 
     private void imageSketch() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader2/BlurVertexShader.vs"),
+                    Gdx.files.internal("shader2/BlurFragmentShader.fs"));
+        }
 
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
     }
 
     private void colorspace() {
@@ -419,7 +446,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendhue.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -443,7 +470,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendcolor.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -466,7 +493,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendalpha.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             float time = 0;
             @Override
@@ -493,7 +520,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendscreen.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -516,7 +543,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendOverlay.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -539,7 +566,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendmuli.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -561,7 +588,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendDivide.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             float time = 0;
             @Override
@@ -589,7 +616,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendAdd.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -614,7 +641,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendlighten.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -639,7 +666,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendhightlight.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -662,7 +689,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendexcusion.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -686,7 +713,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendDissolve.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             private float time = 0;
             @Override
@@ -713,7 +740,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendblenddarken.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -736,7 +763,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendColorDodge.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -759,7 +786,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendcolorburnblend.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -782,7 +809,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendsourceover.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -804,7 +831,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blenddifference.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("spa_daoju_jiashi.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
