@@ -10,7 +10,7 @@ uniform sampler2D u_texture;
 
 
 void main() {
-    float offset = 0.0005;
+    float offset = 0.003;
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y += offset;
 
@@ -60,17 +60,28 @@ void main() {
     x x x
     x x x
     */
-    float h = -topLeftColor.g - 2.0 * topColor.g - topRightColor.g
-    + bottomLeftColor.g + 2.0 * bottomColor.g+ bottomRightColor.g;
+    float xxx = 1.5;
+    float h = -topLeftColor.g - xxx * topColor.g - topRightColor.g
+    + bottomLeftColor.g +xxx * bottomColor.g+ bottomRightColor.g;
 
-    float v = -bottomLeftColor.r - 2.0 * leftColor.r - topLeftColor.r
-    + bottomRightColor.r + 2.0 * rightColor.r+ topRightColor.r;
+    float v = -bottomLeftColor.r - xxx * leftColor.r - topLeftColor.r
+    + bottomRightColor.r + xxx * rightColor.r+ topRightColor.r;
 
     float mag = length(vec2(-h, -v));
-//
-//    "    float mag = 1.0 - length(vec2(h, v));\n" +
-//    "    mag = step(threshold, mag);\n" +
+//    if(mag<0.0000001){
+////        discard;
+//        gl_FragColor = vec4(vec3(231.0/255.0,200.0/255.0,187.0/255.0),1);
+//    }else{
+    vec3 W = vec3(0.2125, 0.7154, 0.0721);
+    vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
+    float luminance = dot(textureColor.rgb, W);
+    if(luminance<0.3){
+        discard;
+    }else{
+        gl_FragColor = vec4(vec3(luminance), textureColor.a);
 
+    }
+//        gl_FragColor = mix(vec4(vec3(1-mag), 1.0),vec4(231.0/255.0,200.0/255.0,187.0/255.0,1),0.9);
+//    }
 
-    gl_FragColor = vec4(vec3(1-mag)*vec3(229.0/255.0,208.0/255.0,190.0/255.0), 1.0);
 }

@@ -7,14 +7,15 @@ precision mediump float;
 varying vec4 v_color;
 varying vec2 v_textCoords;
 uniform sampler2D u_texture;
-uniform float threshold;
+
 
 void main() {
-    float offset = 0.00005;
-    vec4 finalV = v_color * texture2D(u_texture, v_textCoords);
+    float offset = 0.007;
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y += offset;
+
     vec4 bottomColor = texture2D(u_texture, bottomTextureCoordinate);
+
     vec2 bottomLeftTextureCoordinate = v_textCoords;
     bottomLeftTextureCoordinate.x -= offset;
     bottomLeftTextureCoordinate.y += offset;
@@ -54,21 +55,24 @@ void main() {
     topLeftTextureCoordinate.y -= offset;
     vec4 topLeftColor = texture2D(u_texture, topLeftTextureCoordinate);
 
+    /**
+    x x x
+    x x x
+    x x x
+    */
+    float xxx = 2.0;
+    float h = -topLeftColor.b - xxx * topColor.b - topRightColor.b
+    + bottomLeftColor.b +xxx * bottomColor.b+ bottomRightColor.b;
 
-    float h = -topLeftColor.r - 2.0 * topColor.r - topRightColor.r
-    + bottomLeftColor.r + 2.0 * bottomColor.r + bottomRightColor.r;
-    float v = -bottomLeftColor.r - 2.0 * leftColor.r -
-    topLeftColor.r + bottomRightColor.r + 2.0 * rightColor.r+ topRightColor.r;
-//    float mag = length(vec2(h, v));
-    float mag = length(vec2(h, v));
-    mag = step(0.0001, mag);
+    float v = -bottomLeftColor.r - xxx * leftColor.r - topLeftColor.r
+    + bottomRightColor.r + xxx * rightColor.r+ topRightColor.r;
 
-
-    gl_FragColor = vec4(vec3(mag)*vec3(240.0/255.0,186.0/255.0,136.0/255.0), 1.0);
-//    if(mag <= 0.01){
-//        gl_FragColor = vec4(vec3(mag), 0.0);
-//    }else{
-////        gl_FragColor = vec4(vec3(mag), 1.0);
-//        gl_FragColor = finalV;
-//    }
+    float mag = length(vec2(-h, -v));
+    if(mag<0.0000001){
+//        discard;
+        gl_FragColor = vec4(vec3(231.0/255.0,200.0/255.0,187.0/255.0),1);
+    }else{
+//        gl_FragColor = vec4(vec3(1-mag), 1.0);
+        gl_FragColor = mix(vec4(vec3(1-mag), 1.0),vec4(231.0/255.0,200.0/255.0,187.0/255.0,1),0.93);
+    }
 }
