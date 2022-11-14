@@ -5,6 +5,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.tony.rider.ImageGroup;
 import com.tony.rider.screen.base.BaseScreen;
 
 public class DemoScreen3 extends BaseScreen {
@@ -16,8 +17,8 @@ public class DemoScreen3 extends BaseScreen {
             int index = 0;
             int count = 14;
             for (FileHandle fileHandle : sprite.list()) {
-                ImageActor imageActor = new ImageActor(new Texture(fileHandle.path()));
-                add(imageActor).pad(20);
+                ImageGroup imageGroup = new ImageGroup(new Texture(fileHandle.path()));
+                add(imageGroup).pad(20);
                 index ++;
                 count --;
                 if (count<0)break;

@@ -67,20 +67,30 @@ void main() {
 ////
 //
     vec4 baseC = vec4(230.0/255.0,208.0/255.0,191.0/255.0,1);
+
     vec4 textureColor = v_color* texture2D(u_texture,v_textCoords) * v_color;
     vec3 W = vec3(0.2125, 0.7154, 0.0721);
     float luminance = dot(textureColor.rgb, W);
     vec3 temV3 = vec3(luminance-0.1);
-    vec3 exposu = vec3(temV3.rgb * pow(2, 1.70));
-//    gl_FragColor = vec4(vec3(exposu),1.0);
-
-    if(mag < .9){
-        if(exposu.r<0.99){
-            gl_FragColor = vec4(0,0,0,(1-exposu)*0.2) * baseC;
-        }else{
-            gl_FragColor = vec4(1,1,1,1) * baseC;
-        }
-    }else{
-        gl_FragColor = vec4(vec3(1-mag), 1.0) * 0.1 *baseC;
+    vec3 exposu = vec3(temV3.rgb * pow(2, 1.80));
+    if(exposu.r<0){
+        exposu.r =0;
+    }else if(exposu.r>1){
+        exposu.r = 1;
     }
+    if(exposu.g<0){
+        exposu.g = 0;
+    }else if(exposu.g>1){
+        exposu.g = 1;
+    }
+    if(exposu.b<0){
+        exposu.b = 0;
+    }else if(exposu.b>1){
+        exposu.b = 1;
+    }
+    vec4 xx = mix(vec4(vec3(exposu),0.6),vec4(vec3(1-mag), 0.5),0.32);
+
+    gl_FragColor = mix(vec4(xx) , baseC,0.8);
+
+
 }

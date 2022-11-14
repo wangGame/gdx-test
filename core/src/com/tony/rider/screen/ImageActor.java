@@ -9,11 +9,12 @@ import com.tony.rider.asset.Asset;
 
 public class ImageActor extends Image{
    private ShaderProgram program;
+
    public ImageActor(Texture texture){
       super(texture);
       if (program == null){
          program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
-                 Gdx.files.internal("shader/edge1.glsl"));
+                 Gdx.files.internal("shader/edge3.glsl"));
       }
    }
 
