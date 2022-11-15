@@ -11,12 +11,12 @@ public class ImageGroup extends Group {
     private Image image;
     public ImageGroup(Texture texture){
         image = new Image(Asset.getAsset().getTexture("baise.png"));
-
         imageActor = new ImageActor(texture);
         setSize(imageActor.getWidth(),imageActor.getHeight());
         addActor(imageActor);
         image.setSize(getWidth(),getHeight());
         image.setColor(229.0F/255, 208.0F/255, 190.0F/255,0F);;
         addActor(image);
+
     }
 }

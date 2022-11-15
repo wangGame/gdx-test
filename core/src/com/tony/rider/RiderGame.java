@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.screen.DemoScreen;
+import com.tony.rider.screen.DemoScreen04;
 import com.tony.rider.screen.DemoScreen2;
 import com.tony.rider.screen.DemoScreen3;
 import com.tony.rider.screen.LoadingScreen;
@@ -47,7 +48,7 @@ public class RiderGame extends Game {
 
     private void loadingView() {
         Gdx.app.postRunnable(()->{
-            setScreen(new DemoScreen3());
+            setScreen(new DemoScreen04());
         });
     }
 
