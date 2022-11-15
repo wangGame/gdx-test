@@ -29,7 +29,7 @@ void main() {
 
     float rrr = (end.r + end.g + end.b) / 6.0;
     if(rrr<0.65){
-        gl_FragColor = vec4(143.0/255,101.0/255,74.0/255,(rrr+0.4)*0.25);
+        gl_FragColor = vec4(0,0,0,(rrr));
     }else{
         discard;
     }

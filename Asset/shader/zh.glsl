@@ -22,7 +22,7 @@ void main() {
 //    }else{
 //        gl_FragColor = vec4(235.0/255,210.0/255,193.0/255,1-xxx);
 //    }
-    int nums = 1;
+    int nums = 3;
     vec3 a = vec3(0.0), b = a;
     for (int t = 0; t < nums; t++)
     {
@@ -33,6 +33,7 @@ void main() {
     if(a.r > 0.4){
         gl_FragColor = textureColor ;
     }else{
-        gl_FragColor = textureColor * vec4(vec3(235.0/255,210.0/255,193.0/255),.8) ;
+        gl_FragColor = textureColor * vec4(vec3(143.0/255,101.0/255,74.0/255),.4) ;
     }
+//    gl_FragColor = textureColor ;
 }

@@ -16,7 +16,7 @@ public class GGGGG extends Group {
     public GGGGG(){
         Image ixx = new Image(Asset.getAsset().getTexture("baise.png"));
         addActor(ixx);
-        ixx.setColor(240.0F/255,206.0F/255,185.0F/255,1);
+        ixx.setColor(1,1,1,1);
         ixx.setX(600);
         ixx.setSize(256,256);
         EdegeImage image1 = new EdegeImage(new Texture("Sprite/00012.png"));

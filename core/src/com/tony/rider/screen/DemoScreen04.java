@@ -65,12 +65,17 @@ public class DemoScreen04 extends BaseScreen {
       textureRegion.flip(false,true);
       ImageZh image1 = new ImageZh(textureRegion);
       addActor(h);
-
+      image1.setColor(194.0f/255, 169.0f/255, 153.0f/255,0.6f);
       addActor(image1);
 
       NoiseImage n = new NoiseImage(new Texture("Sprite/00012.png"));
       addActor(n);
-      n.setX(400);
+      n.setX(600);
+      Image xxxxxx = new Image(new Texture("xxx/Texture2D/00012.png"));
+      addActor(xxxxxx);
+      xxxxxx.setX(900);
+
+
 //      Image image = new Image(Asset.getAsset().getTexture("baise.png"));
 //      addActor(image);
 //      image.setSize(1000,1000);

@@ -10,7 +10,7 @@ uniform sampler2D u_texture;
 
 
 void main() {
-    float offset = 0.0016;
+    float offset = 0.0036;
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y += offset;
 
@@ -50,13 +50,15 @@ void main() {
     topLeftTextureCoordinate.x -= offset;
     topLeftTextureCoordinate.y -= offset;
     vec4 topLeftColor = texture2D(u_texture, topLeftTextureCoordinate);
-    float xxx = 6.0;
+    float xxx = 3.0;
     float h = -topLeftColor.b - xxx * topColor.b - topRightColor.b
     + bottomLeftColor.b +xxx * bottomColor.b+ bottomRightColor.b;
     float v = -bottomLeftColor.r - xxx * leftColor.r - topLeftColor.r
     + bottomRightColor.r + xxx * rightColor.r+ topRightColor.r;
     float mag = length(vec2(-h, -v));
 
-        gl_FragColor = vec4(0, 0, 0,mag*0.2);
+
+    gl_FragColor = vec4(0, 0, 0,mag);
+//    gl_FragColor = vec4(194.0/255, 169.0/255, 153.0/255,mag);
 
 }
