@@ -11,7 +11,7 @@ void main() {
     vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
     float luminance = dot(textureColor.rgb, W);
 
-    float thresholdResult = step(sin(threshold), luminance);
+    float thresholdResult = step(sin(threshold+0.1), luminance);
     if(thresholdResult <=0.1){
         gl_FragColor = textureColor;
     }else{

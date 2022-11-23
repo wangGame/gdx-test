@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tony.rider.asset.Asset;
 import com.tony.rider.screen.base.BaseScreen;
@@ -23,7 +24,7 @@ public class DemoScreen extends BaseScreen {
 //        grayScale();//8
 //        sepia();
 //        sharpen();//10
-        edge();
+//        edge();
 //        tholdEdge();//
 //        threeXthree(); //1
 //        emboss();
@@ -37,7 +38,7 @@ public class DemoScreen extends BaseScreen {
 //        rgb();
 //        whiteBalance();
 //        vignette();
-//        lumin();
+        lumin();
 
 //        blendDifference();
 //        blendSourceOver();//21
@@ -420,7 +421,7 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/lumin.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+        Image image = new Image(Asset.getAsset().getTexture("bg.png")){
             private float time;
             @Override
             public void act(float delta) {
@@ -437,6 +438,7 @@ public class DemoScreen extends BaseScreen {
                 batch.setShader(null);
             }
         };
+        image.addAction(Actions.fadeIn(1.4f));
         addActor(image);
     }
 

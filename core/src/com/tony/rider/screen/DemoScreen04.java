@@ -76,6 +76,8 @@ public class DemoScreen04 extends BaseScreen {
       xxxxxx.setX(900);
 
 
+
+
 //      Image image = new Image(Asset.getAsset().getTexture("baise.png"));
 //      addActor(image);
 //      image.setSize(1000,1000);
