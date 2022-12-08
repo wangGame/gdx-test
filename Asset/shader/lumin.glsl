@@ -12,7 +12,7 @@ void main() {
     float luminance = dot(textureColor.rgb, W);
 
     float thresholdResult = step(sin(threshold+0.1), luminance);
-    if(thresholdResult <=0.1){
+    if(thresholdResult <=0.3){
         gl_FragColor = textureColor;
     }else{
         gl_FragColor = vec4(vec3(thresholdResult), 0);

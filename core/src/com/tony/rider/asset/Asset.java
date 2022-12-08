@@ -2,6 +2,8 @@ package com.tony.rider.asset;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class Asset {
     private AssetManager assetManager;
@@ -15,6 +17,13 @@ public class Asset {
             assetManager.finishLoading();
         }
         return assetManager.get(s);
+    }
+
+    public Sprite findAtlas(){
+        assetManager.load("mm/levelAtlas.atlas", TextureAtlas.class);
+        assetManager.finishLoading();
+        TextureAtlas atlas = assetManager.get("mm/levelAtlas.atlas");
+        return atlas.createSprite("ditu");
     }
 
     static class AssetInstance{

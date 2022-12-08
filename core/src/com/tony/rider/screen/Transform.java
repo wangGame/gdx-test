@@ -26,13 +26,13 @@ public class Transform extends BaseScreen {
         wipeCir();
     }
 
-    private void wipeCir() {   if (program == null){
-        program = new ShaderProgram(Gdx.files.internal("transform/wipe_cir/vert.vert"),
-                Gdx.files.internal("transform/wipe_cir/wipeUp.glsl"));
-    }
+    private void wipeCir() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("transform/wipe_cir/vert.vert"),
+                    Gdx.files.internal("transform/wipe_cir/wipeUp.glsl"));
+        }
         Texture texture = Asset.getAsset().getTexture("test.png");
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-
         Texture texture1 = Asset.getAsset().getTexture("sprite.png");
         Image image = new Image(texture){
             float time = 0;
@@ -54,11 +54,6 @@ public class Transform extends BaseScreen {
                 program.setUniformi(u_texture1,1);
                 Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
                 program.setUniformf(moveLeft,(float) Math.abs(Math.sin(time)));
-//                if (time*0.1>=1F){
-//                    program.setUniformf(moveLeft,1);
-//                }else {
-//                    program.setUniformf(moveLeft,time*0.1F);
-//                }
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }

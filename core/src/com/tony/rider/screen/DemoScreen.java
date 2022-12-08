@@ -421,7 +421,7 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/lumin.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("bg.png")){
+        Image image = new Image(Asset.getAsset().getTexture("whale1-22754.png")){
             private float time;
             @Override
             public void act(float delta) {
