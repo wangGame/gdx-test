@@ -18,14 +18,17 @@ void main() {
     float uu = (u1 + u) / 2;
     uv.x = uv.x-uu;
     uv.y = uv.y-vv;
-    float sinV =1 - time * 0.6;
 
-    float r = sinV;
     float d = length(uv);
     float vvvv = (v1 - v) ;
     float uuuu = (u1 + u) ;
 
     float endMax = max(u1-u,v1-v);
+
+
+    float sinV =1 - time * 0.6;
+
+    float r = sinV;
 
     float c = smoothstep(r,r+endMax*0.5,d);
     vec4 v= pic;

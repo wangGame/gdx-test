@@ -2,9 +2,7 @@ package com.tony.rider;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,14 +10,8 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.screen.DemoScreen;
-import com.tony.rider.screen.DemoScreen04;
-import com.tony.rider.screen.DemoScreen05;
-import com.tony.rider.screen.DemoScreen2;
-import com.tony.rider.screen.DemoScreen3;
+import com.tony.rider.screen.DemoScreen06;
 import com.tony.rider.screen.LineScreen;
-import com.tony.rider.screen.LoadingScreen;
-import com.tony.rider.screen.Transform;
-import com.tony.rider.utils.OrthoCamController;
 
 public class RiderGame extends Game {
     private Batch batch;
@@ -50,7 +42,7 @@ public class RiderGame extends Game {
 
     private void loadingView() {
         Gdx.app.postRunnable(()->{
-            setScreen(new DemoScreen());
+            setScreen(new LineScreen());
         });
     }
 
@@ -78,8 +70,8 @@ public class RiderGame extends Game {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(229.0F/255, 208.0F/255, 190.0F/255,1);
-//        Gdx.gl.glClearColor(0.3f,0.3f,0.3f,1);
+//        Gdx.gl.glClearColor(229.0F/255, 208.0F/255, 190.0F/255,1);
+        Gdx.gl.glClearColor(0.3f,0.3f,0.3f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         super.render();
     }

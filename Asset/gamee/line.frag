@@ -20,7 +20,7 @@ void main() {
     }
     float r = sinV;
     float d = length(uv);
-    float c = smoothstep(r,r-0.1,d);
+    float c = smoothstep(r,r-0.6,d);
 //    vec4 v= vec4(240.0F/255, 217.0F/255, 187.0F/255,vvv);
     gl_FragColor=vec4(240.0F/255, 217.0F/255, 187.0F/255,c);
 }

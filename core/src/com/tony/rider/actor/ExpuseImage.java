@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class ExpuseImage extends Image {
     private ShaderProgram program;
-
+    private float timeDelta;
     public ExpuseImage(Texture texture){
         super(texture);
         if (program == null){
@@ -18,8 +18,19 @@ public class ExpuseImage extends Image {
     }
 
     @Override
+    public void act(float delta) {
+        super.act(delta);
+        timeDelta += 0.0167f;
+        if (timeDelta>5.0){
+            timeDelta = 5.0f;
+        }
+    }
+//0.317f   1.0354009
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.setShader(program);
+        int time = program.getUniformLocation("time");
+        program.setUniformf(time,timeDelta);
         super.draw(batch, parentAlpha);
         batch.setShader(null);
     }

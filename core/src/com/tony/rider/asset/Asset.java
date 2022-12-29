@@ -19,6 +19,13 @@ public class Asset {
         return assetManager.get(s);
     }
 
+    public Sprite loadAtlas(String atlasFile,String name){
+        assetManager.load(atlasFile, TextureAtlas.class);
+        assetManager.finishLoading();
+        TextureAtlas atlas = assetManager.get(atlasFile);
+        return atlas.createSprite(name);
+    }
+
     public Sprite findAtlas(){
         assetManager.load("mm/levelAtlas.atlas", TextureAtlas.class);
         assetManager.finishLoading();

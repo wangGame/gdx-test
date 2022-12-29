@@ -30,7 +30,7 @@ public class DemoScreen extends BaseScreen {
 //        emboss();
 //        poster();
 //        filterGroup();
-//        saturation();//15
+        saturation();//15
 //        exposure();
 //        highlightShadow();
 //        monchrome();//18
@@ -38,7 +38,7 @@ public class DemoScreen extends BaseScreen {
 //        rgb();
 //        whiteBalance();
 //        vignette();
-        lumin();
+//        lumin();
 
 //        blendDifference();
 //        blendSourceOver();//21
@@ -421,19 +421,19 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/lumin.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("whale1-22754.png")){
+        Image image = new Image(Asset.getAsset().getTexture("xxxxxx.png")){
             private float time;
             @Override
             public void act(float delta) {
                 super.act(delta);
-                time += delta;
+
             }
 
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("threshold");
-                program.setUniformf(time1,time*0.1F);
+                program.setUniformf(time1,0.5F);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
@@ -1026,7 +1026,7 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/threohold.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Image image = new Image(Asset.getAsset().getTexture("xxxxxx.png")){
             private float time;
             @Override
             public void act(float delta) {
@@ -1038,7 +1038,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("threshold");
-                program.setUniformf(time1,time*0.01F);
+                program.setUniformf(time1,0.5f);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
@@ -1142,19 +1142,19 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/brightness.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Image image = new Image(Asset.getAsset().getTexture("_cat-58830.png")){
             private float time;
             @Override
             public void act(float delta) {
                 super.act(delta);
-                time += delta;
+                time += delta * 0.3f;
             }
 
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("contrast");
-                program.setUniformf(time1,0.8F);
+                program.setUniformf(time1,time);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
