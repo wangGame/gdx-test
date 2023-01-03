@@ -52,7 +52,7 @@ public class LineScreen extends BaseScreen {
 //        addActor(solarize);
 //        hitposi();
 
-        hui();
+        hui1();
 //        pre();
 
 
@@ -63,6 +63,16 @@ public class LineScreen extends BaseScreen {
 //        i.setDebug(true);
 //        i.setScale(0.4f);
 
+    }
+
+
+    private void hui1() {
+        Image image = new Image(Asset.getAsset().getTexture("white_bg.png"));
+        addActor(image);
+        image.setSize(1500,1500);
+        image.setColor(Color.valueOf("#fffbe5"));
+        GrayImage3 grayImage2 = new GrayImage3();
+        addActor(grayImage2);
     }
 
     private void hui() {

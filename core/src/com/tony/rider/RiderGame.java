@@ -42,7 +42,7 @@ public class RiderGame extends Game {
 
     private void loadingView() {
         Gdx.app.postRunnable(()->{
-            setScreen(new LineScreen());
+            setScreen(new DemoScreen());
         });
     }
 

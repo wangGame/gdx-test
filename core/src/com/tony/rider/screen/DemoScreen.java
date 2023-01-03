@@ -1,12 +1,15 @@
 package com.tony.rider.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.tony.rider.DivideGroup;
 import com.tony.rider.asset.Asset;
 import com.tony.rider.screen.base.BaseScreen;
 
@@ -30,7 +33,7 @@ public class DemoScreen extends BaseScreen {
 //        emboss();
 //        poster();
 //        filterGroup();
-        saturation();//15
+//        saturation();//15
 //        exposure();
 //        highlightShadow();
 //        monchrome();//18
@@ -56,6 +59,8 @@ public class DemoScreen extends BaseScreen {
 //        add();//
 
 //        divide();
+        divide1();
+
 //        muli(); //31
 //        overlay();
 
@@ -88,6 +93,35 @@ public class DemoScreen extends BaseScreen {
 //        GPUImageToonFilter
 //        imageSketch();
 
+
+//        test01();
+//        imageSketch();
+    }
+
+    private void test01() {
+        if (program == null){
+            program = new ShaderProgram(
+                    Gdx.files.internal("test/grayScale.glsl"),
+                    Gdx.files.internal("test/txt.vert"));
+        }
+
+
+        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
+            private float time;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                time += delta;
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        addActor(image);
 
     }
 
@@ -271,7 +305,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendsoftlight.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -293,7 +327,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendlinearburn.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("sprite.png");
+        Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(Asset.getAsset().getTexture("test.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -584,14 +618,35 @@ public class DemoScreen extends BaseScreen {
         };
         addActor(image);
     }
+    private void divide1() {
+//        FileHandle sprite1 = Gdx.files.internal("sprite1");
+//        addActor(new Table(){{
+//            int index = 0;
+//            for (int i = 0; i < 10; i++) {
+//                index ++;
+//                FileHandle fileHandle = sprite1.list()[i];
+//                DivideGroup group = new DivideGroup(fileHandle);
+//                add(group);
+//                if (index>5){
+//                    row();
+//                    index = 0;
+//                }
+//            }
+//            pack();
+//        }});
+//        Asset/Demo01/whale1-22754.png
+          DivideGroup group = new DivideGroup(Gdx.files.internal("ziti1.png"));
+          addActor(group);
+          group.setScale(4);
 
+    }
     private void divide() {
         if (program == null){
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendDivide.glsl"));
         }
         Texture texture = Asset.getAsset().getTexture("no_bg.png");
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Image image = new Image(Asset.getAsset().getTexture("xxxxxx.png")){
             float time = 0;
             @Override
             public void draw(Batch batch, float parentAlpha) {
@@ -609,6 +664,7 @@ public class DemoScreen extends BaseScreen {
             }
         };
         addActor(image);
+
     }
 
 
@@ -722,7 +778,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int x = program.getUniformLocation("time");
-                program.setUniformf(x,time);
+                program.setUniformf(x,time*0.1f);
                 int u_texture1 = program.getUniformLocation("u_texture1");
                 Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
                 texture.bind();
@@ -811,8 +867,8 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/blendsourceover.glsl"));
         }
-        Texture texture = Asset.getAsset().getTexture("no_bg.png");
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Texture texture = Asset.getAsset().getTexture("test.png");
+        Image image = new Image(Asset.getAsset().getTexture("no_bg.png")){
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
