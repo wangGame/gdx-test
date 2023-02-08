@@ -14,7 +14,6 @@ public class LoadingScreen extends BaseScreen {
 //        orthographicCamera.init();
 
         AssetManager assetManager = new AssetManager();
-
         assetManager.load("test.png", Texture.class);
         assetManager.finishLoading();
         Texture text = assetManager.get("test.png");

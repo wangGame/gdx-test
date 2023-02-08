@@ -17,6 +17,5 @@ public class DesktopLauncher {
 
 //        new LwjglApplication(new ShaderBlurTest(), config);
         new LwjglApplication(new RiderGame(), config);
-
     }
 }

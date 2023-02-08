@@ -12,10 +12,14 @@ uniform sampler2D u_texture1;
 uniform float time;
 
 void main() {
+    time = time + 2.5;
     vec4 base = v_color* texture2D(u_texture, v_textCoords);
     vec4 overlay = v_color* texture2D(u_texture1, v_textCoords);
+
+
+
     overlay.a +=1.0;
-    overlay.a -= time * 0.1f;
+    overlay.a -= time * 0.1;
     if(overlay.a < 0.0){
         overlay.a = 0.0;
     }

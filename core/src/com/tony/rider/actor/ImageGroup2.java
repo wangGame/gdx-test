@@ -18,12 +18,12 @@ public class ImageGroup2 extends Group {
       if (program == null){
          program = new ShaderProgram(
                  Gdx.files.internal("chanss/vert.vert"),
-                 Gdx.files.internal("chanss/wipeDown.glsl"));
+                 Gdx.files.internal("chanss/wipeUp2.glsl"));
       }
 
       Sprite sprite = Asset.getAsset().loadAtlas("levelAtlas.atlas",
               "2_dizuo");
-      Texture texture = Asset.getAsset().getTexture("_teapot-58878.png");
+      Texture texture = Asset.getAsset().getTexture("bg.png");
       texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
       Texture texture1 = Asset.getAsset().getTexture("noise.png");
       Image image = new Image(texture){

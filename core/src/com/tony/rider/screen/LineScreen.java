@@ -2,12 +2,16 @@ package com.tony.rider.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
@@ -22,6 +26,7 @@ import com.tony.rider.actor.ImageGroup;
 import com.tony.rider.actor.ImageGroup2;
 import com.tony.rider.actor.Wd11;
 import com.tony.rider.asset.Asset;
+import com.tony.rider.constant.Constant;
 import com.tony.rider.screen.base.BaseScreen;
 import com.tony.rider.wd.Wd1;
 
@@ -52,7 +57,7 @@ public class LineScreen extends BaseScreen {
 //        addActor(solarize);
 //        hitposi();
 
-        hui1();
+//        hui1();
 //        pre();
 
 
@@ -62,7 +67,80 @@ public class LineScreen extends BaseScreen {
 //        addActor(i);
 //        i.setDebug(true);
 //        i.setScale(0.4f);
+//        block08();
+//        block09();
+//        test();
 
+        cirChange();
+//        scroll();
+    }
+
+    private void scroll() {
+        Group group = new Group(){
+            {
+                for (int i = 0; i < 10; i++) {
+                    Image image = new Image(new Texture("00013.png"));
+                    addActor(image);
+                    image.setX(266 * i);
+                }
+                setWidth(256 * 100);
+            }
+        };
+        group.setHeight(256);
+        ScrollPane pane = new ScrollPane(group,new ScrollPane.ScrollPaneStyle());
+        pane.setWidth(Constant.WIDTH);
+        pane.setHeight(600);
+        pane.setY(300);
+        addActor(pane);
+        group.setDebug(true);
+        group.addAction(Actions.parallel(
+                Actions.sizeTo(0,256,10),
+                Actions.forever(Actions.run(()->{
+                    pane.layout();
+                    pane.updateVisualScroll();
+                }))
+                ));
+    }
+    float v;
+    public void cirChange(){
+        BseInterpolation bseInterpolation = new BseInterpolation(0.25f,0,1.0f,0.99f);
+        Image imageBg = new Image(new Texture("img.png"));
+        imageBg.setPosition(300,300);
+        addActor(imageBg);
+        imageBg.setScale(4);
+
+        ShaderProgram program = new ShaderProgram(
+                Gdx.files.internal("levelitem/cir.vert"),
+                Gdx.files.internal("levelitem/cir.glsl"));
+
+   Image image = new Image(new Texture("img1.png")){
+            private float time = 0;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                //        v += delta * 1.52f;
+                v += delta * 0.12f;
+
+                time = bseInterpolation.apply(v)*10.52f;
+                System.out.println(time);
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                program.setUniformf("time",time*0.1f);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        image.setPosition(300,300);
+        addActor(image);
+        image.setScale(4);
+    }
+
+    private void test() {
+        ImageBlend blend = new ImageBlend();
+        addActor(blend);
     }
 
 
@@ -109,17 +187,9 @@ public class LineScreen extends BaseScreen {
     }
 
     private void block08() {
-        Image image = new Image(Asset.getAsset().getTexture("_Background-58852.png"));
-        addActor(image);
-        String str[] = {
-                "1_yuqun2",
-                "2_chuan1",
-                "2_chuan2",
-                "2_gx",
-                "2_hq",
-                "2_td",
-                "2_ts1",
 
+        String str[] = {
+                "2_chuan2",
         };
         addActor(new Table(){{
             int index = 0;

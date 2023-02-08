@@ -21,7 +21,7 @@ public class ImageGroup extends Image {
       if (program == null) {
          program = new ShaderProgram(
                  Gdx.files.internal("chanss/vert.vert"),
-                 Gdx.files.internal("chanss/wipeUp.glsl"));
+                 Gdx.files.internal("chanss/wipeUp1.glsl"));
       }
 
       texture1 = Asset.getAsset().getTexture("noise.png");

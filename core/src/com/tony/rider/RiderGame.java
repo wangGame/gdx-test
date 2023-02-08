@@ -9,9 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.tony.rider.constant.Constant;
-import com.tony.rider.screen.DemoScreen;
-import com.tony.rider.screen.DemoScreen06;
-import com.tony.rider.screen.LineScreen;
+import com.tony.rider.screen.InterpolationScreen;
 
 public class RiderGame extends Game {
     private Batch batch;
@@ -42,7 +40,7 @@ public class RiderGame extends Game {
 
     private void loadingView() {
         Gdx.app.postRunnable(()->{
-            setScreen(new DemoScreen());
+            setScreen(new InterpolationScreen());
         });
     }
 
@@ -71,7 +69,7 @@ public class RiderGame extends Game {
     @Override
     public void render() {
 //        Gdx.gl.glClearColor(229.0F/255, 208.0F/255, 190.0F/255,1);
-        Gdx.gl.glClearColor(0.3f,0.3f,0.3f,1);
+        Gdx.gl.glClearColor(0.2f,0.2f,0.2f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         super.render();
     }

@@ -19,7 +19,7 @@ public class DivideGroup extends Group {
         }
         Texture texture = Asset.getAsset().getTexture("no_bg.png");
         Image image = new Image(new Texture(fileHandle)){
-            float time = 0;
+            float time = 2.5f;
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
@@ -32,7 +32,9 @@ public class DivideGroup extends Group {
                 Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
-                time += Gdx.graphics.getDeltaTime();
+                System.out.println(time);
+                time += Gdx.graphics.getDeltaTime()   ;
+
             }
         };
         addActor(image);
