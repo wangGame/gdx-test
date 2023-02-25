@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.tony.rider.DivideGroup;
+import com.tony.rider.actor.AAAAAA;
 import com.tony.rider.asset.Asset;
 import com.tony.rider.screen.base.BaseScreen;
 
@@ -17,7 +18,7 @@ public class DemoScreen extends BaseScreen {
     private ShaderProgram program;
     @Override
     public void show() {
-        super.show();
+//        super.show();
 //        contract(); //2
 //        gamma();//3
 //        colorInvert();//4
@@ -32,7 +33,7 @@ public class DemoScreen extends BaseScreen {
 //        threeXthree(); //1
 //        emboss();
 //        poster();
-//        filterGroup();
+        filterGroup();
 //        saturation();//15
 //        exposure();
 //        highlightShadow();
@@ -42,7 +43,7 @@ public class DemoScreen extends BaseScreen {
 //        whiteBalance();
 //        vignette();
 //        lumin();
-
+        All();
 //        blendDifference();
 //        blendSourceOver();//21
 //        blendburnblend();
@@ -59,7 +60,7 @@ public class DemoScreen extends BaseScreen {
 //        add();//
 
 //        divide();
-        divide1();
+//        divide1();
 
 //        muli(); //31
 //        overlay();
@@ -96,6 +97,44 @@ public class DemoScreen extends BaseScreen {
 
 //        test01();
 //        imageSketch();
+
+//        qufan();
+    }
+
+    private void All() {
+        AAAAAA aaaaaa = new AAAAAA();
+        addActor(aaaaaa);
+    }
+
+    private void qufan() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/dip.glsl"));
+        }
+
+
+        Image image = new Image(Asset.getAsset().getTexture("test3.png")){
+            private float time = 20;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                time -= delta;
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                if (time == 0){
+                    time = 0;
+                }
+                program.setUniformf("contrast",time);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        image.setScale(10);
+        addActor(image);
+
     }
 
     private void test01() {
@@ -455,7 +494,7 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/lumin.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("xxxxxx.png")){
+        Image image = new Image(Asset.getAsset().getTexture("test3.png")){
             private float time;
             @Override
             public void act(float delta) {
@@ -472,6 +511,7 @@ public class DemoScreen extends BaseScreen {
                 batch.setShader(null);
             }
         };
+        image.setScale(4);
         image.addAction(Actions.fadeIn(1.4f));
         addActor(image);
     }
@@ -1285,7 +1325,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/gamma.glsl"));
         }
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Image image = new Image(Asset.getAsset().getTexture("11111.png")){
             float time = 0;
             @Override
             public void act(float delta) {
@@ -1297,7 +1337,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int contrast = program.getUniformLocation("gamma");
-                program.setUniformf(contrast,time*0.1F);
+                program.setUniformf(contrast,time*0.6F);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
@@ -1310,7 +1350,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/contrast.frag"));
         }
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Image image = new Image(Asset.getAsset().getTexture("11111.png")){
             float time = 0;
             @Override
             public void act(float delta) {

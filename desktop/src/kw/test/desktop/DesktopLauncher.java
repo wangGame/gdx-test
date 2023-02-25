@@ -3,7 +3,7 @@ package kw.test.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.tony.rider.RiderGame;
-import com.tony.rider.Three.Animation3DTest;
+
 import com.tony.rider.screen.ShaderBlurTest;
 
 public class DesktopLauncher {

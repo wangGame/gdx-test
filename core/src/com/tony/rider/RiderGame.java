@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.tony.rider.constant.Constant;
+import com.tony.rider.screen.DemoScreen;
 import com.tony.rider.screen.InterpolationScreen;
 
 public class RiderGame extends Game {
@@ -40,7 +41,7 @@ public class RiderGame extends Game {
 
     private void loadingView() {
         Gdx.app.postRunnable(()->{
-            setScreen(new InterpolationScreen());
+            setScreen(new DemoScreen());
         });
     }
 
