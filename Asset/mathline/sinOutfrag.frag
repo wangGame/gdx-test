@@ -10,7 +10,7 @@ uniform float time;
 
 
 float sinmathod(float a){
-    float ss = (1 - 0.6 * cos(1.0 * a * PI)) / 2;
+    float ss = sin(1.0 * a * PI/2.0);
 //    float ss = 0.3 * sin(30.0*a) + 0.5;
     return ss;
 }

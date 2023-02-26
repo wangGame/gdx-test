@@ -2,7 +2,6 @@ package com.tony.rider.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -21,7 +20,7 @@ import com.tony.rider.BgGroup2;
 import com.tony.rider.BgGroup3;
 import com.tony.rider.BgGroup4;
 import com.tony.rider.BgGroup5;
-import com.tony.rider.actor.BlackGroup;
+import com.tony.rider.BseInterpolation;
 import com.tony.rider.actor.ImageGroup;
 import com.tony.rider.actor.ImageGroup2;
 import com.tony.rider.actor.Wd11;

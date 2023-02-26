@@ -1,16 +1,13 @@
 package com.tony.rider.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.tony.rider.DivideGroup;
-import com.tony.rider.actor.AAAAAA;
 import com.tony.rider.asset.Asset;
 import com.tony.rider.screen.base.BaseScreen;
 
@@ -18,8 +15,9 @@ public class DemoScreen extends BaseScreen {
     private ShaderProgram program;
     @Override
     public void show() {
-//        super.show();
-//        contract(); //2
+        super.show();
+
+        contract(); //2
 //        gamma();//3
 //        colorInvert();//4
 //        pix();//5
@@ -33,7 +31,7 @@ public class DemoScreen extends BaseScreen {
 //        threeXthree(); //1
 //        emboss();
 //        poster();
-        filterGroup();
+//        filterGroup();
 //        saturation();//15
 //        exposure();
 //        highlightShadow();
@@ -43,7 +41,7 @@ public class DemoScreen extends BaseScreen {
 //        whiteBalance();
 //        vignette();
 //        lumin();
-        All();
+//        All();
 //        blendDifference();
 //        blendSourceOver();//21
 //        blendburnblend();
@@ -102,8 +100,7 @@ public class DemoScreen extends BaseScreen {
     }
 
     private void All() {
-        AAAAAA aaaaaa = new AAAAAA();
-        addActor(aaaaaa);
+
     }
 
     private void qufan() {

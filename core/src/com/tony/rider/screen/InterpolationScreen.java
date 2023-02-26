@@ -1,10 +1,18 @@
 package com.tony.rider.screen;
 
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.tony.rider.constant.Constant;
+import com.tony.rider.interpolation.ExpGroup;
+import com.tony.rider.interpolation.LinearGroup;
 import com.tony.rider.interpolation.Pow2InInverseGroup;
 import com.tony.rider.interpolation.PowGroup;
 import com.tony.rider.interpolation.PowInGroup;
 import com.tony.rider.interpolation.PowOutGroup;
 import com.tony.rider.interpolation.SinGroup;
+import com.tony.rider.interpolation.SinInGroup;
+import com.tony.rider.interpolation.SinOutGroup;
 import com.tony.rider.interpolation.SmoothGroup;
 import com.tony.rider.interpolation.SmoothGroup2;
 import com.tony.rider.interpolation.Smoother;
@@ -15,17 +23,77 @@ public class InterpolationScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
+//        linear();
 //      smooth
 //        smooth();
 //        smooth2();
 //        Interpolation
 //        smoother();
+
 //        powGroup();
 //        powInGroup();
 //        powOutGroup();
+//
+//        slowFast();
 //        pow2InInverse();
 //        sinGroup();
-        swingGroup();
+
+//        sinInGroup();
+//         sinOutGroup();
+//        swingGroup();
+
+        exp();
+
+
+//        Table table = new Table(){{
+//            add(new SmoothGroup2()).pad(20);
+//            add(new SmoothGroup()).pad(20);
+//            row();
+//            add(new Smoother()).pad(20);
+//
+//            row();
+//            add(new PowGroup()).pad(20);
+//            add(new PowInGroup()).pad(20);
+//
+//            row();
+//            add(new PowOutGroup()).pad(20);
+
+//            add(new SwingGroup()).pad(20);
+//            row();
+//            add(new SinGroup()).pad(20);
+//            add(new Pow2InInverseGroup()).pad(20);
+//            pack();
+//        }};
+//        ScrollPane pane = new ScrollPane(table,new ScrollPane.ScrollPaneStyle());
+//        addActor(pane);
+//        pane.setSize(Constant.GAMEWIDTH,Constant.GAMEHIGHT);
+    }
+
+    public void exp(){
+        ExpGroup expGroup = new ExpGroup();
+        addActor(expGroup);
+    }
+
+    private void sinOutGroup() {
+        SinOutGroup sinOutGroup = new SinOutGroup();
+        sinOutGroup.setPosition(100,100);
+        addActor(sinOutGroup);
+    }
+
+    private void sinInGroup() {
+        SinInGroup group = new SinInGroup();
+        addActor(group);
+        group.setPosition(100,100);
+    }
+
+    private void slowFast() {
+        //slowFast = pow2In
+        //fastSlow = pow2Out
+    }
+
+    private void linear() {
+        LinearGroup linearGroup = new LinearGroup();
+        addActor(linearGroup);
     }
 
     private void swingGroup() {

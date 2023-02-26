@@ -10,14 +10,13 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.screen.DemoScreen;
-import com.tony.rider.screen.InterpolationScreen;
+import com.tony.rider.screen.LoadingScreen;
 
 public class RiderGame extends Game {
     private Batch batch;
     private ExtendViewport stageViewport;
     private SkeletonRenderer renderer;
     private static RiderGame riderGame;
-    private BitmapFont font;
 
     public RiderGame() {
 
@@ -35,13 +34,9 @@ public class RiderGame extends Game {
 
     }
 
-    public BitmapFont getFont() {
-        return font;
-    }
-
     private void loadingView() {
         Gdx.app.postRunnable(()->{
-            setScreen(new DemoScreen());
+            setScreen(new LoadingScreen());
         });
     }
 

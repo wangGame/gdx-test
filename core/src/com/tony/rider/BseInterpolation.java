@@ -1,4 +1,4 @@
-package com.tony.rider.screen;
+package com.tony.rider;
 
 
 import com.badlogic.gdx.math.Interpolation;
