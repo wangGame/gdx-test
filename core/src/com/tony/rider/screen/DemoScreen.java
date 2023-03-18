@@ -16,8 +16,8 @@ public class DemoScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
-
-        contract(); //2
+//        exposure();
+//        contract(); //2
 //        gamma();//3
 //        colorInvert();//4
 //        pix();//5
@@ -97,6 +97,72 @@ public class DemoScreen extends BaseScreen {
 //        imageSketch();
 
 //        qufan();
+
+//        cir();
+        ccx();
+    }
+
+    private void ccx() {
+        Image image1 = new Image(Asset.getAsset().getTexture("maskcir.png"));
+        addActor(image1);
+        Image image = new Image(Asset.getAsset().getTexture("democir.jpg")){
+            private float time = 20;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                int blendSrcFunc = batch.getBlendSrcFunc();
+                int blendDstFunc = batch.getBlendDstFunc();
+                batch.setBlendFunction(GL20.GL_ONE,GL20.GL_ZERO);
+                super.draw(batch, parentAlpha);
+                batch.setBlendFunction(blendSrcFunc,blendDstFunc);
+            }
+        };
+        image.setX(11);
+        image.setSize(1100,1100);
+        addActor(image);
+    }
+
+    private void cir() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/cir.glsl"));
+        }
+
+        Texture texture = new Texture("maskcir.png");
+        Texture kkk = new Texture("daily_img_border.png");
+        Image image = new Image(Asset.getAsset().getTexture("democir.jpg")){
+            private float time = 20;
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+
+            }
+
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                int u_texture1 = program.getUniformLocation("u_texture1");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
+                texture.bind();
+                program.setUniformi(u_texture1,1);
+                int u_texture2 = program.getUniformLocation("u_texture2");
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE2);
+                kkk.bind();
+                program.setUniformi(u_texture2,2);
+                Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        image.setX(11);
+        image.setSize(1100,1100);
+        addActor(image);
     }
 
     private void All() {
@@ -166,23 +232,25 @@ public class DemoScreen extends BaseScreen {
     }
 
     private void imageSketch() {
+
         if (program == null){
-            program = new ShaderProgram(Gdx.files.internal("shader2/BlurVertexShader.vs"),
-                    Gdx.files.internal("shader2/BlurFragmentShader.fs"));
+            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
+                    Gdx.files.internal("shader/sketch.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("_floor-58868.png")){
-
+        Image image = new Image(Asset.getAsset().getTexture("reee.png")){
+            float time01 = 0;
             @Override
             public void act(float delta) {
                 super.act(delta);
-
+                time01 += delta;
             }
 
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 super.draw(batch, parentAlpha);
+                program.setUniformf("time",time01);
                 batch.setShader(null);
             }
         };
@@ -1036,7 +1104,7 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/exposure.glsl"));
         }
-        Image image = new Image(Asset.getAsset().getTexture("1234.png")){
+        Image image = new Image(Asset.getAsset().getTexture("_3_4-123158.png")){
             private float time;
             @Override
             public void act(float delta) {
@@ -1048,7 +1116,7 @@ public class DemoScreen extends BaseScreen {
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
                 int time1 = program.getUniformLocation("exposure");
-                program.setUniformf(time1,time*0.1F);
+                program.setUniformf(time1,1.4f);
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
