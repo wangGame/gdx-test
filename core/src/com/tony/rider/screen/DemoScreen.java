@@ -99,7 +99,7 @@ public class DemoScreen extends BaseScreen {
 //        qufan();
 
 //        cir();
-        ccx();
+//        ccx();
     }
 
     private void ccx() {
@@ -1187,7 +1187,7 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/threohold.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("xxxxxx.png")){
+        Image image = new Image(Asset.getAsset().getTexture("round64_38.png")){
             private float time;
             @Override
             public void act(float delta) {
@@ -1214,7 +1214,7 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("shader/edge.glsl"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("test.png")){
+        Image image = new Image(Asset.getAsset().getTexture("round64_38.png")){
 
             @Override
             public void draw(Batch batch, float parentAlpha) {

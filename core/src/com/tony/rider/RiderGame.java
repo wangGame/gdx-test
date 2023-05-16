@@ -12,6 +12,7 @@ import com.tony.rider.constant.Constant;
 import com.tony.rider.screen.DemoScreen;
 import com.tony.rider.screen.LoadingScreen;
 import com.tony.rider.screen.PzScreen;
+import com.tony.rider.screen.ShaderScreen;
 
 public class RiderGame extends Game {
     private Batch batch;
@@ -65,8 +66,8 @@ public class RiderGame extends Game {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(229.0F/255, 208.0F/255, 190.0F/255,1);
-//        Gdx.gl.glClearColor(1f,1f,1f,1);
+//        Gdx.gl.glClearColor(229.0F/255, 208.0F/255, 190.0F/255,1);
+        Gdx.gl.glClearColor(0f,0f,0f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         super.render();
     }

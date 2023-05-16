@@ -10,7 +10,7 @@ uniform sampler2D u_texture;
 uniform float threshold;
 
 void main() {
-    float offset = 0.005f;
+    float offset = 0.002f;
     vec4 finalV = v_color * texture2D(u_texture, v_textCoords);
     vec2 bottomTextureCoordinate = v_textCoords;
     bottomTextureCoordinate.y += offset;
@@ -61,7 +61,7 @@ void main() {
     topLeftColor.r + bottomRightColor.r + 2.0 * rightColor.r+ topRightColor.r;
 //    float mag = length(vec2(h, v));
     float mag = length(vec2(h, v));
-    mag = step(0.5, mag);
+    mag = step(0.05, mag);
 
     gl_FragColor = vec4(vec3(1-mag), 1.0);
     //

@@ -60,7 +60,7 @@ void main() {
     x x x
     x x x
     */
-    float xxx = 1.5;
+    float xxx = 0.8;
     float h = -topLeftColor.g - xxx * topColor.g - topRightColor.g
     + bottomLeftColor.g +xxx * bottomColor.g+ bottomRightColor.g;
 
@@ -75,10 +75,10 @@ void main() {
     vec3 W = vec3(0.2125, 0.7154, 0.0721);
     vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
     float luminance = dot(textureColor.rgb, W);
-    if(luminance<0.3){
+    if(luminance<0.1){
         discard;
     }else{
-        gl_FragColor = vec4(vec3(luminance), textureColor.a);
+        gl_FragColor = vec4(vec3(1-luminance), textureColor.a);
 
     }
 //        gl_FragColor = mix(vec4(vec3(1-mag), 1.0),vec4(231.0/255.0,200.0/255.0,187.0/255.0,1),0.9);
