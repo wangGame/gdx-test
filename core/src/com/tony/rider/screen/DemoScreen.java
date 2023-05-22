@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tony.rider.DivideGroup;
 import com.tony.rider.asset.Asset;
+import com.tony.rider.mdel.ModelGroupTest;
 import com.tony.rider.screen.base.BaseScreen;
 
 public class DemoScreen extends BaseScreen {
@@ -16,6 +17,7 @@ public class DemoScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
+        addActor(new ModelGroupTest());
 //        exposure();
 //        contract(); //2
 //        gamma();//3
@@ -91,13 +93,9 @@ public class DemoScreen extends BaseScreen {
 //        imageSketch();
 //        GPUImageToonFilter
 //        imageSketch();
-
-
 //        test01();
 //        imageSketch();
-
 //        qufan();
-
 //        cir();
 //        ccx();
     }

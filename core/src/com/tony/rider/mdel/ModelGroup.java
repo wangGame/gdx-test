@@ -26,12 +26,13 @@ public class ModelGroup  extends Image {
         super(Asset.getAsset().getTexture(maskName));
         setDebug(true);
         program = new ShaderProgram(
-                Gdx.files.internal("shader/hui.vert"),
-                Gdx.files.internal("shader/hui.frag"));
+                Gdx.files.internal("model/puzzlemodel.vert"),
+                Gdx.files.internal("model/puzzlemodel.frag"));
         t = Asset.getAsset().getTexture("pic/test.png");
-        u = t.getWidth() / getWidth();
-        v = t.getWidth() / getWidth();
+        u = t.getWidth() / getWidth() /10;
+        v = t.getWidth() / getWidth() / 10;
         t.setWrap(Texture.TextureWrap.ClampToEdge, Texture.TextureWrap.ClampToEdge);
+
     }
 
     @Override
@@ -41,12 +42,21 @@ public class ModelGroup  extends Image {
         t.bind();
         int uniformLocation = program.getUniformLocation("u_texture3");
         program.setUniformi(uniformLocation,1);
+        System.out.println(startU);
         program.setUniformf("u",startU);
-        program.setUniformf("u2",startU + 1.6f);
+        program.setUniformf("u2",startU+u);
         program.setUniformf("v",startV);
-        program.setUniformf("v2",startV + 1.6f);
+        program.setUniformf("v2",startV+v);
         Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
         super.draw(batch, parentAlpha);
         batch.setShader(null);
+    }
+
+    public void setStartU(float startU) {
+        this.startU = startU;
+    }
+
+    public void setStartV(float startV) {
+        this.startV = startV;
     }
 }
