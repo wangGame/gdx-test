@@ -28,9 +28,14 @@ public class ModelGroup  extends Image {
         program = new ShaderProgram(
                 Gdx.files.internal("model/puzzlemodel.vert"),
                 Gdx.files.internal("model/puzzlemodel.frag"));
+    }
+
+    @Override
+    public void setSize(float width, float height) {
+        super.setSize(width, height);
         t = Asset.getAsset().getTexture("pic/test.png");
-        u = t.getWidth() / getWidth() /10;
-        v = t.getWidth() / getWidth() / 10;
+        u = t.getWidth() / getWidth() ;
+        v = t.getWidth() / getWidth() ;
         t.setWrap(Texture.TextureWrap.ClampToEdge, Texture.TextureWrap.ClampToEdge);
 
     }

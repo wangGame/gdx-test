@@ -13,23 +13,76 @@ import com.tony.rider.asset.Asset;
 public class ModelGroupTest extends Group {
     public ModelGroupTest(){
         String name [][] = new String[][]{
-                {"model"}
+                {"jigsawShapeMask_01","jigsawShapeMask_02",
+                        "jigsawShapeMask_03","jigsawShapeMask_04",
+                        "jigsawShapeMask_05","jigsawShapeMask_06",
+                        "jigsawShapeMask_07","jigsawShapeMask_08"},
+                {"jigsawShapeMask_9","jigsawShapeMask_10",
+                        "jigsawShapeMask_11","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01"},
+                {"jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01"},
+                {"jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01"},
+                {"jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01"},
+                {"jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01"},
+                {"jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01"},
+                {"jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01",
+                        "jigsawShapeMask_01","jigsawShapeMask_01"},
         };
+
         Texture texture = Asset.getAsset().getTexture("pic/test.png");
         int width = texture.getWidth();
         int height = texture.getHeight();
-        int i1 = width / 10;
-        int i2 = height / 10;
+        int i1 = width / 8;
+        int i2 = height / 8;
+
+        float startU = 0.0f;
+        float startV = 0.0f;
+        float startX = 0.0f;
+        float startY = 0.0f;
+        int in = 0;
         for (int i3 = 0; i3 < name.length; i3++) {
+            startX = 0;
             for (int i4 = 0; i4 < name[0].length; i4++) {
-                ModelGroup maskImage = new ModelGroup("pic/model.png");
+                in ++;
+                String picName = in+"";
+                if (in<10){
+                    picName = "0"+picName;
+                }
+                ModelGroup maskImage = new ModelGroup("pic/jigsawShapeMask_"+picName+".png");
+//                ModelGroup maskImage = new ModelGroup("pic/model.png");
                 addActor(maskImage);
-                maskImage.setSize(i1,i2);
-                maskImage.setStartU(i4/10.0f);
-                maskImage.setStartV((10-i3-1)/10.0f);
-                maskImage.setX((i1) * i4);
-                maskImage.setY((i2) *(i3));
+                // 磨具/磨具宽（高）  == i1（i2）/游戏宽高
+                maskImage.setSize(i1+65,i2+65);
+                maskImage.setX(startX);
+                maskImage.setY(height - startY);
+                //startX（starY） / 游戏宽（高）
+                maskImage.setStartU(startX/width+0.0f*i1/width);
+                startX = startX + i1;
+                maskImage.setStartV(startY/height+0.0f*i2/height);
+                //i1（i2）/游戏宽
+
+
             }
+            startY = startY + i2;
         }
+        setScale(0.7f);
     }
 }
