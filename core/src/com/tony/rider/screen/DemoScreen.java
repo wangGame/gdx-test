@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tony.rider.DivideGroup;
+import com.tony.rider.actor.WaveImage;
 import com.tony.rider.asset.Asset;
 import com.tony.rider.mdel.ModelGroupTest;
 import com.tony.rider.screen.base.BaseScreen;
@@ -17,7 +18,7 @@ public class DemoScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
-        addActor(new ModelGroupTest());
+        addActor(new WaveImage(Asset.getAsset().getTexture("00002.png")));
 //        exposure();
 //        contract(); //2
 //        gamma();//3
@@ -98,7 +99,29 @@ public class DemoScreen extends BaseScreen {
 //        qufan();
 //        cir();
 //        ccx();
+
+        cir111();
     }
+
+    private void cir111() {
+        if (program == null){
+            program = new ShaderProgram(Gdx.files.internal("colormap/line.vert"),
+                    Gdx.files.internal("colormap/line.frag"));
+        }
+
+        Image image = new Image(Asset.getAsset().getTexture("democir.jpg")){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                batch.setShader(program);
+                super.draw(batch, parentAlpha);
+                batch.setShader(null);
+            }
+        };
+        image.setX(11);
+        image.setSize(1100,1100);
+        addActor(image);
+    }
+
 
     private void ccx() {
         Image image1 = new Image(Asset.getAsset().getTexture("maskcir.png"));
