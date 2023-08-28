@@ -17,8 +17,8 @@ void main() {
     vec4 tc = v_color * texture2D(u_texture, v_textCoords);
     float rr = ra;
     if(offsetXL+(v_textCoords.x-offsetXL)*rato<rr && (v_textCoords.y > time &&v_textCoords.y <rr+time)){
-        vec2 center = vec2(rr,rr+time);
-        v_textCoords.x = v_textCoords.x * rato;
+        vec2 center = vec2(offsetXL+rr,rr+time);
+        v_textCoords.x = offsetXL+(v_textCoords.x-offsetXL)*rato;
         float distanceToCenter = distance(v_textCoords,center);
         float alpha = 1.0;
         if(distanceToCenter * distanceToCenter > rr * rr){
