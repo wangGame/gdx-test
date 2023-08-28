@@ -10,11 +10,10 @@ public class DesktopLauncher {
     public static void main(String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "tony Rider Game";
-        config.width = 400;
-        config.height = 680;
+        config.width = 360;
+        config.height = 640;
         config.x = 100;
         config.y = 100;
-
 //        new LwjglApplication(new ShaderBlurTest(), config);
         new LwjglApplication(new RiderGame(), config);
     }

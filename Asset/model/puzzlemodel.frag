@@ -25,6 +25,7 @@ void main() {
      if(colorTol > 1.0){
           colorTol = 1.0f;
      }
-     gl_FragColor =  vec4(vec3(normal1.rgb) * colorTol,1);
+     gl_FragColor =  vec4(vec3(normal1.rgb)-vec3(normal.b) / 2.0f  * colorTol,1);
+
      gl_FragColor.a =  normal.a;
 }

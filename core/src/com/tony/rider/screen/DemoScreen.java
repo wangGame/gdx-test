@@ -1,15 +1,23 @@
 package com.tony.rider.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Align;
 import com.tony.rider.DivideGroup;
+import com.tony.rider.actor.BlackGroup;
 import com.tony.rider.actor.WaveImage;
 import com.tony.rider.asset.Asset;
+import com.tony.rider.constant.Constant;
+import com.tony.rider.group.ClipTest;
+import com.tony.rider.group.SiJaGroup;
 import com.tony.rider.mdel.ModelGroupTest;
 import com.tony.rider.screen.base.BaseScreen;
 
@@ -18,7 +26,9 @@ public class DemoScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
-        addActor(new WaveImage(Asset.getAsset().getTexture("00002.png")));
+//        BlackGroup group = new BlackGroup("maskcir.png");
+//        addActor(group);
+//        addActor(new WaveImage(Asset.getAsset().getTexture("00002.png")));
 //        exposure();
 //        contract(); //2
 //        gamma();//3
@@ -100,7 +110,25 @@ public class DemoScreen extends BaseScreen {
 //        cir();
 //        ccx();
 
-        cir111();
+//        cir111();
+//        pix();
+
+//        ModelGroupTest test = new ModelGroupTest();
+//        stage.addActor(test);
+//        ClipTest test = new ClipTest();
+//        addActor(test);
+//        test.addAction(
+//                Actions.sequence(
+//                        Actions.moveToAligned(300,300, Align.center,4.3f),
+//                        Actions.moveToAligned(100,300, Align.center,4.3f),
+//                        Actions.moveToAligned(300,100, Align.center,4.3f),
+//                        Actions.moveToAligned(800,800, Align.center,4.3f)));
+
+        SiJaGroup siJaGroup = new SiJaGroup();
+        addActor(siJaGroup);
+        siJaGroup.setScale(0.8f);
+
+
     }
 
     private void cir111() {
@@ -109,17 +137,30 @@ public class DemoScreen extends BaseScreen {
                     Gdx.files.internal("colormap/line.frag"));
         }
 
-        Image image = new Image(Asset.getAsset().getTexture("democir.jpg")){
-            @Override
-            public void draw(Batch batch, float parentAlpha) {
-                batch.setShader(program);
-                super.draw(batch, parentAlpha);
-                batch.setShader(null);
+        Table table = new Table(){{
+            FileHandle internal = Gdx.files.internal("ss");
+
+            for (FileHandle fileHandle : internal.list()) {
+                Image image = new Image(Asset.getAsset().getTexture("ss/"+fileHandle.name())){
+                    @Override
+                    public void draw(Batch batch, float parentAlpha) {
+                        batch.setShader(program);
+                        super.draw(batch, parentAlpha);
+                        batch.setShader(null);
+                    }
+                };
+                image.setX(11);
+                image.setSize(2100,2100);
+                image.setX(100);
+                add(image).pad(10);
+
             }
-        };
-        image.setX(11);
-        image.setSize(1100,1100);
-        addActor(image);
+            pack();
+        }};
+
+        ScrollPane pane = new ScrollPane(table);
+        addActor(pane);
+        pane.setSize(Constant.GAMEWIDTH,Constant.GAMEHIGHT);
     }
 
 

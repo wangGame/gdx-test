@@ -33,6 +33,10 @@ public class Asset {
         return atlas.createSprite("ditu");
     }
 
+    public AssetManager getAssetManager() {
+        return assetManager;
+    }
+
     static class AssetInstance{
         public static Asset assetInstance = new Asset();
     }
