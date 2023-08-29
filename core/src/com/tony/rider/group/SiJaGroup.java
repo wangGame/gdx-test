@@ -15,7 +15,7 @@ import com.tony.rider.asset.Asset;
  */
 public class SiJaGroup extends Group {
     private ShaderProgram shadowProgram;
-    Image group;
+
     public SiJaGroup(){
 
         shadowProgram = new ShaderProgram(Gdx.files.internal("colormap/line.vert"),
@@ -23,19 +23,21 @@ public class SiJaGroup extends Group {
 
         Texture texture = Asset.getAsset().getTexture("1234.png");
         TextureRegion region = new TextureRegion(texture);
-        region.setRegion(0,0,400,800);
-        group = new Image(region){
+        region.setRegion(0,0,600,1000);
+
+        Image picImage = new Image(region){
             private float time = 0;
-            float rr = 0;
+
             @Override
             public void act(float delta) {
                 super.act(delta);
                 time += delta;
-
             }
 
+            private float xxx =0;
             @Override
             public void draw(Batch batch, float parentAlpha) {
+
                 if (shadowProgram!=null) {
                     batch.setShader(shadowProgram);
                     float u = region.getU();
@@ -46,19 +48,33 @@ public class SiJaGroup extends Group {
                     float vv = (v2 - v) / 2.0f;
                     shadowProgram.setUniformf("uv",uv);
                     shadowProgram.setUniformf("vv",vv);
-                    float i = 30.0f / region.getRegionHeight();
+                    float i = 60.0f / region.getRegionHeight();
+                    shadowProgram.setUniformf("rato",getHeight()/getWidth());
                     shadowProgram.setUniformf("ra",i);
-                    shadowProgram.setUniformf("h",time*0.01f);
-                    super.draw(batch, parentAlpha);
+                    float v1 = time * 0.01f;
+                    shadowProgram.setUniformf("h",v1);
+                    batch.flush();
+                    float v3 = getHeight() * v1/(vv*2);
+
+                    if (clipBegin(getX(),getY() + v3,getWidth(),getHeight()-v3*2)) {
+                        super.draw(batch, parentAlpha);
+                        batch.flush();
+                        clipEnd();
+                    }
                     batch.setShader(null);
                 }else {
-                    super.draw(batch, parentAlpha);
+                    xxx += Gdx.graphics.getDeltaTime() * 10;
+                    if (clipBegin(getX(),getY(),getWidth(),getHeight()-xxx*4)) {
+                        super.draw(batch, parentAlpha);
+                        batch.flush();
+                        clipEnd();
+                    }
                 }
             }
         };
-        group.setPosition(0,0);
-        group.setColor(240.0F/255, 217.0F/255, 187.0F/255,1);
-        addActor(group);
-        group.setScale(0.4f);
+        picImage.setPosition(100,100);
+        picImage.setColor(240.0F/255, 217.0F/255, 187.0F/255,1);
+        addActor(picImage);
+
     }
 }

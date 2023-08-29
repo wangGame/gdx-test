@@ -9,6 +9,7 @@ uniform float uv;
 uniform float vv;
 uniform float ra;
 uniform float h;
+uniform float rato;
 
 void main() {
     // Input info
@@ -24,7 +25,7 @@ void main() {
     // Normalize the pixel coordinates (this is "passTexCoords" in your case)
     vec2 uv = v_textCoords;
 
-    vec2 aspectRatio = vec2(1.0, 1.0);
+    vec2 aspectRatio = vec2(1.0, rato);
 
     // In order to make sure visual distances are preserved, we multiply everything by aspectRatio
     uv *= aspectRatio;
@@ -45,7 +46,7 @@ void main() {
     if(alpha <= 0.0){
         gl_FragColor = vec4(col,1.0);
     }else{
-        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
     }
 //
 }
