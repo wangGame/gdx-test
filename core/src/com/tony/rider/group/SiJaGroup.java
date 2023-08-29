@@ -3,6 +3,7 @@ package com.tony.rider.group;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -18,28 +19,36 @@ public class SiJaGroup extends Group {
     public SiJaGroup(){
 
         shadowProgram = new ShaderProgram(Gdx.files.internal("colormap/line.vert"),
-                Gdx.files.internal("colormap/line1.frag"));
-        group = new Image(Asset.getAsset().getTexture("_Background-58852.png")){
+                Gdx.files.internal("colormap/line2.glsl"));
+
+        Texture texture = Asset.getAsset().getTexture("1234.png");
+        TextureRegion region = new TextureRegion(texture);
+        region.setRegion(0,0,400,800);
+        group = new Image(region){
             private float time = 0;
             float rr = 0;
             @Override
             public void act(float delta) {
                 super.act(delta);
                 time += delta;
-                rr += delta*60;
+
             }
 
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 if (shadowProgram!=null) {
                     batch.setShader(shadowProgram);
-                    int timeLocation = shadowProgram.getUniformLocation("time");
-                    shadowProgram.setUniformf(timeLocation,time);
-                    shadowProgram.setUniformf("rato",group.getWidth()/group.getHeight());
-                    shadowProgram.setUniformf("ra",0.1f);
-                    shadowProgram.setUniformf("time",0.1f);
-                    shadowProgram.setUniformf("offsetXL",0.3f);
-//                    shadowProgram.setUniformf("offsetXR",0.1f);
+                    float u = region.getU();
+                    float u2 = region.getU2();
+                    float v = region.getV();
+                    float v2 = region.getV2();
+                    float uv = (u2 - u) / 2.0f;
+                    float vv = (v2 - v) / 2.0f;
+                    shadowProgram.setUniformf("uv",uv);
+                    shadowProgram.setUniformf("vv",vv);
+                    float i = 30.0f / region.getRegionHeight();
+                    shadowProgram.setUniformf("ra",i);
+                    shadowProgram.setUniformf("h",time*0.01f);
                     super.draw(batch, parentAlpha);
                     batch.setShader(null);
                 }else {
@@ -47,7 +56,6 @@ public class SiJaGroup extends Group {
                 }
             }
         };
-
         group.setPosition(0,0);
         group.setColor(240.0F/255, 217.0F/255, 187.0F/255,1);
         addActor(group);
