@@ -13,10 +13,10 @@ import com.tony.rider.asset.Asset;
  * @Auther jian xian si qi
  * @Date 2023/8/23 10:11
  */
-public class SiJaGroup extends Group {
+public class SiJaGroup1 extends Group {
     private ShaderProgram shadowProgram;
 
-    public SiJaGroup(){
+    public SiJaGroup1(){
 
         shadowProgram = new ShaderProgram(Gdx.files.internal("colormap/line.vert"),
                 Gdx.files.internal("colormap/line2.glsl"));

@@ -17,8 +17,9 @@ void main() {
     vec2 boxBnd; // The half-bounds (radii) of the box (in normalzied coordinates)
     float radius;// Radius
 
-
+    //center
     boxPos = vec2(uv, vv);	// center of the screen
+    //with height
     boxBnd = vec2(uv-ra, vv-ra-h);  // half of the area
     radius = ra;
 
@@ -48,5 +49,4 @@ void main() {
     }else{
         gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
     }
-//
 }

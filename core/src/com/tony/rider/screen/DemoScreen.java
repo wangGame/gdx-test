@@ -18,6 +18,7 @@ import com.tony.rider.asset.Asset;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.group.ClipTest;
 import com.tony.rider.group.SiJaGroup;
+import com.tony.rider.group.SiJaGroup1;
 import com.tony.rider.mdel.ModelGroupTest;
 import com.tony.rider.screen.base.BaseScreen;
 
@@ -124,11 +125,18 @@ public class DemoScreen extends BaseScreen {
 //                        Actions.moveToAligned(300,100, Align.center,4.3f),
 //                        Actions.moveToAligned(800,800, Align.center,4.3f)));
 
-        SiJaGroup siJaGroup = new SiJaGroup();
+
+
+        SiJaGroup1 siJaGroup = new SiJaGroup1();
         addActor(siJaGroup);
         siJaGroup.setScale(0.8f);
 
+    }
 
+    public void sijiao(){
+        SiJaGroup siJaGroup = new SiJaGroup();
+        addActor(siJaGroup);
+        siJaGroup.setScale(0.8f);
     }
 
     private void cir111() {
