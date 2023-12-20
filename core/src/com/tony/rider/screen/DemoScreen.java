@@ -2,18 +2,29 @@ package com.tony.rider.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.tony.rider.DivideGroup;
+import com.tony.rider.TipBg;
+import com.tony.rider.TipBgPatch;
 import com.tony.rider.actor.BlackGroup;
 import com.tony.rider.actor.WaveImage;
+import com.tony.rider.android.xise.XIseutils;
 import com.tony.rider.asset.Asset;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.group.ClipTest;
@@ -24,9 +35,67 @@ import com.tony.rider.screen.base.BaseScreen;
 
 public class DemoScreen extends BaseScreen {
     private ShaderProgram program;
+    Image showImg = null;
+    Pixmap colorAtPixel;
     @Override
     public void show() {
         super.show();
+        sijiao();
+        Image image = new Image(Asset.getAsset().getTexture("white_bg.png"));
+        addActor(image);
+        image.setSize(50,50);
+        image.setPosition(500,1000);
+        stage.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                if (showImg == null) {
+                    colorAtPixel = XIseutils.getColorAtPixel((int) x, (int) y);
+//                System.out.println(colorAtPixel);
+//                image.setColor(colorAtPixel);
+//                actor.setSize();
+                    TextureRegion region = new TextureRegion(new Texture(colorAtPixel));
+                    region.flip(false,true);
+                    showImg = new Image(region);
+//                    addActor(showImg);
+                }
+            }
+
+            @Override
+            public void touchDragged(InputEvent event, float x, float y, int pointer) {
+                super.touchDragged(event, x, y, pointer);
+                if (colorAtPixel!=null){
+                    int width = Gdx.graphics.getWidth();
+                    System.out.println(width+"   "+Constant.GAMEWIDTH);
+                    float v = width / Constant.GAMEWIDTH;
+                    int pixel = colorAtPixel.getPixel((int)(x * v), (int)(y*v));
+                    Color color = new Color();
+                    Color.rgba8888ToColor(color, pixel);
+                    image.setColor(color);
+                }
+            }
+        });
+//        {
+//            Image image = new Image(Asset.getAsset().getTexture("maskcir.png"));
+//            addActor(image);
+//            image.setOrigin(Align.top);
+//            image.setPosition(100,500);
+//        }
+//
+//        {
+//            Image image = new Image(Asset.getAsset().getTexture("maskcir.png"));
+//            addActor(image);
+//            image.setOrigin(Align.top);
+//            image.setHeight(5000);
+//            image.setPosition(500,500);
+//
+//        }
+
+
+
+
+
+
 //        BlackGroup group = new BlackGroup("maskcir.png");
 //        addActor(group);
 //        addActor(new WaveImage(Asset.getAsset().getTexture("00002.png")));
@@ -126,15 +195,20 @@ public class DemoScreen extends BaseScreen {
 //                        Actions.moveToAligned(800,800, Align.center,4.3f)));
 
 
+//
+//        SiJaGroup1 siJaGroup = new SiJaGroup1();
+//        addActor(siJaGroup);
+//        siJaGroup.setScale(0.8f);
 
-        SiJaGroup1 siJaGroup = new SiJaGroup1();
-        addActor(siJaGroup);
-        siJaGroup.setScale(0.8f);
+//        TipBg tipBg = new TipBg();
+//        stage.addActor(tipBg);
+
+
 
     }
 
     public void sijiao(){
-        SiJaGroup siJaGroup = new SiJaGroup();
+        SiJaGroup1 siJaGroup = new SiJaGroup1();
         addActor(siJaGroup);
         siJaGroup.setScale(0.8f);
     }
@@ -1174,24 +1248,32 @@ public class DemoScreen extends BaseScreen {
             program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
                     Gdx.files.internal("shader/exposure.glsl"));
         }
-        Image image = new Image(Asset.getAsset().getTexture("_3_4-123158.png")){
-            private float time;
+
+        Image image = new Image(Asset.getAsset().getTexture("test0120.png")){
+
             @Override
             public void act(float delta) {
                 super.act(delta);
-                time += delta;
             }
 
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 batch.setShader(program);
-                int time1 = program.getUniformLocation("exposure");
-                program.setUniformf(time1,1.4f);
+                program.setUniformf("exposure",1.0f);
+                program.setUniformf("offset",-0.03f);
+//                program.setUniformf("gamma",3.0f);
+
                 super.draw(batch, parentAlpha);
                 batch.setShader(null);
             }
         };
         addActor(image);
+        Image image1 = new Image(Asset.getAsset().getTexture("test0120.png"));
+        addActor(image1);
+        image1.setPosition(400,0);
+        Image image2 = new Image(Asset.getAsset().getTexture("test1221.png"));
+        addActor(image2);
+        image2.setPosition(400,400);
     }
 
     private void saturation() {
