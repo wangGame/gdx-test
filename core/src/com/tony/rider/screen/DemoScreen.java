@@ -26,6 +26,7 @@ import com.tony.rider.actor.BlackGroup;
 import com.tony.rider.actor.WaveImage;
 import com.tony.rider.android.xise.XIseutils;
 import com.tony.rider.asset.Asset;
+import com.tony.rider.clip.ClipTestDemo01;
 import com.tony.rider.constant.Constant;
 import com.tony.rider.group.ClipTest;
 import com.tony.rider.group.SiJaGroup;
@@ -40,41 +41,46 @@ public class DemoScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
-        sijiao();
-        Image image = new Image(Asset.getAsset().getTexture("white_bg.png"));
-        addActor(image);
-        image.setSize(50,50);
-        image.setPosition(500,1000);
-        stage.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                super.clicked(event, x, y);
-                if (showImg == null) {
-                    colorAtPixel = XIseutils.getColorAtPixel((int) x, (int) y);
-//                System.out.println(colorAtPixel);
-//                image.setColor(colorAtPixel);
-//                actor.setSize();
-                    TextureRegion region = new TextureRegion(new Texture(colorAtPixel));
-                    region.flip(false,true);
-                    showImg = new Image(region);
-//                    addActor(showImg);
-                }
-            }
-
-            @Override
-            public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                super.touchDragged(event, x, y, pointer);
-                if (colorAtPixel!=null){
-                    int width = Gdx.graphics.getWidth();
-                    System.out.println(width+"   "+Constant.GAMEWIDTH);
-                    float v = width / Constant.GAMEWIDTH;
-                    int pixel = colorAtPixel.getPixel((int)(x * v), (int)(y*v));
-                    Color color = new Color();
-                    Color.rgba8888ToColor(color, pixel);
-                    image.setColor(color);
-                }
-            }
-        });
+        ClipTestDemo01 clipTestDemo01 = new ClipTestDemo01();
+        addActor(clipTestDemo01);
+        clipTestDemo01.setX(1600);
+//        ClipTest clipTest = new ClipTest();
+//        addActor(clipTest);
+//        sijiao();
+//        Image image = new Image(Asset.getAsset().getTexture("white_bg.png"));
+//        addActor(image);
+//        image.setSize(50,50);
+//        image.setPosition(500,1000);
+//        stage.addListener(new ClickListener(){
+//            @Override
+//            public void clicked(InputEvent event, float x, float y) {
+//                super.clicked(event, x, y);
+//                if (showImg == null) {
+//                    colorAtPixel = XIseutils.getColorAtPixel((int) x, (int) y);
+////                System.out.println(colorAtPixel);
+////                image.setColor(colorAtPixel);
+////                actor.setSize();
+//                    TextureRegion region = new TextureRegion(new Texture(colorAtPixel));
+//                    region.flip(false,true);
+//                    showImg = new Image(region);
+////                    addActor(showImg);
+//                }
+//            }
+//
+//            @Override
+//            public void touchDragged(InputEvent event, float x, float y, int pointer) {
+//                super.touchDragged(event, x, y, pointer);
+//                if (colorAtPixel!=null){
+//                    int width = Gdx.graphics.getWidth();
+//                    System.out.println(width+"   "+Constant.GAMEWIDTH);
+//                    float v = width / Constant.GAMEWIDTH;
+//                    int pixel = colorAtPixel.getPixel((int)(x * v), (int)(y*v));
+//                    Color color = new Color();
+//                    Color.rgba8888ToColor(color, pixel);
+//                    image.setColor(color);
+//                }
+//            }
+//        });
 //        {
 //            Image image = new Image(Asset.getAsset().getTexture("maskcir.png"));
 //            addActor(image);
