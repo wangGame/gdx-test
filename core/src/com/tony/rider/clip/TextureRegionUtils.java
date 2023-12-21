@@ -12,24 +12,47 @@ import com.tony.rider.asset.Asset;
 public class TextureRegionUtils {
     private Texture texture;
     private RegionAttachment region1;
-    private short []triangles;
-    public TextureRegionUtils(){
+    FloatArray vertices = new FloatArray(32);
+    FloatArray vertices11 = new FloatArray();
+    final short[] quadTriangles = {0, 1, 2, 2, 3, 0};
+    private int verticesLength;
+    private float[] vertices12;
+    private  float []uvs;
+    public TextureRegionUtils(float x, float y){
+        //创建Region
         region1 = new RegionAttachment("");
+        region1.setX(x);
+        region1.setY(y);
         region1.setRegion(new TextureRegion(Asset.getAsset().getTexture("xxxxx.png")));
-        //裁剪 所以为2
-        region1.updateOffset();
+        region1.updateOffset(); //裁剪 所以为2
 
-        final short[] quadTriangles = {0, 1, 2, 2, 3, 0};
-        triangles = quadTriangles;
-        FloatArray vertices = new FloatArray(32);
+        int vertexSize = 2;
+
         region1.computeWorldVertices(vertices.items, 0, vertexSize);
         texture = region1.getRegion().getTexture();
-
-        FloatArray vertices11 = new FloatArray();
-        float[] vertices12 = vertices11.items;
+        verticesLength = vertexSize << 2;
+        vertices12 = vertices11.items;
         region1.computeWorldVertices(vertices12, 0, 2);
-        float []uvs = region1.getUVs();
+        uvs = region1.getUVs();
     }
 
-            clipper.clipEnd();
+    public short[] getTriangles() {
+        return quadTriangles;
+    }
+
+    public int getVerticesLength() {
+        return verticesLength;
+    }
+
+    public float[] getVertices12() {
+        return vertices12;
+    }
+
+    public float[] getUvs() {
+        return uvs;
+    }
+
+    public Texture getTexture() {
+        return texture;
+    }
 }

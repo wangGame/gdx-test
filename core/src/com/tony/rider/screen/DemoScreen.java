@@ -42,8 +42,12 @@ public class DemoScreen extends BaseScreen {
     public void show() {
         super.show();
         ClipTestDemo01 clipTestDemo01 = new ClipTestDemo01();
+        clipTestDemo01.setPosition(100,300);
+        clipTestDemo01.init();
         addActor(clipTestDemo01);
-        clipTestDemo01.setX(1600);
+
+
+
 //        ClipTest clipTest = new ClipTest();
 //        addActor(clipTest);
 //        sijiao();

@@ -15,6 +15,9 @@ public class ClippingAttachment extends VertexAttachment {
     float xx = 0;
     public ClippingAttachment(String name) {
         super(name);
+    }
+
+    public void init(){
         vertices = new float[8];
 //        vertices[0] = -9.83f + xx;
 //        vertices[1] = 3108.55f;

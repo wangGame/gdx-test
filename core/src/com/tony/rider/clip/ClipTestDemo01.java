@@ -17,24 +17,31 @@ import com.tony.rider.asset.Asset;
 public class ClipTestDemo01 extends Group {
     private ClippingAttachment t = new ClippingAttachment("");
     private SkeletonClipping clipper;
-    int verticesLength;
-    public ClipTestDemo01() {
+
+    private TextureRegionUtils utils;
+    public ClipTestDemo01() {}
+
+    public void init(){
+        utils = new TextureRegionUtils(getX(),getY());
         clipper = new SkeletonClipping();
-        int vertexSize = 2;
-        verticesLength = vertexSize << 2;
+        t.setX(getX());
+        t.setY(getY());
+        t.init();
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         clipper.start(t);
+
+
         float c = -1.7014117E38f;
-        clipper.clipTriangles(vertices12, verticesLength, triangles, triangles.length,
-                uvs, c, 0, false);
+        clipper.clipTriangles(utils.getVertices12(), utils.getVerticesLength(),
+                utils.getTriangles(), utils.getTriangles().length,
+                utils.getUvs(), c, 0, false);
         FloatArray clippedVertices = clipper.getClippedVertices();
         ShortArray clippedTriangles = clipper.getClippedTriangles();
         CpuPolygonSpriteBatch batch1 = (CpuPolygonSpriteBatch) (batch);
-
-        batch1.draw(texture,
+        batch1.draw(utils.getTexture(),
                 clippedVertices.items,
                 0,
                 clippedVertices.size,

@@ -39,8 +39,8 @@ public class VertexAttachment extends Attachment {
 
             for (int v = start, w = offset; w < count; v += 2, w += stride) {
                 float vx = vertices[v], vy = vertices[v + 1];
-                worldVertices[w] = vx * a + vy * b;
-                worldVertices[w + 1] = vx * c + vy * d;
+                worldVertices[w] = vx * a + vy * b + x;
+                worldVertices[w + 1] = vx * c + vy * d + y;
             }
             return;
         }
@@ -50,6 +50,25 @@ public class VertexAttachment extends Attachment {
             v += n + 1;
             skip += n;
         }
+    }
+
+    private float x;
+    private float y;
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
     }
 
     public int[] getBones () {
