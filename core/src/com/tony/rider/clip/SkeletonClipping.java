@@ -9,17 +9,18 @@ import com.badlogic.gdx.utils.ShortArray;
  * @Date 2023/12/21 14:59
  */
 public class SkeletonClipping {
+    Triangulator triangulator;
+    FloatArray clippingPolygon;
+    public SkeletonClipping(){
+        this.clippingPolygon = new FloatArray();
+        this.triangulator = new Triangulator();
+    }
+
     public void start(ClippingAttachment t){
-        int n = 4 * 2;
-
-        Triangulator triangulator = new Triangulator();
-        FloatArray clippingPolygon = new FloatArray();
+        int n = t.getN();
         float[] vertices = clippingPolygon.setSize(n);
-
-
         t.computeWorldVertices(0, n, vertices, 0, 2);
         makeClockwise(clippingPolygon);
-
         ShortArray triangles = triangulator.triangulate(clippingPolygon);
         clippingPolygons = triangulator.decompose(clippingPolygon, triangles);
 

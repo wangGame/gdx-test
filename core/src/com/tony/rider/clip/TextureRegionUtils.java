@@ -1,8 +1,11 @@
 package com.tony.rider.clip;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.CpuPolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.FloatArray;
+import com.badlogic.gdx.utils.ShortArray;
 import com.tony.rider.asset.Asset;
 
 /**
@@ -18,18 +21,16 @@ public class TextureRegionUtils {
     private int verticesLength;
     private float[] vertices12;
     private  float []uvs;
-    public TextureRegionUtils(float x, float y){
+    public TextureRegionUtils(float x, float y,Texture texture){
         //创建Region
-        region1 = new RegionAttachment("");
+        this.texture = texture;
+        region1 = new RegionAttachment();
         region1.setX(x);
         region1.setY(y);
-        region1.setRegion(new TextureRegion(Asset.getAsset().getTexture("xxxxx.png")));
+        region1.setRegion(new TextureRegion(texture));
         region1.updateOffset(); //裁剪 所以为2
-
         int vertexSize = 2;
-
         region1.computeWorldVertices(vertices.items, 0, vertexSize);
-        texture = region1.getRegion().getTexture();
         verticesLength = vertexSize << 2;
         vertices12 = vertices11.items;
         region1.computeWorldVertices(vertices12, 0, 2);
@@ -54,5 +55,21 @@ public class TextureRegionUtils {
 
     public Texture getTexture() {
         return texture;
+    }
+
+    public void draw(Batch batch, SkeletonClipping clipper) {
+        float c = -1.7014117E38f;
+        clipper.clipTriangles(getVertices12(), getVerticesLength(),
+                getTriangles(), getTriangles().length,
+                getUvs(), c, 0, false);
+        FloatArray clippedVertices = clipper.getClippedVertices();
+        ShortArray clippedTriangles = clipper.getClippedTriangles();
+        CpuPolygonSpriteBatch batch1 = (CpuPolygonSpriteBatch) (batch);
+        batch1.draw(getTexture(),
+                clippedVertices.items,
+                0,
+                clippedVertices.size,
+                clippedTriangles.items, 0,
+                clippedTriangles.size);
     }
 }

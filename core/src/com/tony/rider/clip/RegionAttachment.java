@@ -13,7 +13,7 @@ import com.badlogic.gdx.math.MathUtils;
  * @Date 2023/12/21 15:28
  */
 
-public class RegionAttachment extends Attachment {
+public class RegionAttachment {
     static public final int BLX = 0;
     static public final int BLY = 1;
     static public final int ULX = 2;
@@ -30,8 +30,8 @@ public class RegionAttachment extends Attachment {
     private final float[] offset = new float[8];
     private final Color color = new Color(1, 1, 1, 1);
 
-    public RegionAttachment (String name) {
-        super(name);
+    public RegionAttachment () {
+
     }
 
     /** Calculates the {@link #offset} using the region settings. Must be called after changing region settings. */
@@ -133,8 +133,6 @@ public class RegionAttachment extends Attachment {
         float b = Constant.b;
         float c = Constant.c;
         float d = Constant.d;
-        float worldX = Constant.worldX;
-        float worldY = Constant.worldY;
 
         float offsetX, offsetY;
 

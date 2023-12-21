@@ -1,13 +1,8 @@
 package com.tony.rider.clip;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.CpuPolygonSpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.utils.FloatArray;
-import com.badlogic.gdx.utils.NumberUtils;
-import com.badlogic.gdx.utils.ShortArray;
 import com.tony.rider.asset.Asset;
 
 /**
@@ -15,39 +10,44 @@ import com.tony.rider.asset.Asset;
  * @Date 2023/12/21 14:25
  */
 public class ClipTestDemo01 extends Group {
-    private ClippingAttachment t = new ClippingAttachment("");
+    private ClippingAttachment clippingAttachment;
     private SkeletonClipping clipper;
-
-    private TextureRegionUtils utils;
+    private TexureRegionGroup group;
     public ClipTestDemo01() {}
 
     public void init(){
-        utils = new TextureRegionUtils(getX(),getY());
         clipper = new SkeletonClipping();
-        t.setX(getX());
-        t.setY(getY());
-        t.init();
+        group = new TexureRegionGroup(clipper);
+        group.addRegionUtils(new TextureRegionUtils(getX()+10,getY()+10,Asset.getAsset().getTexture("xxxxxx.png")));
+//        utils1 = new TextureRegionUtils(getX()+10,getY()+10,Asset.getAsset().getTexture("xxxxxx.png"));
+//        utils = new TextureRegionUtils(getX(),getY(),Asset.getAsset().getTexture("xxxxx.png"));
+
+        clippingAttachment = new ClippingAttachment();
+        clippingAttachment.setX(getX());
+        clippingAttachment.setY(getY());
+        float vertices[] = new float[10];
+        vertices[0] = 0.32f;
+        vertices[1] = 204.22f;
+        vertices[2] = 202.38f;
+        vertices[3] = 202.04f;
+
+        vertices[4] = 300.8f;
+        vertices[5] = 100;
+
+
+        vertices[6] = 200.8f;
+        vertices[7] = 0;
+        vertices[8] = 0;
+        vertices[9] = 0.05f;
+        clippingAttachment.setVerties(vertices);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        clipper.start(t);
-
-
-        float c = -1.7014117E38f;
-        clipper.clipTriangles(utils.getVertices12(), utils.getVerticesLength(),
-                utils.getTriangles(), utils.getTriangles().length,
-                utils.getUvs(), c, 0, false);
-        FloatArray clippedVertices = clipper.getClippedVertices();
-        ShortArray clippedTriangles = clipper.getClippedTriangles();
-        CpuPolygonSpriteBatch batch1 = (CpuPolygonSpriteBatch) (batch);
-        batch1.draw(utils.getTexture(),
-                clippedVertices.items,
-                0,
-                clippedVertices.size,
-                clippedTriangles.items, 0,
-                clippedTriangles.size);
+        clipper.start(clippingAttachment);
+//        utils.draw(batch,clipper);
+//        utils1.draw(batch,clipper);
+        group.draw((CpuPolygonSpriteBatch) batch);
         clipper.clipEnd();
     }
-
 }
