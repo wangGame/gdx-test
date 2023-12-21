@@ -25,9 +25,10 @@ public class TextureRegionUtils {
         //创建Region
         this.texture = texture;
         region1 = new RegionAttachment();
-        region1.setX(x);
-        region1.setY(y);
+
         region1.setRegion(new TextureRegion(texture));
+        region1.setX(x + region1.getWidth()/4.0F);
+        region1.setY(y + region1.getHeight()/4.0F);
         region1.updateOffset(); //裁剪 所以为2
         int vertexSize = 2;
         region1.computeWorldVertices(vertices.items, 0, vertexSize);

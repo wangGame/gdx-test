@@ -18,27 +18,24 @@ public class ClipTestDemo01 extends Group {
     public void init(){
         clipper = new SkeletonClipping();
         group = new TexureRegionGroup(clipper);
-        group.addRegionUtils(new TextureRegionUtils(getX()+10,getY()+10,Asset.getAsset().getTexture("xxxxxx.png")));
+        group.addRegionUtils(new TextureRegionUtils(getX()/2.0f,getY()/2.0f,Asset.getAsset().getTexture("test001.png")));
 //        utils1 = new TextureRegionUtils(getX()+10,getY()+10,Asset.getAsset().getTexture("xxxxxx.png"));
 //        utils = new TextureRegionUtils(getX(),getY(),Asset.getAsset().getTexture("xxxxx.png"));
+        group.addRegionUtils(new TextureRegionUtils(getX()/2.0f,getY()/2.0f,Asset.getAsset().getTexture("test3.png")));
+        group.addRegionUtils(new TextureRegionUtils(getX()/2.0f,getY()/2.0f,Asset.getAsset().getTexture("test4.png")));
 
         clippingAttachment = new ClippingAttachment();
         clippingAttachment.setX(getX());
         clippingAttachment.setY(getY());
-        float vertices[] = new float[10];
-        vertices[0] = 0.32f;
-        vertices[1] = 204.22f;
-        vertices[2] = 202.38f;
-        vertices[3] = 202.04f;
-
+        float vertices[] = new float[8];
+        vertices[0] = 0f;
+        vertices[1] = 304.22f;
+        vertices[2] = 302.38f;
+        vertices[3] = 302.04f;
         vertices[4] = 300.8f;
-        vertices[5] = 100;
-
-
-        vertices[6] = 200.8f;
-        vertices[7] = 0;
-        vertices[8] = 0;
-        vertices[9] = 0.05f;
+        vertices[5] = 0;
+        vertices[6] = 0;
+        vertices[7] = 0f;
         clippingAttachment.setVerties(vertices);
     }
 

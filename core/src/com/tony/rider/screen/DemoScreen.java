@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -41,10 +42,17 @@ public class DemoScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
+//        Image image = new Image(Asset.getAsset().getTexture("test3.png"));
+//        addActor(image);
+//        image.setX(0);
+//        image.setY(50);
+
+        Group group = new Group();
+        addActor(group);
         ClipTestDemo01 clipTestDemo01 = new ClipTestDemo01();
-        clipTestDemo01.setPosition(100,300);
+        clipTestDemo01.setPosition(100,50);
         clipTestDemo01.init();
-        addActor(clipTestDemo01);
+        group.addActor(clipTestDemo01);
 
 
 
