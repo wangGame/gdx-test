@@ -27,6 +27,8 @@ public class TextureRegionUtils {
         region1 = new RegionAttachment();
 
         region1.setRegion(new TextureRegion(texture));
+        region1.setWidth(500);
+        region1.setHeight(500);
         region1.setX(x + region1.getWidth()/4.0F);
         region1.setY(y + region1.getHeight()/4.0F);
         region1.updateOffset(); //裁剪 所以为2
@@ -36,6 +38,11 @@ public class TextureRegionUtils {
         vertices12 = vertices11.items;
         region1.computeWorldVertices(vertices12, 0, 2);
         uvs = region1.getUVs();
+    }
+
+    public void setSize(float width, float height){
+        region1.setWidth(width);
+        region1.setHeight(height);
     }
 
     public short[] getTriangles() {
