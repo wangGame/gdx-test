@@ -50,9 +50,11 @@ public class DemoScreen extends BaseScreen {
         Group group = new Group();
         addActor(group);
         ClipTestDemo01 clipTestDemo01 = new ClipTestDemo01();
-        clipTestDemo01.setPosition(100,50);
+        clipTestDemo01.setPosition(0,0);
         clipTestDemo01.init();
         group.addActor(clipTestDemo01);
+        group.setPosition(500,0);
+        group.addAction(Actions.fadeOut(6));
 
 
 

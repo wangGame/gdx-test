@@ -22,19 +22,17 @@ public class RegionAttachment {
     static public final int URY = 5;
     static public final int BRX = 6;
     static public final int BRY = 7;
-
     private TextureRegion region;
-    private String path;
-    private float x, y, scaleX = 1, scaleY = 1, rotation, width, height;
+    private float x;
+    private float y;
+    private float scaleX = 1;
+    private float scaleY = 1;
+    private float rotation;
+    private float width;
+    private float height;
     private final float[] uvs = new float[8];
     private final float[] offset = new float[8];
-    private final Color color = new Color(1, 1, 1, 1);
 
-    public RegionAttachment () {
-
-    }
-
-    /** Calculates the {@link #offset} using the region settings. Must be called after changing region settings. */
     public void updateOffset () {
         float width = getWidth();
         float height = getHeight();
@@ -119,13 +117,6 @@ public class RegionAttachment {
         return region;
     }
 
-    /** Transforms the attachment's four vertices to world coordinates.
-     * <p>
-     * See <a href="http://esotericsoftware.com/spine-runtime-skeletons#World-transforms">World transforms</a> in the Spine
-     * Runtimes Guide.
-     * @param worldVertices The output world vertices. Must have a length >= <code>offsetY</code> + 8.
-     * @param offset The <code>worldVertices</code> index to begin writing values.
-     * @param stride The number of <code>worldVertices</code> entries between the value pairs written. */
     public void computeWorldVertices (float[] worldVertices, int offset, int stride) {
         float[] vertexOffset = this.offset;
 
@@ -234,18 +225,6 @@ public class RegionAttachment {
         this.height = height;
     }
 
-    /** The color to tint the region attachment. */
-    public Color getColor () {
-        return color;
-    }
 
-    /** The name of the texture region for this attachment. */
-    public String getPath () {
-        return path;
-    }
-
-    public void setPath (String path) {
-        this.path = path;
-    }
 }
 

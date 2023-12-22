@@ -25,10 +25,10 @@ public class TextureRegionUtils {
         //创建Region
         this.texture = texture;
         region1 = new RegionAttachment();
-
-        region1.setRegion(new TextureRegion(texture));
-        region1.setWidth(500);
-        region1.setHeight(500);
+        TextureRegion region = new TextureRegion(texture);
+        region1.setRegion(region);
+        region1.setWidth(region.getRegionWidth());
+        region1.setHeight(region.getRegionHeight());
         region1.setX(x + region1.getWidth()/4.0F);
         region1.setY(y + region1.getHeight()/4.0F);
         region1.updateOffset(); //裁剪 所以为2

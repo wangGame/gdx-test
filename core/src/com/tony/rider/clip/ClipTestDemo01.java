@@ -1,5 +1,6 @@
 package com.tony.rider.clip;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.CpuPolygonSpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -18,8 +19,9 @@ public class ClipTestDemo01 extends Group {
     public void init(){
         clipper = new SkeletonClipping();
         group = new TexureRegionGroup(clipper);
-        TextureRegionUtils textureRegionUtils = new TextureRegionUtils(getX() / 2.0f, getY() / 2.0f, Asset.getAsset().getTexture("test001.png"));
-        textureRegionUtils.setSize(400,400);
+        Texture texture = Asset.getAsset().getTexture("test001.png");
+        TextureRegionUtils textureRegionUtils = new TextureRegionUtils(getX() / 2.0f, getY() / 2.0f,texture);
+
         group.addRegionUtils(textureRegionUtils);
 //        utils1 = new TextureRegionUtils(getX()+10,getY()+10,Asset.getAsset().getTexture("xxxxxx.png"));
 //        utils = new TextureRegionUtils(getX(),getY(),Asset.getAsset().getTexture("xxxxx.png"));
@@ -27,17 +29,15 @@ public class ClipTestDemo01 extends Group {
 //        group.addRegionUtils(new TextureRegionUtils(getX()/2.0f,getY()/2.0f,Asset.getAsset().getTexture("test4.png")));
 
         clippingAttachment = new ClippingAttachment();
-        clippingAttachment.setX(getX());
-        clippingAttachment.setY(getY());
-        float vertices[] = new float[8];
-        vertices[0] = 0f;
-        vertices[1] = 304.22f;
-        vertices[2] = 302.38f;
-        vertices[3] = 302.04f;
-        vertices[4] = 300.8f;
-        vertices[5] = 0;
-        vertices[6] = 0;
-        vertices[7] = 0f;
+        clippingAttachment.setClipX(getX());
+        clippingAttachment.setClipY(getY());
+        float vertices[] ={
+                0f,         304.22f,
+                150f,         600,
+                302.38f,    302.04f,
+                300.8f,     0,
+                0,          0f
+        };
         clippingAttachment.setVerties(vertices);
     }
 
@@ -46,7 +46,7 @@ public class ClipTestDemo01 extends Group {
         clipper.start(clippingAttachment);
 //        utils.draw(batch,clipper);
 //        utils1.draw(batch,clipper);
-        group.draw((CpuPolygonSpriteBatch) batch);
+        group.draw((CpuPolygonSpriteBatch) batch,parentAlpha);
         clipper.clipEnd();
     }
 }

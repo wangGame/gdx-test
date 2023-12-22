@@ -9,17 +9,25 @@ import com.badlogic.gdx.utils.ShortArray;
  * @Date 2023/12/21 14:59
  */
 public class SkeletonClipping {
-    Triangulator triangulator;
-    FloatArray clippingPolygon;
+    private Triangulator triangulator;
+    private FloatArray clippingPolygon;
+    private Array<FloatArray> clippingPolygons;
+    private final ShortArray clippedTriangles;
+    private final FloatArray clippedVertices;
+    private final FloatArray clipOutput;
+
     public SkeletonClipping(){
         this.clippingPolygon = new FloatArray();
         this.triangulator = new Triangulator();
+        this.clippedTriangles = new ShortArray(128);
+        this.clippedVertices = new FloatArray(128);
+        this.clipOutput = new FloatArray(128);
     }
 
-    public void start(ClippingAttachment t){
-        int n = t.getN();
+    public void start(ClippingAttachment clippingAttachment){
+        int n = clippingAttachment.getVertNum();
         float[] vertices = clippingPolygon.setSize(n);
-        t.computeWorldVertices(0, n, vertices, 0, 2);
+        clippingAttachment.computeWorldVertices(0, n, vertices, 0, 2);
         makeClockwise(clippingPolygon);
         ShortArray triangles = triangulator.triangulate(clippingPolygon);
         clippingPolygons = triangulator.decompose(clippingPolygon, triangles);
@@ -54,10 +62,7 @@ public class SkeletonClipping {
             vertices[other + 1] = y;
         }
     }
-    private Array<FloatArray> clippingPolygons;
-    private final ShortArray clippedTriangles = new ShortArray(128);
-    private final FloatArray clippedVertices = new FloatArray(128);
-    private final FloatArray clipOutput = new FloatArray(128);
+
     public void clipTriangles (float[] vertices, int verticesLength, short[] triangles, int trianglesLength, float[] uvs,
                                float light, float dark, boolean twoColor) {
 
@@ -66,7 +71,6 @@ public class SkeletonClipping {
         Object[] polygons = clippingPolygons.items;
         int polygonsCount = clippingPolygons.size;
         int vertexSize = twoColor ? 6 : 5;
-
         short index = 0;
         clippedVertices.clear();
         clippedTriangles.clear();
