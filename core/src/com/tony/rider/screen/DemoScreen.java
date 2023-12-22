@@ -2,37 +2,23 @@ package com.tony.rider.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.tony.rider.DivideGroup;
-import com.tony.rider.TipBg;
-import com.tony.rider.TipBgPatch;
-import com.tony.rider.actor.BlackGroup;
-import com.tony.rider.actor.WaveImage;
-import com.tony.rider.android.xise.XIseutils;
 import com.tony.rider.asset.Asset;
-import com.tony.rider.clip.ClipTestDemo01;
+import com.tony.rider.clip.ClipDemo;
+import com.tony.rider.clip.ClipGroup;
+import com.tony.rider.clip.ClippingAttachment;
 import com.tony.rider.constant.Constant;
-import com.tony.rider.group.ClipTest;
-import com.tony.rider.group.SiJaGroup;
 import com.tony.rider.group.SiJaGroup1;
-import com.tony.rider.mdel.ModelGroupTest;
 import com.tony.rider.screen.base.BaseScreen;
 
 public class DemoScreen extends BaseScreen {
@@ -47,14 +33,12 @@ public class DemoScreen extends BaseScreen {
 //        image.setX(0);
 //        image.setY(50);
 
-        Group group = new Group();
-        addActor(group);
-        ClipTestDemo01 clipTestDemo01 = new ClipTestDemo01();
-        clipTestDemo01.setPosition(0,0);
-        clipTestDemo01.init();
-        group.addActor(clipTestDemo01);
-        group.setPosition(500,0);
-        group.addAction(Actions.fadeOut(6));
+
+        Group g = new Group();
+        addActor(g);
+        ClipDemo clipDemo = new ClipDemo();
+        g.addActor(clipDemo);
+        g.setPosition(100,100);
 
 
 

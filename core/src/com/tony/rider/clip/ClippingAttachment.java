@@ -52,14 +52,6 @@ public class ClippingAttachment {
         this.clipY = clipY;
     }
 
-    public float getClipX() {
-        return clipX;
-    }
-
-    public float getClipY() {
-        return clipY;
-    }
-
     public int getVertNum() {
         return vertNum;
     }

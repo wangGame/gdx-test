@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.CpuPolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.FloatArray;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.badlogic.gdx.utils.ShortArray;
@@ -13,7 +14,7 @@ import com.badlogic.gdx.utils.ShortArray;
  * @Auther jian xian si qi
  * @Date 2023/12/21 18:57
  */
-public class TextureRegionUtils {
+public class TextureRegionActor extends Actor {
     private Texture texture;
     private RegionAttachment region1;
     FloatArray vertices = new FloatArray(32);
@@ -24,7 +25,7 @@ public class TextureRegionUtils {
     private  float []uvs;
     private Color color = new Color(1,1,1,1f);
 
-    public TextureRegionUtils(float x, float y,Texture texture){
+    public TextureRegionActor(float x, float y, Texture texture){
         //创建Region
         this.texture = texture;
         region1 = new RegionAttachment();
