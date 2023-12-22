@@ -1,12 +1,13 @@
 package com.tony.rider.clip;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.CpuPolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.FloatArray;
+import com.badlogic.gdx.utils.NumberUtils;
 import com.badlogic.gdx.utils.ShortArray;
-import com.tony.rider.asset.Asset;
 
 /**
  * @Auther jian xian si qi
@@ -21,6 +22,8 @@ public class TextureRegionUtils {
     private int verticesLength;
     private float[] vertices12;
     private  float []uvs;
+    private Color color = new Color(1,1,1,1f);
+
     public TextureRegionUtils(float x, float y,Texture texture){
         //创建Region
         this.texture = texture;
@@ -65,9 +68,19 @@ public class TextureRegionUtils {
         return texture;
     }
 
-    public void draw(Batch batch, SkeletonClipping clipper) {
-        float c = -1.7014117E38f;
-        clipper.clipTriangles(getVertices12(), getVerticesLength(),
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void draw(Batch batch, SkeletonClipping clipper, float parentAlpha) {
+//        float c = -1.7014117E38f;
+        float alpha = parentAlpha;
+        float c = NumberUtils.intToFloatColor(((int)(color.a * alpha * 255.0f) << 24) //
+                | ((int)(color.b * 255) << 16) //
+                | ((int)(color.g * 255) << 8) //
+                | (int) (color.r * 255));
+
+        clipper.clipTriangles(getVertices12(),
                 getTriangles(), getTriangles().length,
                 getUvs(), c, 0, false);
         FloatArray clippedVertices = clipper.getClippedVertices();

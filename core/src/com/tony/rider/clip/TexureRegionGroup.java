@@ -28,7 +28,7 @@ public class TexureRegionGroup {
 
     public void draw(CpuPolygonSpriteBatch batch, float parentAlpha){
         for (TextureRegionUtils textureRegionUtils : regionUtilsArray) {
-            textureRegionUtils.draw(batch,clipping);
+            textureRegionUtils.draw(batch,clipping,parentAlpha);
         }
     }
 }
