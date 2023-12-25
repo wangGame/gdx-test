@@ -1,20 +1,33 @@
 package kw.test.desktop;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.tony.rider.RiderGame;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.libGdx.test.base.LibGdxTestMain;
+import com.tony.shader.ShaderUtills;
 
-import com.tony.rider.screen.ShaderBlurTest;
+import kw.test.file.Bean;
+import kw.test.file.ReadFileConfig;
 
-public class DesktopLauncher {
-    public static void main(String[] arg) {
+public class DesktopLauncher extends LibGdxTestMain {
+
+    public void start(LibGdxTestMain test) {
+        ReadFileConfig readFileConfig = new ReadFileConfig();
+        Bean value = readFileConfig.getValue();
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = "tony Rider Game";
-        config.width = 360;
-        config.height = 640;
-        config.x = 100;
-        config.y = 100;
-//        new LwjglApplication(new ShaderBlurTest(), config);
-        new LwjglApplication(new RiderGame(), config);
+        config.title = value.getName();
+        config.x = 1000;
+        config.stencil = 8;
+        config.y = 0;
+        config.height = 480;
+        config.width = 324;
+        Gdx.isJiami = true;
+        new LwjglApplication(new ShaderUtills(), config);
+    }
+
+    public static void main(String[] args) {
+        DesktopLauncher launcher = new DesktopLauncher();
+        launcher.start();
     }
 }

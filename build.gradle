@@ -1,5 +1,6 @@
 //apply plugin: "idea"
 buildscript {
+//    buildscript 块用于配置构建脚本自身所需的依赖项，比如构建插件。在 buildscript 块中，你可以指定用于下载和解析这些依赖项的仓库。
     repositories {
         maven {
             url 'https://maven.aliyun.com/repository/central'
@@ -13,31 +14,14 @@ buildscript {
             url 'https://maven.aliyun.com/repository/google'
             name 'Google'
         }
-
-
-//        maven {
-//            url 'https://maven.google.com/'
-//            name 'Google'
-//        }
-//        maven {
-//            url 'https://maven.aliyun.com/repository/central'
-//            name 'central'
-//        }
-
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
     }
 }
+
 allprojects {
     apply plugin: "idea"
-
-    version = "1.0"
-    ext {
-        appName = "Brick"
-    }
-    
+//    allprojects 块用于配置项目中所有子项目的通用设置，包括依赖项和仓库。在 allprojects 块中，你可以指定所有子项目共享的仓库配置
     repositories {
+        maven { url 'https://jitpack.io' }
         maven {
             url 'https://maven.aliyun.com/repository/central'
             name 'central'
@@ -50,7 +34,6 @@ allprojects {
             url 'https://maven.aliyun.com/repository/google'
             name 'Google'
         }
-
         flatDir {
             dirs 'libs'  // 申明本地库
         }
