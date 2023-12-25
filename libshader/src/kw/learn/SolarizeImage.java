@@ -1,25 +1,28 @@
-package com.tony.shader.actor;
+package kw.learn;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.kw.gdx.asset.Asset;
 
-public class EdegeImage extends Image {
-    private ShaderProgram program;
+import kw.learn.base.BaseGroup;
 
-    public EdegeImage(Texture texture){
-        super(texture);
+public class SolarizeImage extends BaseGroup {
+    public SolarizeImage(){
+        super(Asset.getAsset().getTexture("realsepic/_Background-58852.png"));
         if (program == null){
-            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
-                    Gdx.files.internal("shader/edge4.glsl"));
+            this.vertShader = "shader/txt.vert";
+            this.frangShader = "shader/solarize.glsl";
         }
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.setShader(program);
+        int time = program.getUniformLocation("time");
+        program.setUniformf(time,time);
         super.draw(batch, parentAlpha);
         batch.setShader(null);
     }

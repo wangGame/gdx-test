@@ -1,4 +1,4 @@
-package com.tony.shader.actor;
+package kw.learn;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

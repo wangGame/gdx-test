@@ -12,4 +12,6 @@ dependencies{
     implementation 'com.github.wangGame.LibGdxTool:libGdx:pre-release1.0.0'
     //自己的工具包
     implementation 'com.github.wangGame.LibGdxTool:libGdxLib:pre-release1.0.0'
+
+    implementation project(":libshader")
 }

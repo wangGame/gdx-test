@@ -1,4 +1,4 @@
-package com.tony.shader.actor;
+package com.tony.shader;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,19 +10,18 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.tony.shader.asset.Asset;
+import com.kw.gdx.asset.Asset;
 
-public class ImageGroup2 extends Group {
+public class DissolveImage2 extends Group {
    private ShaderProgram program;
-   public ImageGroup2(float width,float height) {
+   public DissolveImage2() {
       if (program == null){
          program = new ShaderProgram(
                  Gdx.files.internal("chanss/vert.vert"),
                  Gdx.files.internal("chanss/wipeUp2.glsl"));
       }
 
-      Sprite sprite = Asset.getAsset().loadAtlas("levelAtlas.atlas",
-              "2_dizuo");
+//      Sprite sprite = Asset.getAsset().loadAtlas("levelAtlas.atlas", "2_dizuo");
       Texture texture = Asset.getAsset().getTexture("bg.png");
       texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
       Texture texture1 = Asset.getAsset().getTexture("noise.png");
@@ -60,7 +59,7 @@ public class ImageGroup2 extends Group {
             batch.setShader(null);
          }
       };
-      image.setSize(width,height);
+      image.setSize(500,500);
       addActor(image);
    }
 }

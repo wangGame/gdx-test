@@ -15,21 +15,26 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Align;
+import com.kw.gdx.BaseGame;
+import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.BgGroup;
 import com.tony.shader.BgGroup2;
 import com.tony.shader.BgGroup3;
 import com.tony.shader.BgGroup4;
 import com.tony.shader.BgGroup5;
 import com.tony.shader.BseInterpolation;
-import com.tony.shader.actor.ImageGroup;
-import com.tony.shader.actor.ImageGroup2;
-import com.tony.shader.actor.Wd11;
+
+import com.tony.shader.DissolveImage2;
+import kw.learn.Wd11;
 import com.tony.shader.asset.Asset;
 import com.tony.shader.constant.Constant;
-import com.tony.shader.screen.base.BaseScreen;
 import com.tony.shader.wd.Wd1;
 
 public class LineScreen extends BaseScreen {
+    public LineScreen(BaseGame game) {
+        super(game);
+    }
+
     @Override
     public void show() {
         super.show();
@@ -180,7 +185,7 @@ public class LineScreen extends BaseScreen {
     private void block09() {
         Image image = new Image(Asset.getAsset().getTexture("bg.png"));
         addActor(image);
-        ImageGroup2 im = new ImageGroup2(400,400);
+        DissolveImage2 im = new DissolveImage2();
         addActor(im);
 
     }
@@ -195,10 +200,10 @@ public class LineScreen extends BaseScreen {
             for (String s : str) {
                 index ++;
                 Sprite sprite = Asset.getAsset().loadAtlas("levelAtlas.atlas", s);
-                ImageGroup im = new ImageGroup(sprite);
-                im.setOrigin(Align.center);
-
-                add(im);
+//                ImageGroup im = new ImageGroup(sprite);
+//                im.setOrigin(Align.center);
+//
+//                add(im);
                 if (index>3) {
                     index=0;
                     row();

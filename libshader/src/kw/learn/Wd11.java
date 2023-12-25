@@ -1,4 +1,4 @@
-package com.tony.shader.actor;
+package kw.learn;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.tony.shader.asset.Asset;
+import com.kw.gdx.asset.Asset;
 
 public class Wd11  extends Group {
     private Texture texture;

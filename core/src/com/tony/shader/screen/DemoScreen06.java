@@ -1,13 +1,18 @@
 package com.tony.shader.screen;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.tony.shader.actor.SpiteDemo01;
-import com.tony.shader.actor.SpiteDemo02;
-import com.tony.shader.actor.SpiteDemo03;
+import com.kw.gdx.BaseGame;
+import com.kw.gdx.screen.BaseScreen;
+import kw.learn.SpiteDemo01;
+import kw.learn.SpiteDemo02;
+import kw.learn.SpiteDemo03;
 import com.tony.shader.asset.Asset;
-import com.tony.shader.screen.base.BaseScreen;
 
 public class DemoScreen06 extends BaseScreen {
+    public DemoScreen06(BaseGame game) {
+        super(game);
+    }
+
     @Override
     public void show() {
         super.show();
@@ -30,7 +35,7 @@ public class DemoScreen06 extends BaseScreen {
 
     public void demo01(){
         Texture texture = Asset.getAsset().getTexture("_cat-58830.png");
-        SpiteDemo01 demo01 = new SpiteDemo01(texture);
+        SpiteDemo01 demo01 = new SpiteDemo01();
         addActor(demo01);
     }
 }

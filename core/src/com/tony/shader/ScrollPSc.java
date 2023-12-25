@@ -4,10 +4,15 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.kw.gdx.BaseGame;
+import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.asset.Asset;
-import com.tony.shader.screen.base.BaseScreen;
 
 public class ScrollPSc extends BaseScreen {
+    public ScrollPSc(BaseGame game) {
+        super(game);
+    }
+
     @Override
     public void show() {
         super.show();

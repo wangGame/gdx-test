@@ -1,4 +1,4 @@
-package com.tony.shader.actor;
+package kw.learn;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -6,20 +6,20 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-public class NoiseImage extends Image {
-    private ShaderProgram program;
+import kw.learn.base.BaseGroup;
 
-    public NoiseImage(Texture texture){
-        super(texture);
-        if (program == null){
-            program = new ShaderProgram(Gdx.files.internal("shader/txt.vert"),
-                    Gdx.files.internal("shader/noise.vert"));
-        }
+public class ExpuseImage extends BaseGroup {
+    public ExpuseImage(){
+        this.vertShader = "realseshader/common.vert";
+        this.frangShader = "realseshader/exposure.glsl";
     }
 
+//0.317f   1.0354009
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.setShader(program);
+        program.setUniformf("exposure",2);
+        program.setUniformf("offset",0.4f);
         super.draw(batch, parentAlpha);
         batch.setShader(null);
     }

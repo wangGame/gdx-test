@@ -1,5 +1,7 @@
 package com.tony.shader.screen;
 
+import com.kw.gdx.BaseGame;
+import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.interpolation.ExpGroup;
 import com.tony.shader.interpolation.LinearGroup;
 import com.tony.shader.interpolation.Pow2InInverseGroup;
@@ -13,9 +15,12 @@ import com.tony.shader.interpolation.SmoothGroup;
 import com.tony.shader.interpolation.SmoothGroup2;
 import com.tony.shader.interpolation.Smoother;
 import com.tony.shader.interpolation.SwingGroup;
-import com.tony.shader.screen.base.BaseScreen;
 
 public class InterpolationScreen extends BaseScreen {
+    public InterpolationScreen(BaseGame game) {
+        super(game);
+    }
+
     @Override
     public void show() {
         super.show();

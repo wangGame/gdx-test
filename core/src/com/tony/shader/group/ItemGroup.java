@@ -18,7 +18,7 @@ import com.kw.gdx.listener.OrdinaryButtonListener;
 public class ItemGroup extends Group {
     private int index;
     public ItemGroup(String text, int i){
-        setSize(700,300);
+        setSize(Constant.GAMEWIDTH/2-100,200);
         this.index = i;
         Image bg = new Image(new NinePatch(
                 Asset.getAsset().getTexture("white_bg.png"),
@@ -31,9 +31,11 @@ public class ItemGroup extends Group {
         Label label = new Label("",new Label.LabelStyle(){{
             font = Asset.getAsset().loadBitFont("font/inter-middle-28.fnt");
         }});
+        label.setFontScale(4);
         addActor(label);
         label.setText(text);
         label.pack();
+        label.setX(getWidth()/2.0f,Align.center);
         label.setY(getHeight()/2.0f, Align.center);
         addListener(new OrdinaryButtonListener(){
             @Override

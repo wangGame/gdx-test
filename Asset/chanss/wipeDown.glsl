@@ -62,24 +62,4 @@ void main() {
         gl_FragColor = vec4(base.rgb, a*base.a);
     }
 
-
-
-//
-//    float vvv = (v_textCoords.y - v) / (v2 - v);
-//    float uuu = (v_textCoords.x - u) / (u2 - u);
-//    vec2 vecCoords = vec2(vvv,uuu);
-//    vec4 sourceColor = texture2D(u_texture, v_textCoords) * v_color;
-//    vec4 sourceColor2 = texture2D(u_texture1, vecCoords) * v_color;
-//    float xx = 1-(sourceColor2.r + sourceColor2.g + sourceColor2.b) / 3.0;
-//    xx = xx * xx * xx;
-//    xx = xx - 0.5 + time;
-//    gl_FragColor = vec4(sourceColor.rgb,sourceColor.a * xx);
-//
-
-
-
-
-
-
-
 }

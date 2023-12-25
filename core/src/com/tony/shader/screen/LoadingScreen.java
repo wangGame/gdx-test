@@ -2,14 +2,15 @@ package com.tony.shader.screen;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.kw.gdx.screen.BaseScreen;
+import com.tony.shader.ShaderUtills;
 import com.tony.shader.asset.Asset;
-import com.tony.shader.screen.base.BaseScreen;
 
 public class LoadingScreen extends BaseScreen {
 
     private float time;
     public LoadingScreen() {
-        super();
+        super(ShaderUtills.instence());
 //        OrthOcamPostionDemo orthographicCamera = new OrthOcamPostionDemo();
 //        addActor(orthographicCamera);D
 //        orthographicCamera.init();

@@ -6,11 +6,16 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.kw.gdx.BaseGame;
+import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.asset.Asset;
-import com.tony.shader.screen.base.BaseScreen;
 
 public class Transform extends BaseScreen {
     private ShaderProgram program;
+
+    public Transform(BaseGame game) {
+        super(game);
+    }
 
     @Override
     public void show() {

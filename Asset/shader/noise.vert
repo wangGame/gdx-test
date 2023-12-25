@@ -15,14 +15,6 @@ vec3 hash33(vec3 p3)
 void main() {
     vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
     float xxx  = (textureColor.r + textureColor.g +textureColor.b) / 2.0F;
-    //    229.0F/255, 208.0F/255, 190.0F/255
-
-    //    if(xxx>0.09){
-    //        gl_FragColor = vec4(203.0/255,178.0/255,162.0/255,1);
-    //    }else{
-    //        gl_FragColor = vec4(235.0/255,210.0/255,193.0/255,1-xxx);
-    //    }
-
     int nums = 1;
     vec3 a = vec3(0.0), b = a;
     for (int t = 0; t < nums; t++)

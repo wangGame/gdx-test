@@ -2,11 +2,16 @@ package com.tony.shader.screen;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.kw.gdx.BaseGame;
+import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.actor.BufferImage;
-import com.tony.shader.actor.ImageZh;
-import com.tony.shader.screen.base.BaseScreen;
+import kw.learn.NoiseImage;
 
 public class DemoScreen04 extends BaseScreen {
+   public DemoScreen04(BaseGame game) {
+      super(game);
+   }
+
    @Override
    public void show() {
       super.show();
@@ -19,7 +24,7 @@ public class DemoScreen04 extends BaseScreen {
 
       textureRegion.setRegion(0,0,256,256);
       textureRegion.flip(false,true);
-      ImageZh image1 = new ImageZh(textureRegion);
+      NoiseImage image1 = new NoiseImage();
       addActor(image1);
       addActor(image);
 //
