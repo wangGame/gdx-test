@@ -3,14 +3,13 @@ package com.tony.shader.mdel;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.tony.shader.CocosRes;
 import com.tony.shader.asset.Asset;
 
 /**
  * @Auther jian xian si qi
  * @Date 2023/5/16 20:08
  *
- * Ä¥¾ß  ÊµÏÖ
+ * Ä¥ï¿½ï¿½  Êµï¿½ï¿½
  */
 public class ModelGroupTest extends Group {
     public ModelGroupTest(){
@@ -74,15 +73,15 @@ public class ModelGroupTest extends Group {
                 ModelGroup maskImage = new ModelGroup("pic/jigsawShapeMask_"+picName+".png");
 //                ModelGroup maskImage = new ModelGroup("pic/model.png");
                 addActor(maskImage);
-                // Ä¥¾ß/Ä¥¾ß¿í£¨¸ß£©  == i1£¨i2£©/ÓÎÏ·¿í¸ß
+                // Ä¥ï¿½ï¿½/Ä¥ï¿½ß¿ï¿½ï¿½ß£ï¿½  == i1ï¿½ï¿½i2ï¿½ï¿½/ï¿½ï¿½Ï·ï¿½ï¿½ï¿½
                 maskImage.setSize(i1+65,i2+65);
                 maskImage.setX(startX);
                 maskImage.setY(height - startY);
-                //startX£¨starY£© / ÓÎÏ·¿í£¨¸ß£©
+                //startXï¿½ï¿½starYï¿½ï¿½ / ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ß£ï¿½
                 maskImage.setStartU(startX/width+0.0f*i1/width);
                 startX = startX + i1;
                 maskImage.setStartV(startY/height+0.0f*i2/height);
-                //i1£¨i2£©/ÓÎÏ·¿í
+                //i1ï¿½ï¿½i2ï¿½ï¿½/ï¿½ï¿½Ï·ï¿½ï¿½
 
 
             }

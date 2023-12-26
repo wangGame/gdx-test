@@ -22,13 +22,13 @@ import com.tony.shader.BgGroup2;
 import com.tony.shader.BgGroup3;
 import com.tony.shader.BgGroup4;
 import com.tony.shader.BgGroup5;
-import com.tony.shader.BseInterpolation;
+import kw.learn.common.BseInterpolation;
 
 import com.tony.shader.DissolveImage2;
-import kw.learn.Wd11;
 import com.tony.shader.asset.Asset;
 import com.tony.shader.constant.Constant;
-import com.tony.shader.wd.Wd1;
+
+import kw.learn.image.GrayImage2;
 
 public class LineScreen extends BaseScreen {
     public LineScreen(BaseGame game) {
@@ -142,10 +142,6 @@ public class LineScreen extends BaseScreen {
         image.setScale(4);
     }
 
-    private void test() {
-        ImageBlend blend = new ImageBlend();
-        addActor(blend);
-    }
 
 
     private void hui1() {
@@ -153,8 +149,7 @@ public class LineScreen extends BaseScreen {
         addActor(image);
         image.setSize(1500,1500);
         image.setColor(Color.valueOf("#fffbe5"));
-        GrayImage3 grayImage2 = new GrayImage3();
-        addActor(grayImage2);
+
     }
 
     private void hui() {
@@ -227,13 +222,7 @@ public class LineScreen extends BaseScreen {
     private void bg0() {
         Image image = new Image(Asset.getAsset().getTexture("bg.png"));
         addActor(image);
-        Wd1 group = new Wd1(image.getWidth(),image.getHeight());
-//        addActor(group);
 
-        Wd11 wd11 = new Wd11(image.getWidth(),image.getHeight());
-        addActor(wd11);
-        wd11.setY(image.getY(Align.top)+190,Align.top);
-        wd11.setX(image.getWidth()/2,Align.center);
     }
 
     private void bg6(){
@@ -255,11 +244,6 @@ public class LineScreen extends BaseScreen {
     }
 
 
-    private void pre() {
-        GrayImage grayImage = new GrayImage();
-        addActor(grayImage);
-
-    }
 
     private void bg7() {
         Image image = new Image(Asset.getAsset().getTexture("bg.png"));
@@ -311,18 +295,6 @@ public class LineScreen extends BaseScreen {
         group1.setSpeed(0.33f);
     }
 
-    private void lineOne() {
-
-        LineOutOne image2 = new LineOutOne(
-                Asset.getAsset().findAtlas()
-                );
-        image2.setPosition(100,100);
-        image2.setDebug(true);
-        addActor(image2);
-        image2.addAction(Actions.delay(2,Actions.run(()->{
-            image2.setAnimation();
-        })));
-    }
 
 
 }

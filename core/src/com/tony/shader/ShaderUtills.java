@@ -1,15 +1,7 @@
 package com.tony.shader;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.CpuPolygonSpriteBatch;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.esotericsoftware.spine.SkeletonRenderer;
 import com.kw.gdx.BaseGame;
-import com.tony.shader.constant.Constant;
-import com.tony.shader.screen.DemoScreen;
 import com.tony.shader.screen.MainScreen;
 
 public class ShaderUtills extends BaseGame {
@@ -25,7 +17,7 @@ public class ShaderUtills extends BaseGame {
         Gdx.app.postRunnable(()->{
             setScreen(new MainScreen(this));
 //            setScreen(new DemoScreen());
-//            setScreen(new DemoScreen(this));
+
 
         });
     }

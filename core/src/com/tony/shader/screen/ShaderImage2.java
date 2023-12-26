@@ -26,8 +26,6 @@ public class ShaderImage2 extends Image {
     public void draw(Batch batch, float parentAlpha) {
         if (shadowProgram!=null) {
             batch.setShader(shadowProgram);
-            int timeLocation = shadowProgram.getUniformLocation("time");
-            shadowProgram.setUniformf(timeLocation,time*0.8F);
             super.draw(batch, parentAlpha);
             batch.setShader(null);
         }else {

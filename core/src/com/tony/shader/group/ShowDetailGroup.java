@@ -9,12 +9,15 @@ import com.kw.gdx.asset.Asset;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.view.dialog.base.BaseDialog;
 
-import kw.learn.EdegeImage;
-import kw.learn.ExpuseImage;
-import kw.learn.DissolveImage;
-import kw.learn.LuminImage;
-import kw.learn.NoiseImage;
-import kw.learn.SolarizeImage;
+import kw.learn.blend.ImageBlend;
+import kw.learn.image.EdegeImage;
+import kw.learn.image.EdgeImage2;
+import kw.learn.image.ExpuseImage;
+import kw.learn.image.DissolveImage;
+import kw.learn.image.GrayImage;
+import kw.learn.image.LuminImage;
+import kw.learn.image.NoiseImage;
+import kw.learn.image.SolarizeImage;
 import kw.learn.base.BaseGroup;
 import kw.learn.constant.ShaderType;
 
@@ -70,6 +73,15 @@ public class ShowDetailGroup extends BaseDialog {
                 break;
             case ShaderType.SOLARIZE:
                 actor = new SolarizeImage();
+                break;
+            case ShaderType.EDG2:
+                actor = new EdgeImage2();
+                break;
+            case ShaderType.GRAY:
+                actor = new GrayImage();
+                break;
+            case ShaderType.BLEND:
+                actor = new ImageBlend();
                 break;
         }
         return actor;

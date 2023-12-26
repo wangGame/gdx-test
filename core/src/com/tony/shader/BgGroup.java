@@ -13,7 +13,8 @@ public class BgGroup extends Group {
     private ShaderProgram shadowProgram;
     public BgGroup(float width, float height){
         texture = Asset.getAsset().getTexture("noise.png");
-        shadowProgram = new ShaderProgram(Gdx.files.internal("gamee/middlespread.vert"),
+        shadowProgram = new ShaderProgram(
+                Gdx.files.internal("gamee/middlespread.vert"),
                 Gdx.files.internal("gamee/middlespread.frag"));
         Image group = new Image(texture){
             private float time = 0;

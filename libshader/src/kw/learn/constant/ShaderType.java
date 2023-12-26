@@ -11,6 +11,9 @@ public interface ShaderType {
     int DISSOLVE = 3;
     int NOISEONE = 4;
     int SOLARIZE = 5;
+    int EDG2 = 6;
+    int GRAY = 7;
+    int BLEND = 8;
 
 
 }

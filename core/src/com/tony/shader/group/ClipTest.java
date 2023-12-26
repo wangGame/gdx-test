@@ -8,8 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Align;
-import com.tony.shader.BseInterpolation;
-import com.tony.shader.animation.ValueTool;
 import com.tony.shader.asset.Asset;
 import com.tony.shader.constant.Constant;
 
@@ -27,26 +25,26 @@ public class ClipTest extends Group {
     private final float endWidth = 324;
 
     public ClipTest(){
-        ValueTool tool = new ValueTool();
-        tool.setStart(srcWidth);
-        tool.setEnd(endWidth);
-        tool.setDuration(0.5333f);
-        tool.setInterpolation(new BseInterpolation(
-                0.0444f,
-                0.4777f,
-                0.48f,
-                1.0f
-        ));
-        ValueTool tool1 = new ValueTool();
-        tool1.setStart(srcHeght);
-        tool1.setEnd(endWidth);
-        tool1.setDuration(0.53333f);
-        tool1.setInterpolation(new BseInterpolation(
-                0.0444f,
-                0.4777f,
-                0.48f,
-                1.0f
-        ));
+//        ValueTool tool = new ValueTool();
+//        tool.setStart(srcWidth);
+//        tool.setEnd(endWidth);
+//        tool.setDuration(0.5333f);
+//        tool.setInterpolation(new BseInterpolation(
+//                0.0444f,
+//                0.4777f,
+//                0.48f,
+//                1.0f
+//        ));
+//        ValueTool tool1 = new ValueTool();
+//        tool1.setStart(srcHeght);
+//        tool1.setEnd(endWidth);
+//        tool1.setDuration(0.53333f);
+//        tool1.setInterpolation(new BseInterpolation(
+//                0.0444f,
+//                0.4777f,
+//                0.48f,
+//                1.0f
+//        ));
         levelItemKuang = new Image(new NinePatch(
                 Asset.getAsset().getTexture("img_framenew.png"),
                 30,30,30,30));
@@ -58,8 +56,8 @@ public class ClipTest extends Group {
                 super.act(delta);
                 if (flag) {
 
-                    clipOffSetX = Math.abs(tool.getValue());
-                    clipOffsetY = Math.abs(tool1.getValue());
+//                    clipOffSetX = Math.abs(tool.getValue());
+//                    clipOffsetY = Math.abs(tool1.getValue());
                 }
             }
 
@@ -138,8 +136,8 @@ public class ClipTest extends Group {
                             @Override
                             public void run() {
                                 flag = true;
-                                addAction(tool);
-                                addAction(tool1);
+//                                addAction(tool);
+//                                addAction(tool1);
                             }
                         })));
         levelItemKuang.getColor().a = 0;

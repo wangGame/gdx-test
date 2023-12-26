@@ -1,12 +1,15 @@
 package com.tony.shader.screen;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.BaseGame;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
+import com.tony.shader.asset.Asset;
 import com.tony.shader.group.ItemGroup;
+
 import kw.learn.constant.ShaderType;
 
 public class MainScreen extends BaseScreen {
@@ -31,8 +34,10 @@ public class MainScreen extends BaseScreen {
             pack();
             align(Align.top);
         }});
-        addActor(pane);
+//        addActor(pane);
         pane.setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT);
+        Texture texture = Asset.getAsset().getTexture("test.png");
+
 
     }
 }

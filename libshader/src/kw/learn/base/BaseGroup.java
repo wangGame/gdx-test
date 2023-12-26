@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.kw.gdx.asset.Asset;
 
 public abstract class BaseGroup extends Image {
-   protected String vertShader;
+   protected String vertShader = "realseshader/common.vert";
    protected String frangShader;
    protected float time;
    protected ShaderProgram program;
