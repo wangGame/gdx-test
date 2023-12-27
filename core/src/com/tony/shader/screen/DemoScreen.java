@@ -13,12 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.kw.gdx.BaseGame;
+import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
-import com.tony.shader.DivideGroup;
-import com.tony.shader.asset.Asset;
-import com.tony.shader.clip.ClipDemo;
-import com.tony.shader.constant.Constant;
-import com.tony.shader.group.SiJaGroup1;
+import com.kw.gdx.asset.Asset;
+import kw.learn.clip.ClipDemo;
+import kw.learn.clip.SiJaGroup1;
 
 public class DemoScreen extends BaseScreen {
     private ShaderProgram program;
@@ -886,9 +885,7 @@ public class DemoScreen extends BaseScreen {
 //            pack();
 //        }});
 //        Asset/Demo01/whale1-22754.png
-          DivideGroup group = new DivideGroup(Gdx.files.internal("ziti1.png"));
-          addActor(group);
-          group.setScale(4);
+
 
     }
     private void divide() {

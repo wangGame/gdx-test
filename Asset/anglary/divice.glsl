@@ -12,7 +12,7 @@ uniform float time;
 void main() {
 
     float speed = 1.0;
-    float waves = 2f;
+    float waves = 2.0;
 
     vec2 u_xlat0;
     u_xlat0.x = time * speed;

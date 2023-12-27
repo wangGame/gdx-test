@@ -6,22 +6,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.kw.gdx.asset.Asset;
 
-import kw.learn.base.BaseGroup;
+import kw.learn.base.BaseImage;
 
-public class DissolveImage extends BaseGroup {
+public class DissolveImage extends BaseImage {
    private Texture texture1;
    public DissolveImage() {
-      super(new Sprite(Asset.getAsset().getTexture("_Background-58852.png")));
+      super(new Sprite(Asset.getAsset().getTexture("test.png")));
       vertShader = "realseshader/common.vert";
       frangShader = "realseshader/dissolve.glsl";
       texture1 = Asset.getAsset().getTexture("noise.png");
-      Texture texture = Asset.getAsset().getTexture("xxxxxx.png");
+      Texture texture = Asset.getAsset().getTexture("test.png");
       texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
    }
 

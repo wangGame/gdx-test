@@ -2,9 +2,9 @@ package kw.learn.image;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 
-import kw.learn.base.BaseGroup;
+import kw.learn.base.BaseImage;
 
-public class GrayImage extends BaseGroup {
+public class GrayImage extends BaseImage {
     public GrayImage(){
         vertShader = "realseshader/common.vert";
         frangShader = "realseshader/grayScale.glsl";

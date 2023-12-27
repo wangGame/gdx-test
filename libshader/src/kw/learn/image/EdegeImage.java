@@ -1,14 +1,8 @@
 package kw.learn.image;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import kw.learn.base.BaseImage;
 
-import kw.learn.base.BaseGroup;
-
-public class EdegeImage extends BaseGroup {
+public class EdegeImage extends BaseImage {
 
     private float coefficient;
     private float offset;

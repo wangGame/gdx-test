@@ -2,19 +2,19 @@ package com.tony.shader.screen;
 
 import com.kw.gdx.BaseGame;
 import com.kw.gdx.screen.BaseScreen;
-import com.tony.shader.interpolation.ExpGroup;
-import com.tony.shader.interpolation.LinearGroup;
-import com.tony.shader.interpolation.Pow2InInverseGroup;
-import com.tony.shader.interpolation.PowGroup;
-import com.tony.shader.interpolation.PowInGroup;
-import com.tony.shader.interpolation.PowOutGroup;
-import com.tony.shader.interpolation.SinGroup;
-import com.tony.shader.interpolation.SinInGroup;
-import com.tony.shader.interpolation.SinOutGroup;
-import com.tony.shader.interpolation.SmoothGroup;
-import com.tony.shader.interpolation.SmoothGroup2;
-import com.tony.shader.interpolation.Smoother;
-import com.tony.shader.interpolation.SwingGroup;
+import kw.learn.interpolation.ExpGroup;
+import kw.learn.interpolation.LinearGroup;
+import kw.learn.interpolation.Pow2InInverseGroup;
+import kw.learn.interpolation.PowGroup;
+import kw.learn.interpolation.PowInGroup;
+import kw.learn.interpolation.PowOutGroup;
+import kw.learn.interpolation.SinGroup;
+import kw.learn.interpolation.SinInGroup;
+import kw.learn.interpolation.SinOutGroup;
+import kw.learn.interpolation.SmoothGroup;
+import kw.learn.interpolation.SmoothGroup2;
+import kw.learn.interpolation.Smoother;
+import kw.learn.interpolation.SwingGroup;
 
 public class InterpolationScreen extends BaseScreen {
     public InterpolationScreen(BaseGame game) {

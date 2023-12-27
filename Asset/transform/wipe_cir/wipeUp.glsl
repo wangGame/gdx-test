@@ -9,10 +9,10 @@ uniform sampler2D u_texture1;
 uniform float time;
 
 const vec2 CENTER = vec2(0.5);
-const float OFFSET = 0.2;
+const float OFFSET = 0.1;
 void main(){
-    vec4 sourceColor = texture2D(u_texture, v_textCoords);
-    vec4 sourceColor2 = texture2D(u_texture1, v_textCoords);
+    vec4 sourceColor = texture2D(u_texture, v_textCoords) * v_color;
+    vec4 sourceColor2 = texture2D(u_texture1, v_textCoords) * v_color;
 
     float radius = length(v_textCoords - CENTER);
     float maxR = length(CENTER);

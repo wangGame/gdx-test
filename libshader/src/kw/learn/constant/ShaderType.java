@@ -13,7 +13,7 @@ public interface ShaderType {
     int SOLARIZE = 5;
     int EDG2 = 6;
     int GRAY = 7;
-    int BLEND = 8;
+    int GRAY2 = 8;
 
 
 }

@@ -1,14 +1,10 @@
 package kw.learn.image;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-import kw.learn.base.BaseGroup;
+import kw.learn.base.BaseImage;
 
-public class ExpuseImage extends BaseGroup {
+public class ExpuseImage extends BaseImage {
     public ExpuseImage(){
         this.vertShader = "realseshader/common.vert";
         this.frangShader = "realseshader/exposure.glsl";

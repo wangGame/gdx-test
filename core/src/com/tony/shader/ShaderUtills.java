@@ -16,9 +16,6 @@ public class ShaderUtills extends BaseGame {
     protected void loadingView() {
         Gdx.app.postRunnable(()->{
             setScreen(new MainScreen(this));
-//            setScreen(new DemoScreen());
-
-
         });
     }
 

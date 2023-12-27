@@ -1,16 +1,12 @@
 package kw.learn.image;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.kw.gdx.asset.Asset;
-
-import kw.learn.base.BaseGroup;
+import kw.learn.base.BaseImage;
 
 /**
  * @Auther jian xian si qi
  * @Date 2023/12/25 15:54
  */
-public class LuminImage extends BaseGroup {
+public class LuminImage extends BaseImage {
 
     private float threshold;
 

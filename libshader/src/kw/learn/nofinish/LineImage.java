@@ -1,18 +1,15 @@
 package kw.learn.nofinish;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import kw.learn.base.BaseGroup;
+import kw.learn.base.BaseImage;
 
 /**
  * @Auther jian xian si qi
  * @Date 2023/12/26 18:56
  */
-public class LineImage extends BaseGroup {
+public class LineImage extends BaseImage {
     private Sprite sprite;
     public LineImage(){
         this.sprite = sprite;

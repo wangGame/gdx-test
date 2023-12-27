@@ -3,7 +3,6 @@ package kw.test.desktop;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.libGdx.test.base.LibGdxTestMain;
 import com.tony.shader.ShaderUtills;
 

@@ -25,9 +25,9 @@ task dist(type: Jar) {
 }
 
 dependencies {
-    implementation 'com.github.wangGame.LibGdxTool:libGdxLib:+'
-    implementation 'com.github.wangGame.LibGdxTool:libGdx:+'
-    implementation 'com.github.wangGame.LibGdxTool:desktop:+'
+    implementation 'com.github.wangGame.LibGdxTool:libGdxLib:release1.0.1'
+    implementation 'com.github.wangGame.LibGdxTool:libGdx:release1.0.1'
+    implementation 'com.github.wangGame.LibGdxTool:desktop:release1.0.1'
 
     implementation files('libs/gdx-backend-lwjgl.jar')
     implementation files('libs/gdx-backend-lwjgl-natives.jar')

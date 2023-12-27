@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.ShaderUtills;
-import com.tony.shader.asset.Asset;
+import com.kw.gdx.asset.Asset;
 
 public class LoadingScreen extends BaseScreen {
 

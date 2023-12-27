@@ -16,17 +16,18 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.BaseGame;
+import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
-import com.tony.shader.BgGroup;
-import com.tony.shader.BgGroup2;
-import com.tony.shader.BgGroup3;
-import com.tony.shader.BgGroup4;
-import com.tony.shader.BgGroup5;
+import kw.learn.model.BgGroup;
+import kw.learn.model.BgGroup2;
+import kw.learn.model.BgGroup3;
+import kw.learn.model.BgGroup4;
+import kw.learn.model.BgGroup5;
+
 import kw.learn.common.BseInterpolation;
 
-import com.tony.shader.DissolveImage2;
-import com.tony.shader.asset.Asset;
-import com.tony.shader.constant.Constant;
+import kw.learn.model.DissolveImage2;
+import com.kw.gdx.asset.Asset;
 
 import kw.learn.image.GrayImage2;
 
@@ -194,11 +195,6 @@ public class LineScreen extends BaseScreen {
             int index = 0;
             for (String s : str) {
                 index ++;
-                Sprite sprite = Asset.getAsset().loadAtlas("levelAtlas.atlas", s);
-//                ImageGroup im = new ImageGroup(sprite);
-//                im.setOrigin(Align.center);
-//
-//                add(im);
                 if (index>3) {
                     index=0;
                     row();
