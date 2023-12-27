@@ -7,7 +7,6 @@ precision mediump float;
 varying vec4 v_color;
 varying vec2 v_textCoords;
 uniform sampler2D u_texture;
-uniform float threshold;
 
 void main() {
     float offset = 0.002f;
@@ -59,18 +58,7 @@ void main() {
     + bottomLeftColor.r + 2.0 * bottomColor.r + bottomRightColor.r;
     float v = -bottomLeftColor.r - 2.0 * leftColor.r -
     topLeftColor.r + bottomRightColor.r + 2.0 * rightColor.r+ topRightColor.r;
-//    float mag = length(vec2(h, v));
     float mag = length(vec2(h, v));
     mag = step(0.05, mag);
-
     gl_FragColor = vec4(vec3(1-mag), 1.0);
-    //
-
-////    gl_FragColor = vec4(vec3(mag)*vec3(240.0/255.0,186.0/255.0,136.0/255.0), 1.0);
-//    if(mag <= 0.1){
-//        gl_FragColor = vec4(vec3(mag), 0.0);
-//    }else{
-////        gl_FragColor = vec4(vec3(mag), 1.0);
-//        gl_FragColor = finalV;
-//    }
 }

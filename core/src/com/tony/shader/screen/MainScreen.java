@@ -34,7 +34,9 @@ public class MainScreen extends BaseScreen {
         bg.setPosition(Constant.GAMEWIDTH/2.0f,Constant.GAMEHIGHT/2.0f,Align.center);
         ScrollPane pane = new ScrollPane(new Table(){{
             int index= 0;
-            for (ItemBean itemBean : GroupManager.itemBeans) {
+            int length = GroupManager.itemBeans.length;
+            for (int i = 0; i < length; i++) {
+                ItemBean itemBean = GroupManager.itemBeans[length-1-i];
                 index ++;
                 add(new ItemGroup(itemBean.getName(),itemBean.getIndex())).pad(20);
                 if (index % 2 == 0) {

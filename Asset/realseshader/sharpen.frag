@@ -1,8 +1,6 @@
 #ifdef GL_ES
 precision mediump float;
 #endif
-
-
 //input from vertex shader
 varying vec4 v_color;
 varying vec2 v_textCoords;
@@ -24,10 +22,10 @@ void main() {
 
     float centerMultiplier = 1.0 + 4.0 * time;
     float edgeMultiplier = time;
-    vec4 leftTextureColor = texture2D(u_texture,leftTextureCoordinate);
-    vec4 rightTextureColor = texture2D(u_texture,rightTextureCoordinate);
-    vec4 topTextureColor = texture2D(u_texture,topTextureCoordinate);
-    vec4 bottomTextureColor = texture2D(u_texture,bottomTextureCoordinate);
+    vec4 leftTextureColor = texture2D(u_texture,leftTextureCoordinate) * v_color;
+    vec4 rightTextureColor = texture2D(u_texture,rightTextureCoordinate)* v_color;
+    vec4 topTextureColor = texture2D(u_texture,topTextureCoordinate)* v_color;
+    vec4 bottomTextureColor = texture2D(u_texture,bottomTextureCoordinate)* v_color;
 //    gl_FragColor = textureColor;
     gl_FragColor = vec4(
                             (textureColor * centerMultiplier
@@ -36,17 +34,6 @@ void main() {
                                     + rightTextureColor * edgeMultiplier
                                     + topTextureColor * edgeMultiplier
                                     + bottomTextureColor * edgeMultiplier)
-                            ).rgb,
+                            .rgb),
     texture2D(u_texture, bottomTextureCoordinate).w);
 }
-//
-//
-//"{\n" +
-//"    mediump vec3 textureColor = texture2D(inputImageTexture, textureCoordinate).rgb;\n" +
-//"    mediump vec3 leftTextureColor = texture2D(inputImageTexture, leftTextureCoordinate).rgb;\n" +
-//"    mediump vec3 rightTextureColor = texture2D(inputImageTexture, rightTextureCoordinate).rgb;\n" +
-//"    mediump vec3 topTextureColor = texture2D(inputImageTexture, topTextureCoordinate).rgb;\n" +
-//"    mediump vec3 bottomTextureColor = texture2D(inputImageTexture, bottomTextureCoordinate).rgb;\n" +
-//"\n" +
-//"    gl_FragColor = vec4((textureColor * centerMultiplier - (leftTextureColor * edgeMultiplier + rightTextureColor * edgeMultiplier + topTextureColor * edgeMultiplier + bottomTextureColor * edgeMultiplier)), texture2D(inputImageTexture, bottomTextureCoordinate).w);\n" +
-//"}";

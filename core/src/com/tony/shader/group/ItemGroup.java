@@ -31,12 +31,12 @@ public class ItemGroup extends Group {
         Label label = new Label("",new Label.LabelStyle(){{
             font = Asset.getAsset().loadBitFont("font/inter-middle-28.fnt");
         }});
-        label.setFontScale(4);
+        label.setFontScale(2);
         addActor(label);
         label.setText(text);
         label.pack();
         label.setX(getWidth()/2.0f,Align.center);
-        label.setY(getHeight()/2.0f, Align.center);
+        label.setY(50, Align.center);
         addListener(new OrdinaryButtonListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {

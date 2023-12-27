@@ -14,6 +14,16 @@ public interface ShaderType {
     int EDG2 = 6;
     int GRAY = 7;
     int GRAY2 = 8;
+    int CONTRAST = 9;
+    int GAMMA = 10;
+    int COLORINERT = 11;
+    int PIX = 12;
+    int HUE = 13;
+    int BRIGHT = 14;
+    int SEPIA = 15;
+    int SHARPEN = 16;
+    int THREOHOLD = 17;
+    int POSTER = 18;
 
 
 }

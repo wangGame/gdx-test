@@ -2,6 +2,7 @@ package com.tony.shader;
 
 import com.badlogic.gdx.Gdx;
 import com.kw.gdx.BaseGame;
+import com.kw.gdx.constant.Constant;
 import com.tony.shader.screen.MainScreen;
 
 public class ShaderUtills extends BaseGame {
