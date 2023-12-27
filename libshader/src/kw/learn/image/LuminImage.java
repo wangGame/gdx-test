@@ -3,6 +3,8 @@ package kw.learn.image;
 import kw.learn.base.BaseImage;
 
 /**
+ * 求出gray  如果灰度于阈值就显示，否则就丢弃
+ *
  * @Auther jian xian si qi
  * @Date 2023/12/25 15:54
  */

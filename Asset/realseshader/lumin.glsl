@@ -10,9 +10,11 @@ const vec3 W = vec3(0.2125, 0.7154, 0.0721);
 
 void main() {
     vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
+
     float luminance = dot(textureColor.rgb, W);
+
     float thresholdResult = step(threshold, luminance);
-    if(thresholdResult <0.5){
+    if(thresholdResult <=0.0){
         gl_FragColor = textureColor;
     }else{
         discard;
