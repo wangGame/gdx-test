@@ -13,7 +13,7 @@ public class ExpGroup extends BaseGroup{
 
     @Override
     protected void extendsMethod() {
-        super.extendsMethod();
-        program.setUniformf("pww",2.0f);
+//        super.extendsMethod();
+//        program.setUniformf("pww",2.0f);
     }
 }

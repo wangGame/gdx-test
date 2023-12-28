@@ -10,7 +10,7 @@ public class BaseGroup extends Image {
     private float time = 0;
 
     public BaseGroup(){
-        super(Asset.getAsset().getTexture("img.png"));
+        super(Asset.getAsset().getTexture("big.png"));
     }
 
     @Override
@@ -21,7 +21,6 @@ public class BaseGroup extends Image {
 
     public void draw(Batch batch, float parentAlpha) {
         batch.setShader(program);
-        program.setUniformf("time",time);
         extendsMethod();
         super.draw(batch, parentAlpha);
         batch.setShader(null);
@@ -29,5 +28,6 @@ public class BaseGroup extends Image {
 
     protected void extendsMethod() {
 
+        program.setUniformf("time",time);
     }
 }

@@ -12,6 +12,7 @@ import com.kw.gdx.screen.BaseScreen;
 import com.kw.gdx.asset.Asset;
 
 import kw.learn.bean.ItemBean;
+import kw.learn.interpolation.ExpGroup;
 import kw.learn.manger.GroupManager;
 import kw.learn.model.ModelIv;
 import com.tony.shader.group.ItemGroup;
@@ -51,13 +52,9 @@ public class MainScreen extends BaseScreen {
                 super.setRectangle(startX, startY);
             }
         };
-        addActor(pane);
+//        addActor(pane);
         pane.setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT);
-
-//        Texture texture = Asset.getAsset().getTexture("test.png");
-//
-//        ModelIv dissolveImage2 = new ModelIv();
-//        addActor(dissolveImage2);
-
+        ExpGroup expGroup = new ExpGroup();
+        addActor(expGroup);
     }
 }
