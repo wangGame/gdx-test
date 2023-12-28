@@ -12,10 +12,5 @@ uniform float gamma;
 
 void main() {
     vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
-
-    if(gamma >= 0.8){
-        gamma = 0.8;
-    }
-    gamma = 1.0 - gamma;
     gl_FragColor = vec4(pow(textureColor.rgb, vec3(gamma)), textureColor.w);
 }

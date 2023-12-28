@@ -16,11 +16,13 @@ import kw.learn.image.ExpuseImage;
 import kw.learn.image.GammaImage;
 import kw.learn.image.GrayImage;
 import kw.learn.image.GrayImage2;
+import kw.learn.image.HighlightShadowImage;
 import kw.learn.image.HueImage;
 import kw.learn.image.LuminImage;
 import kw.learn.image.NoiseImage;
 import kw.learn.image.PixImage;
 import kw.learn.image.PosterImage;
+import kw.learn.image.SaturationImage;
 import kw.learn.image.SepiaImage;
 import kw.learn.image.SharpenImage;
 import kw.learn.image.SolarizeImage;
@@ -31,9 +33,39 @@ import kw.learn.image.ThreoholdImage;
  * @Date 2023/12/27 15:21
  */
 public class GroupManager {
+
+    public static ItemBean itemBeans[] = {
+            new ItemBean("LUMIN", ShaderType.LUMIN),
+            new ItemBean("EDG", ShaderType.EDG),
+            new ItemBean("EXPOSURE", ShaderType.EXPOSURE),
+            new ItemBean("DISSOLVE", ShaderType.DISSOLVE),
+            new ItemBean("NOISEONE", ShaderType.NOISEONE),
+            new ItemBean("SOLARIZE", ShaderType.SOLARIZE),
+            new ItemBean("EDG2", ShaderType.EDG2),
+            new ItemBean("GRAY", ShaderType.GRAY),
+            new ItemBean("GRAY2", ShaderType.GRAY2),
+            new ItemBean("CONTRAST", ShaderType.CONTRAST),
+            new ItemBean("GAMMA", ShaderType.GAMMA),
+            new ItemBean("COLORINERT", ShaderType.COLORINERT),
+            new ItemBean("PIX", ShaderType.PIX),
+            new ItemBean("HUE", ShaderType.HUE),
+            new ItemBean("BRIGHT", ShaderType.BRIGHT),
+            new ItemBean("SEPIA",ShaderType.SEPIA),
+            new ItemBean("SHARPEN",ShaderType.SHARPEN),
+            new ItemBean("THREOHOLD",ShaderType.THREOHOLD),
+            new ItemBean("POSTER",ShaderType.POSTER),
+            new ItemBean("SATURATION",ShaderType.SATURATION),
+            new ItemBean("HIGHTSHADOW",ShaderType.HIGHTSHADOW)
+    };
     public static Actor createGroup(int index) {
         Actor actor = null;
         switch (index){
+            case ShaderType.HIGHTSHADOW:
+                actor = new HighlightShadowImage();
+                break;
+            case ShaderType.SATURATION:
+                actor = new SaturationImage();
+                break;
             case ShaderType.LUMIN:
                 actor = new LuminImage();
                 break;
@@ -98,26 +130,4 @@ public class GroupManager {
         return actor;
     }
 
-    public static ItemBean itemBeans[] = {
-            new ItemBean("LUMIN", ShaderType.LUMIN),
-            new ItemBean("EDG", ShaderType.EDG),
-            new ItemBean("EXPOSURE", ShaderType.EXPOSURE),
-            new ItemBean("DISSOLVE", ShaderType.DISSOLVE),
-            new ItemBean("NOISEONE", ShaderType.NOISEONE),
-            new ItemBean("SOLARIZE", ShaderType.SOLARIZE),
-            new ItemBean("EDG2", ShaderType.EDG2),
-            new ItemBean("GRAY", ShaderType.GRAY),
-            new ItemBean("GRAY2", ShaderType.GRAY2),
-            new ItemBean("CONTRAST", ShaderType.CONTRAST),
-            new ItemBean("GAMMA", ShaderType.GAMMA),
-            new ItemBean("COLORINERT", ShaderType.COLORINERT),
-            new ItemBean("PIX", ShaderType.PIX),
-            new ItemBean("HUE", ShaderType.HUE),
-            new ItemBean("BRIGHT", ShaderType.BRIGHT),
-            new ItemBean("SEPIA",ShaderType.SEPIA),
-            new ItemBean("SHARPEN",ShaderType.SHARPEN),
-            new ItemBean("THREOHOLD",ShaderType.THREOHOLD),
-            new ItemBean("POSTER",ShaderType.POSTER)
-
-    };
 }

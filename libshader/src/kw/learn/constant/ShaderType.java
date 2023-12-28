@@ -5,6 +5,7 @@ package kw.learn.constant;
  * @Date 2023/12/25 15:46
  */
 public interface ShaderType {
+    int HIGHTSHADOW = 20;
     int LUMIN = 0;
     int EDG = 1;
     int EXPOSURE = 2;
@@ -24,6 +25,7 @@ public interface ShaderType {
     int SHARPEN = 16;
     int THREOHOLD = 17;
     int POSTER = 18;
+    int SATURATION = 19;
 
 
 }
