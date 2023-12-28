@@ -39,14 +39,17 @@ public class GroupManager {
             new ItemBean("EDG", ShaderType.EDG),
             new ItemBean("EXPOSURE", ShaderType.EXPOSURE),
             new ItemBean("DISSOLVE", ShaderType.DISSOLVE),
+
             new ItemBean("NOISEONE", ShaderType.NOISEONE),
             new ItemBean("SOLARIZE", ShaderType.SOLARIZE),
             new ItemBean("EDG2", ShaderType.EDG2),
             new ItemBean("GRAY", ShaderType.GRAY),
+
             new ItemBean("GRAY2", ShaderType.GRAY2),
             new ItemBean("CONTRAST", ShaderType.CONTRAST),
             new ItemBean("GAMMA", ShaderType.GAMMA),
             new ItemBean("COLORINERT", ShaderType.COLORINERT),
+
             new ItemBean("PIX", ShaderType.PIX),
             new ItemBean("HUE", ShaderType.HUE),
             new ItemBean("BRIGHT", ShaderType.BRIGHT),
