@@ -14,18 +14,18 @@ float sinmathod(float a){
     float scale = 1.0 / (1.0 - min);
     if (a <= 0.5){
         return (pow(value, power * (a * 2.0 - 1.0)) - min) * scale / 2.0;
-        //return 0.0;
     }else{
         return (2.0 - (pow(value, -power * (a * 2 - 1.0)) - min ) * scale)/ 2.0;
     }
 }
 
 void main() {
-    vec4 textureColor = texture2D(u_texture,
-                                  v_textCoords)*v_color;
+    vec4 textureColor = texture2D(u_texture, v_textCoords)*v_color;
     float a = v_textCoords.x;
     float ss = sinmathod(a);
-    float f = step(ss, v_textCoords.y) -
-    step(ss+0.01, v_textCoords.y);
-    gl_FragColor = vec4(f,f,f,textureColor.a);
+    float dis = abs(v_textCoords.y-ss);
+    if(dis<0.001){
+        gl_FragColor = vec4(1.0,0,0,textureColor.a);
+    }
+  //  float f = step(ss, v_textCoords.y) - step(ss+0.01, v_textCoords.y);
 }
