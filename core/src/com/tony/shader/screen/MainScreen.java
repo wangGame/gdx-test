@@ -2,7 +2,6 @@ package com.tony.shader.screen;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -14,9 +13,8 @@ import com.kw.gdx.screen.BaseScreen;
 import com.kw.gdx.asset.Asset;
 
 import kw.learn.bean.ItemBean;
-import kw.learn.group.ShaderActor;
 import kw.learn.group.ShaderGroup;
-import kw.learn.gutils.ShapeShaderRenderer;
+import kw.learn.interpolation.ExpGroup;
 import kw.learn.manger.GroupManager;
 import kw.learn.model.ModelIv;
 import com.tony.shader.group.ItemGroup;
@@ -58,10 +56,8 @@ public class MainScreen extends BaseScreen {
         };
 //        addActor(pane);
         pane.setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT);
-
-//        ShaderActor actor = new ShaderActor();
-//        actor.addAction(Actions.moveTo(400,400,1));
-//        stage.addActor(actor);
+        ExpGroup expGroup = new ExpGroup();
+        addActor(expGroup);
 
         ShaderGroup group = new ShaderGroup();
         group.addAction(Actions.moveTo(800,800,5));

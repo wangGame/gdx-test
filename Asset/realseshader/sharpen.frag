@@ -1,7 +1,7 @@
 #ifdef GL_ES
 precision mediump float;
 #endif
-//input from vertex shader
+
 varying vec4 v_color;
 varying vec2 v_textCoords;
 uniform sampler2D u_texture;
@@ -26,7 +26,6 @@ void main() {
     vec4 rightTextureColor = texture2D(u_texture,rightTextureCoordinate)* v_color;
     vec4 topTextureColor = texture2D(u_texture,topTextureCoordinate)* v_color;
     vec4 bottomTextureColor = texture2D(u_texture,bottomTextureCoordinate)* v_color;
-//    gl_FragColor = textureColor;
     gl_FragColor = vec4(
                             (textureColor * centerMultiplier
                                 -(
@@ -34,6 +33,6 @@ void main() {
                                     + rightTextureColor * edgeMultiplier
                                     + topTextureColor * edgeMultiplier
                                     + bottomTextureColor * edgeMultiplier)
-                            .rgb),
+                            ).rgb,
     texture2D(u_texture, bottomTextureCoordinate).w);
 }
