@@ -35,5 +35,4 @@ dependencies {
     implementation files('libs/gdx-tools.jar')
 
     compile project(':core')
-    implementation 'junit:junit:4.12'
 }
