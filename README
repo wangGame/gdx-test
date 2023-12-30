@@ -399,3 +399,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
     fragColor = vec4(col, 1.0);
 }
+
+
+## 使用shader完成曲线
+
+感觉不是很好，绘制区域有限定，对于有的曲线是无能为力的(我收回)。

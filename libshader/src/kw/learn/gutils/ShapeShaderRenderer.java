@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.Disposable;
  * @Date 2023/12/29 13:32
  */
 public class ShapeShaderRenderer implements Disposable {
-
     private final ImmediateModeRenderer renderer;
     private boolean matrixDirty;
     private final Matrix4 projectionMatrix = new Matrix4();

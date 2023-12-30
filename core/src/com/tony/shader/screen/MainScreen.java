@@ -59,9 +59,9 @@ public class MainScreen extends BaseScreen {
         ExpGroup expGroup = new ExpGroup();
         addActor(expGroup);
 
-        ShaderGroup group = new ShaderGroup();
-        group.addAction(Actions.moveTo(800,800,5));
-        group.setX(100);
-        stage.addActor(group);
+//        ShaderGroup group = new ShaderGroup();
+//        group.addAction(Actions.moveTo(800,800,5));
+//        group.setX(100);
+//        stage.addActor(group);
     }
 }

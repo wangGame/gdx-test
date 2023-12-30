@@ -20,12 +20,26 @@ float sinmathod(float a){
 }
 
 void main() {
+    float offDistance = 0.00001;
     vec4 textureColor = texture2D(u_texture, v_textCoords)*v_color;
     float a = v_textCoords.x;
-    float ss = sinmathod(a);
-    float dis = abs(v_textCoords.y-ss);
-    if(dis<0.001){
-        gl_FragColor = vec4(1.0,0,0,textureColor.a);
+    float expvalue = sinmathod(a);
+    float expvalue1 = sinmathod(a+offDistance);
+    float k = (expvalue1 - expvalue) / offDistance;
+    float b = expvalue - k * a;
+
+    //y = kx + b  ==> kx - y + c
+    //abs (k * x1 + b * y1 + c) / sqrt (A * A + B * B)
+    float distance = abs (k * a - v_textCoords.y + b ) / sqrt(k * k + 1);
+
+
+    if (distance < 0.009) {
+        if(distance<0.003){
+            gl_FragColor = vec4(1.0, .0, .0, textureColor.a);
+        }else{
+            gl_FragColor = vec4(1.0, 1.0, 1.0, textureColor.a);
+        }
+    } else {
+        gl_FragColor = vec4(0.0,0.0,0.0,0.0);
     }
-  //  float f = step(ss, v_textCoords.y) - step(ss+0.01, v_textCoords.y);
 }
