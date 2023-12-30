@@ -7,17 +7,17 @@ uniform float width;
 uniform float height;
 uniform float offsetXY;
 float xzax = 0.01;
-uniform float scale ;
 
 
 float sinmathod(float a){
-    if(a <= 0.5f){
-        a *= 2.0f;
-        return a*a*((scale+1.0f)*a-scale)/2.0f;
+    float value = 2.0;
+    float power = 5.0;
+    float min = pow(value,(-power));
+    float scale = 1.0 / (1.0 - min);
+    if (a <= 0.5){
+        return (pow(value, power * (a * 2.0 - 1.0)) - min) * scale / 2.0;
     }else{
-        --a;
-        a*=2.0f;
-        return a*a*((scale+1.0f)*a+scale)/2.0f+1.0f;
+        return (2.0 - (pow(value, -power * (a * 2 - 1.0)) - min ) * scale)/ 2.0;
     }
 }
 

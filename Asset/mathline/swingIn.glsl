@@ -11,14 +11,7 @@ uniform float scale ;
 
 
 float sinmathod(float a){
-    if(a <= 0.5f){
-        a *= 2.0f;
-        return a*a*((scale+1.0f)*a-scale)/2.0f;
-    }else{
-        --a;
-        a*=2.0f;
-        return a*a*((scale+1.0f)*a+scale)/2.0f+1.0f;
-    }
+    return a * a * ((scale + 1.0f) * a - scale);
 }
 
 

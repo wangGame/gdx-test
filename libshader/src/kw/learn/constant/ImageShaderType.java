@@ -4,7 +4,7 @@ package kw.learn.constant;
  * @Auther jian xian si qi
  * @Date 2023/12/25 15:46
  */
-public interface ShaderType {
+public interface ImageShaderType {
     int HIGHTSHADOW = 20;
     int LUMIN = 0;
     int EDG = 1;

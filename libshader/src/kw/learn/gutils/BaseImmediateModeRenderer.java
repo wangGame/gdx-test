@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 
+import kw.learn.interpolation.InterpolationShaderType;
+
 /**
  * @Auther jian xian si qi
  * @Date 2023/12/29 13:20
@@ -69,4 +71,8 @@ public abstract class BaseImmediateModeRenderer implements ImmediateModeRenderer
     public void dispose() {
 
     }
+
+    public abstract void setShaderType(InterpolationShaderType type);
+
+    public abstract void setUnform(String width, float width1);
 }

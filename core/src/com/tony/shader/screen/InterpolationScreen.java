@@ -3,7 +3,7 @@ package com.tony.shader.screen;
 import com.kw.gdx.BaseGame;
 import com.kw.gdx.screen.BaseScreen;
 import kw.learn.interpolation.ExpGroup;
-import kw.learn.interpolation.LinearGroup;
+import kw.learn.interpolation.InterpolationShaderType;
 import kw.learn.interpolation.Pow2InInverseGroup;
 import kw.learn.interpolation.PowGroup;
 import kw.learn.interpolation.PowInGroup;
@@ -43,7 +43,7 @@ public class InterpolationScreen extends BaseScreen {
 //         sinOutGroup();
 //        swingGroup();
 
-        exp();
+//        exp();
 
 
 //        Table table = new Table(){{
@@ -70,10 +70,10 @@ public class InterpolationScreen extends BaseScreen {
 //        pane.setSize(Constant.GAMEWIDTH,Constant.GAMEHIGHT);
     }
 
-    public void exp(){
-        ExpGroup expGroup = new ExpGroup();
-        addActor(expGroup);
-    }
+//    public void exp(){
+//        ExpGroup expGroup = new ExpGroup(InterpolationShaderType.EXPOSE);
+//        addActor(expGroup);
+//    }
 
     private void sinOutGroup() {
         SinOutGroup sinOutGroup = new SinOutGroup();
@@ -93,8 +93,8 @@ public class InterpolationScreen extends BaseScreen {
     }
 
     private void linear() {
-        LinearGroup linearGroup = new LinearGroup();
-        addActor(linearGroup);
+//        LinearGroup linearGroup = new LinearGroup();
+//        addActor(linearGroup);
     }
 
     private void swingGroup() {

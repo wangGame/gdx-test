@@ -2,18 +2,14 @@ package kw.learn.interpolation;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.utils.Align;
+import com.kw.gdx.asset.Asset;
 
-public class ExpGroup extends BaseGroup{
-    public ExpGroup(){
-        program = new ShaderProgram(
-                Gdx.files.internal("mathline/txt.vert"),
-                Gdx.files.internal("mathline/exp.frag")
-        );
-    }
+import kw.learn.group.ShaderGroup;
 
-    @Override
-    protected void extendsMethod() {
-//        super.extendsMethod();
-//        program.setUniformf("pww",2.0f);
+public class ExpGroup  extends ShaderGroup {
+    public ExpGroup(InterpolationShaderType type){
+        setShaderType(type);
     }
 }

@@ -3,17 +3,17 @@ package kw.learn.gutils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Disposable;
+
+import kw.learn.interpolation.InterpolationShaderType;
 
 /**
  * @Auther jian xian si qi
  * @Date 2023/12/29 13:32
  */
 public class ShapeShaderRenderer implements Disposable {
-    private final ImmediateModeRenderer renderer;
+    private final ShaderModeRenderer2001 renderer;
     private boolean matrixDirty;
     private final Matrix4 projectionMatrix = new Matrix4();
     private final Matrix4 transformMatrix = new Matrix4();
@@ -26,7 +26,7 @@ public class ShapeShaderRenderer implements Disposable {
     }
 
     public ShapeShaderRenderer (int maxVertices) {
-        renderer = new ShaderModeRenderer2001(maxVertices, false, true, 0);
+        renderer = new ShaderModeRenderer2001(maxVertices, false, false, 0);
         projectionMatrix.setToOrtho2D(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         matrixDirty = true;
     }
@@ -52,7 +52,7 @@ public class ShapeShaderRenderer implements Disposable {
     }
 
     public void begin () {
-        begin(ShapeType.Line);
+        begin(ShapeType.Filled);
     }
 
     public void begin (ShapeType type) {
@@ -141,5 +141,24 @@ public class ShapeShaderRenderer implements Disposable {
 
     public void dispose () {
         renderer.dispose();
+    }
+
+    public void setShaderType(InterpolationShaderType type) {
+        renderer.setShaderType(type);
+    }
+
+    public void setUniform(String width, float width1) {
+        renderer.setUnform(width,width1);
+    }
+
+    public void addUserArgs(float w,float h) {
+        renderer.addUserArgs(new Runnable() {
+            @Override
+            public void run() {
+                setUniform("width",w);
+                setUniform("height",h);
+                setUniform("offsetXY",100);
+            }
+        });
     }
 }

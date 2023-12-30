@@ -18,8 +18,13 @@ import kw.learn.manger.GroupManager;
  * @Date 2023/12/25 14:32
  */
 public class ShowDetailGroup extends BaseDialog {
+    private int type;
 
-    public ShowDetailGroup(int index){
+    public ShowDetailGroup(int index) {
+        this(index,0);
+    }
+    public ShowDetailGroup(int index,int type){
+        this.type = type;
         Image bg = new Image(Asset.getAsset().getTexture("white_bg.png"));
         dialogGroup.addActor(bg);
         bg.setSize(Constant.GAMEWIDTH,Constant.GAMEHIGHT);
@@ -37,7 +42,12 @@ public class ShowDetailGroup extends BaseDialog {
     }
 
     private void showDetailGroup(int index) {
-        Actor group = GroupManager.createGroup(index);
+        Actor group = null;
+        if (type == 0){
+            group = GroupManager.createGroup(index);
+        }else if (type == 1){
+            group = GroupManager.createInterShader(index);
+        }
         if (group != null) {
             if (group instanceof BaseImage){
                 ((BaseImage)(group)).initShader();
