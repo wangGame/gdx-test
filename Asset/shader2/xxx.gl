@@ -1,0 +1,46 @@
+#ifdef GL_ES
+#define LOWP lowp
+   precision mediump float;
+#else
+#define LOWP
+#endif
+varying LOWP vec4 vColor;
+varying vec2 vTexCoord;
+uniform sampler2D u_texture;
+uniform float time;
+
+vec3 draw(vec2 uv) {
+    return texture(u_texture,vec2(uv.x,uv.y)).rgb;
+}
+
+float grid(float var, float size) {
+    return floor(var*size)/size;
+}
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+
+
+void main(){
+    int repeats = 60;
+
+    float bluramount = sin(time);
+    vec3 blurred_image = vec3(0.);
+     for (float i = 0.; i < repeats; i++) {
+            vec2 q = vec2(cos(degrees((i/repeats)*360.)),
+                    sin(degrees((i/repeats)*360.))) *
+                    (rand(vec2(i,vTexCoord.x+vTexCoord.y))+bluramount);
+            vec2 uv2 = vTexCoord+(q*bluramount);
+            blurred_image += draw(uv2)/2.;
+            q = vec2(cos(degrees((i/repeats)*360.)),sin(degrees((i/repeats)*360.))) *
+              (rand(vec2(i+2.,vTexCoord.x+vTexCoord.y+24.))+bluramount);
+            uv2 = vTexCoord+(q*bluramount);
+            blurred_image += draw(uv2)/2.;
+     }
+     blurred_image /= repeats;
+    gl_FragColor = vec4(blurred_image,1.0);
+
+
+}

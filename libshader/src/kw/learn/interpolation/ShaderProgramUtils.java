@@ -38,7 +38,12 @@ public class ShaderProgramUtils {
                         Gdx.files.internal("mathline/commonvert.vert"),
                         Gdx.files.internal("mathline/smooth.glsl"));
                 break;
-
+            case LIGHT:
+                shaderProgram = new ShaderProgram(
+                        Gdx.files.internal("light/lightvert.glsl"),
+                        Gdx.files.internal("light/lightfragment.glsl")
+                );
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + type);
         }

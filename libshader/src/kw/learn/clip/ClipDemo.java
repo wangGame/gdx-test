@@ -7,10 +7,12 @@ import com.kw.gdx.asset.Asset;
 /**
  * @Auther jian xian si qi
  * @Date 2023/12/22 10:15
+ *
+ * 裁剪从spine来，它对每一个纹理进行操作；
  */
 public class ClipDemo extends ClipGroup {
     public ClipDemo(){
-        Texture texture = Asset.getAsset().getTexture("test001.png");
+        Texture texture = Asset.getAsset().getTexture("middle.png");
         TextureRegionActor textureRegionActor = new TextureRegionActor(texture);
 //        textureRegionActor.addAction(Actions.sequence(
 //                Actions.moveTo(100,100,7),

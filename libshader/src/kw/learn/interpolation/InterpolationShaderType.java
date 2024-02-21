@@ -8,8 +8,8 @@ public enum InterpolationShaderType {
     EXPOSE(0),
     POW2INVERTSE(1),
     LINEAR(2),
-    SMOOTH(3);
-
+    SMOOTH(3),
+    LIGHT(4);
     private int index;
 
     private InterpolationShaderType(int i) {

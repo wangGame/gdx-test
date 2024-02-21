@@ -41,6 +41,7 @@ public class GroupManager {
             new ItemBean(POW2INVERTSE.name(), POW2INVERTSE.getIndex()),
             new ItemBean(LINEAR.name(),LINEAR.getIndex()),
             new ItemBean(SMOOTH.name(),SMOOTH.getIndex()),
+
     };
 
     public static Actor createInterShader(int index) {

@@ -200,6 +200,7 @@ public class DemoScreen extends BaseScreen {
 //        stage.addActor(tipBg);
 
 
+
     }
 
     public void sijiao() {
