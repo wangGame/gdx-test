@@ -8,8 +8,10 @@ import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
 import com.kw.gdx.asset.Asset;
 
+import kw.learn.color.RgbHsl;
 import kw.learn.hhj.HaHaJingDemo;
 import kw.learn.huaijiu.HuaiJiuDemo;
+import kw.learn.mix.NomalMix;
 
 
 public class MainScreen extends BaseScreen {
@@ -97,7 +99,15 @@ public class MainScreen extends BaseScreen {
 //        addActor(demo);
 
 //        »³¾É
-        HuaiJiuDemo huaiJiuDemo = new HuaiJiuDemo();
-        addActor(huaiJiuDemo);
+//        HuaiJiuDemo huaiJiuDemo = new HuaiJiuDemo();
+//        addActor(huaiJiuDemo);
+
+//        light
+//        RgbHsl rgbHsl = new RgbHsl();
+//        addActor(rgbHsl);
+
+        NomalMix mix = new NomalMix();
+        addActor(mix);
+
     }
 }
