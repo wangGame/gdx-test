@@ -9,6 +9,7 @@ import com.kw.gdx.screen.BaseScreen;
 import com.kw.gdx.asset.Asset;
 
 import kw.learn.hhj.HaHaJingDemo;
+import kw.learn.huaijiu.HuaiJiuDemo;
 
 
 public class MainScreen extends BaseScreen {
@@ -92,8 +93,11 @@ public class MainScreen extends BaseScreen {
 //        addActor(blurDemo);
 
 //        ¹þ¹þ¾µ
-        HaHaJingDemo demo = new HaHaJingDemo();
-        addActor(demo);
+//        HaHaJingDemo demo = new HaHaJingDemo();
+//        addActor(demo);
 
+//        »³¾É
+        HuaiJiuDemo huaiJiuDemo = new HuaiJiuDemo();
+        addActor(huaiJiuDemo);
     }
 }
