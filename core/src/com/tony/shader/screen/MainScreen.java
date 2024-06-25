@@ -7,7 +7,9 @@ import com.kw.gdx.BaseGame;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
 import com.kw.gdx.asset.Asset;
+import com.tony.shader.group.ZoomGroup;
 
+import kw.learn.blur.BlurDemo;
 import kw.learn.color.RgbHsl;
 import kw.learn.hhj.HaHaJingDemo;
 import kw.learn.huaijiu.HuaiJiuDemo;
@@ -90,15 +92,15 @@ public class MainScreen extends BaseScreen {
 //        DrawLightShaderGroup group = new DrawLightShaderGroup();
 //        addActor(group);
 
-//        ¸ßË¹Ä£ºý
+//        ï¿½ï¿½Ë¹Ä£ï¿½ï¿½
 //        BlurDemo blurDemo = new BlurDemo();
 //        addActor(blurDemo);
 
-//        ¹þ¹þ¾µ
+//        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //        HaHaJingDemo demo = new HaHaJingDemo();
 //        addActor(demo);
 
-//        »³¾É
+//        ï¿½ï¿½ï¿½ï¿½
 //        HuaiJiuDemo huaiJiuDemo = new HuaiJiuDemo();
 //        addActor(huaiJiuDemo);
 
@@ -106,8 +108,15 @@ public class MainScreen extends BaseScreen {
 //        RgbHsl rgbHsl = new RgbHsl();
 //        addActor(rgbHsl);
 
-        NomalMix mix = new NomalMix();
-        addActor(mix);
+//        NomalMix mix = new NomalMix();
+//        addActor(mix);
+
+//        ZoomGroup zoomGroup = new ZoomGroup();
+//        addActor(zoomGroup);
+
+//        BlurDemo demo = new BlurDemo();
+//        addActor(demo);
+
 
     }
 }

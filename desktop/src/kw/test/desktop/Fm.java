@@ -29,6 +29,8 @@ public class Fm extends LibGdxTestMain {
     public void useShow(Stage stage) {
         super.useShow(stage);
 //        num1:0.10000002   num2:1.1000001   num3:1.4901161E-8
+
+//        num1:1.4901161E-8   num2:1.1000001   num3:0.0
         ImagePre imagePre = new ImagePre("1_115_29_512.jpg");
         addActor(imagePre);
         imagePre.setPosition(0,400);
