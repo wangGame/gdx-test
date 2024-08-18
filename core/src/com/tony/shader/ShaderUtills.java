@@ -3,9 +3,11 @@ package com.tony.shader;
 import com.badlogic.gdx.Gdx;
 import com.kw.gdx.BaseGame;
 import com.kw.gdx.constant.Constant;
+import com.kw.gdx.resource.annotation.GameInfo;
 import com.tony.shader.screen.DemoScreen;
 import com.tony.shader.screen.MainScreen;
 
+@GameInfo(width = 360,height = 640)
 public class ShaderUtills extends BaseGame {
 
     private static ShaderUtills riderGame;
@@ -16,6 +18,7 @@ public class ShaderUtills extends BaseGame {
     }
 
     protected void loadingView() {
+        Constant.viewColor.set(1.0f,1.0f,1.f,1.0f);
         Gdx.app.postRunnable(()->{
             setScreen(new MainScreen(this));
         });
