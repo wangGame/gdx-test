@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.asset.Asset;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.listener.OrdinaryButtonListener;
+import com.tony.shader.type.ItemType;
 
 import kw.learn.image.GammaImage;
 import kw.learn.manger.GroupManager;
@@ -20,43 +21,25 @@ import kw.learn.manger.GroupManager;
  * @Date 2023/12/25 14:32
  */
 public class ItemGroup extends Group {
-    private int index;
-    private int type;
-    public ItemGroup(String text,int i){
-        this(text,i,0);
-    }
-
-    public ItemGroup(String text, int i,int type){
-        this.type = type;
-        setSize(Constant.GAMEWIDTH/2-100,(Constant.GAMEWIDTH/2-100)* (638.0f/758.0f));
-        this.index = i;
-        Actor bg = null;
-        if (type == 0){
-             bg = GroupManager.createGroup(i);
-        }else if (type == 1){
-            bg = GroupManager.createInterShader(i);
-        }
-        setOrigin(Align.center);
-        addActor(bg);
-        bg.setSize(getWidth(),getHeight());
-        bg.setPosition(0,0);
-        bg.setDebug(true);
+    public ItemGroup(ItemType type){
+        setSize(Constant.GAMEWIDTH - 100,100);
         setDebug(true);
-
+        setOrigin(Align.center);
         Label label = new Label("",new Label.LabelStyle(){{
             font = Asset.getAsset().loadBitFont("font/inter-middle-28.fnt");
         }});
         label.setFontScale(2);
         addActor(label);
-        label.setText(text);
+        label.setText(type.name());
         label.pack();
+        label.setColor(Color.BLACK);
         label.setX(getWidth()/2.f,Align.center);
         label.setY(50, Align.center);
         addListener(new OrdinaryButtonListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                Constant.currentActiveScreen.showDialog(new ShowDetailGroup(index,type));
+                Constant.currentActiveScreen.showDialog(new ShowDetailGroup(type));
             }
         });
     }

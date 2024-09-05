@@ -19,8 +19,8 @@ public class DesktopLauncher extends LibGdxTestMain {
         config.x = 1000;
         config.stencil = 8;
         config.y = 0;
-        config.height = 640;
-        config.width = 360;
+        config.height = 740;
+        config.width = 560;
         Gdx.isJiami = true;
         new LwjglApplication(new ShaderUtills(), config);
     }

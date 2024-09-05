@@ -4,12 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.kw.gdx.BaseGame;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.resource.annotation.GameInfo;
-import com.tony.shader.screen.DemoScreen;
 import com.tony.shader.screen.MainScreen;
 
-@GameInfo(width = 360,height = 640)
+@GameInfo(width = 720,height = 720)
 public class ShaderUtills extends BaseGame {
-
     private static ShaderUtills riderGame;
 
     public ShaderUtills() {

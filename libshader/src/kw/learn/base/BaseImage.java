@@ -22,6 +22,7 @@ public abstract class BaseImage extends Image {
    protected String pre = "realseshader/";
 
    public BaseImage() {
+      //测试图片
       this(Asset.getAsset().getTexture("test.png"));
    }
 
@@ -78,7 +79,9 @@ public abstract class BaseImage extends Image {
 
    protected void setUniformTime(String name){
       if (program!=null) {
-         program.setUniformf(name,time);
+         if (program.hasUniform(name)) {
+            program.setUniformf(name,time);
+         }
       }
    }
 }

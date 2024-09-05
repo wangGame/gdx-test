@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.asset.Asset;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.view.dialog.base.BaseDialog;
+import com.tony.shader.type.ItemType;
 
 import kw.learn.base.BaseImage;
 import kw.learn.manger.GroupManager;
@@ -18,13 +19,7 @@ import kw.learn.manger.GroupManager;
  * @Date 2023/12/25 14:32
  */
 public class ShowDetailGroup extends BaseDialog {
-    private int type;
-
-    public ShowDetailGroup(int index) {
-        this(index,0);
-    }
-    public ShowDetailGroup(int index,int type){
-        this.type = type;
+    public ShowDetailGroup(ItemType index) {
         Image bg = new Image(Asset.getAsset().getTexture("white_bg.png"));
         dialogGroup.addActor(bg);
         bg.setSize(Constant.GAMEWIDTH,Constant.GAMEHIGHT);
@@ -41,7 +36,7 @@ public class ShowDetailGroup extends BaseDialog {
         });
     }
 
-    private void showDetailGroup(int index) {
+    private void showDetailGroup(ItemType index) {
         Actor group = null;
         if (type == 0){
             group = GroupManager.createGroup(index);
