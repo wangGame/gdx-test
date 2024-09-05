@@ -15,20 +15,22 @@ public class BlurDemo extends Group {
                 Gdx.files.internal("shader2/xxx.gl")
 //                Gdx.files.internal("shader2/x3.fs")
         );
-        Image image = new Image(Asset.getAsset().getTexture("big.png")){
+        Image image = new Image(Asset.getAsset().getTexture("xxvv.png")){
             private float time=0;
 
             @Override
             public void act(float delta) {
                 super.act(delta);
-                time += delta;
+                time -= delta;
+
             }
 
             @Override
             public void draw(Batch batch, float parentAlpha) {
                 batch.flush();
                 batch.setShader(program);
-                program.setUniformf("time",time*0.4f);
+                program.setUniformf("time",-0.606f);
+
                 super.draw(batch, parentAlpha);
                 batch.flush();
                 batch.setShader(null);

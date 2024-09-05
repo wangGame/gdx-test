@@ -18,29 +18,31 @@ float grid(float var, float size) {
 }
 
 float rand(vec2 co){
-    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+    return fract(sin(dot(co.xy ,vec2(1111.9898,1122.233))) * 143758.5453);
 }
 
 
 
 void main(){
-    int repeats = 60;
-
-    float bluramount = sin(time);
+    vec4 vvv = texture(u_texture,vTexCoord);
+    float tx = 0;
+    if(vTexCoord.y>0.4f){
+        tx = time;
+    }
+    int repeats = 660;
+    float bluramount = sin(tx);
     vec3 blurred_image = vec3(0.);
      for (float i = 0.; i < repeats; i++) {
-            vec2 q = vec2(cos(degrees((i/repeats)*360.)),
-                    sin(degrees((i/repeats)*360.))) *
-                    (rand(vec2(i,vTexCoord.x+vTexCoord.y))+bluramount);
+            vec2 q = vec2(cos(degrees((i/repeats)*360.)),sin(degrees((i/repeats)*360.))) *
+             (rand(vec2(i,vTexCoord.x+vTexCoord.y))+bluramount);
             vec2 uv2 = vTexCoord+(q*bluramount);
             blurred_image += draw(uv2)/2.;
-            q = vec2(cos(degrees((i/repeats)*360.)),sin(degrees((i/repeats)*360.))) *
-              (rand(vec2(i+2.,vTexCoord.x+vTexCoord.y+24.))+bluramount);
+            q = vec2(cos(degrees((i/repeats)*360.)),sin(degrees((i/repeats)*360.))) * (rand(vec2(i+2.,vTexCoord.x+vTexCoord.y+24.))+bluramount);
             uv2 = vTexCoord+(q*bluramount);
             blurred_image += draw(uv2)/2.;
      }
      blurred_image /= repeats;
-    gl_FragColor = vec4(blurred_image,1.0);
+    gl_FragColor = vec4(blurred_image,vvv.a);
 
 
 }

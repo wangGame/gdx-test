@@ -9,9 +9,9 @@ sourceSets.main.java.srcDirs = [
 dependencies{
     //只是要部分
     // libGdx源码
-    implementation 'com.github.wangGame.LibGdxTool:libGdx:release1.0.1'
+    implementation 'com.github.wangGame.LibGdxTool:libGdx:+'
     //自己的工具包
-    implementation 'com.github.wangGame.LibGdxTool:libGdxLib:release1.0.1'
+    implementation 'com.github.wangGame.LibGdxTool:libGdxLib:+'
 
     implementation project(":libshader")
 }
