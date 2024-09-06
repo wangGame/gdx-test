@@ -6,7 +6,7 @@ import com.kw.gdx.constant.Constant;
 import com.kw.gdx.resource.annotation.GameInfo;
 import com.tony.shader.screen.MainScreen;
 
-@GameInfo(width = 720,height = 720)
+@GameInfo(width = 1500,height = 1500)
 public class ShaderUtills extends BaseGame {
     private static ShaderUtills riderGame;
 

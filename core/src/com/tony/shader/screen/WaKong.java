@@ -1,5 +1,5 @@
 package com.tony.shader.screen;
 
-public class WaKong extends Group {
-
-}
+//public class WaKong extends Group {
+//
+//}

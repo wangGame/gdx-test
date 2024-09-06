@@ -9,10 +9,9 @@ import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.asset.Asset;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.view.dialog.base.BaseDialog;
-import com.tony.shader.type.ItemType;
-
 import kw.learn.base.BaseImage;
 import kw.learn.manger.GroupManager;
+import kw.learn.meiju.ItemType;
 
 /**
  * @Auther jian xian si qi
@@ -36,13 +35,13 @@ public class ShowDetailGroup extends BaseDialog {
         });
     }
 
-    private void showDetailGroup(ItemType index) {
+    private void showDetailGroup(ItemType type) {
         Actor group = null;
-        if (type == 0){
-            group = GroupManager.createGroup(index);
-        }else if (type == 1){
-            group = GroupManager.createInterShader(index);
-        }
+//        if (type == 0){
+        group = GroupManager.createGroup(type);
+//        }else if (type == 1){
+//            group = GroupManager.createInterShader(index);
+//        }
         if (group != null) {
             if (group instanceof BaseImage){
                 ((BaseImage)(group)).initShader();

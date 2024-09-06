@@ -7,16 +7,19 @@ import com.libGdx.test.base.LibGdxTestMain;
 import com.tony.shader.ShaderUtills;
 
 import colorweaver.test.AnnealingPaletteGenerator;
-import kw.test.file.Bean;
-import kw.test.file.ReadFileConfig;
+//import kw.test.file.Bean;
+//import kw.test.file.ReadFileConfig;
+//import kw.test.file.Bean;
+//import kw.test.file.Bean;
+//import kw.test.file.ReadFileConfig;
 
 public class DesktopLauncher extends LibGdxTestMain {
 
     public void start(LibGdxTestMain test) {
-        ReadFileConfig readFileConfig = new ReadFileConfig();
-        Bean value = readFileConfig.getValue();
+//        ReadFileConfig readFileConfig = new ReadFileConfig();
+//        Bean value = readFileConfig.getValue();
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = value.getName();
+//        config.title = value.getName();
         config.x = 1000;
         config.stencil = 8;
         config.y = 0;
@@ -27,22 +30,7 @@ public class DesktopLauncher extends LibGdxTestMain {
     }
 
     public static void main(String[] args) {
-//        DesktopLauncher launcher = new DesktopLauncher();
-//        launcher.start();
-
-        ReadFileConfig readFileConfig = new ReadFileConfig();
-        Bean value = readFileConfig.getValue();
-        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = value.getName();
-        config.x = 1000;
-        config.stencil = 8;
-        config.y = 0;
-        config.height = 640;
-        config.width = 360;
-        Gdx.isJiami = true;
-//        AnnealingPaletteGenerator annealingPaletteGenerator = new AnnealingPaletteGenerator();
-        new LwjglApplication(new ShaderUtills(), config);
-
-
+        DesktopLauncher launcher = new DesktopLauncher();
+        launcher.start();
     }
 }

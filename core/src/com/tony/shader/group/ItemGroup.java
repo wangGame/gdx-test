@@ -1,20 +1,14 @@
 package com.tony.shader.group;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.asset.Asset;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.listener.OrdinaryButtonListener;
-import com.tony.shader.type.ItemType;
-
-import kw.learn.image.GammaImage;
-import kw.learn.manger.GroupManager;
+import kw.learn.meiju.ItemType;
 
 /**
  * @Auther jian xian si qi
@@ -23,7 +17,6 @@ import kw.learn.manger.GroupManager;
 public class ItemGroup extends Group {
     public ItemGroup(ItemType type){
         setSize(Constant.GAMEWIDTH - 100,100);
-        setDebug(true);
         setOrigin(Align.center);
         Label label = new Label("",new Label.LabelStyle(){{
             font = Asset.getAsset().loadBitFont("font/inter-middle-28.fnt");

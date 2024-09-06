@@ -30,6 +30,7 @@ import kw.learn.image.SolarizeImage;
 import kw.learn.image.ThreoholdImage;
 import kw.learn.interpolation.ExpGroup;
 import kw.learn.interpolation.InterpolationShaderType;
+import kw.learn.meiju.ItemType;
 
 /**
  * @Auther jian xian si qi
@@ -91,6 +92,80 @@ public class GroupManager {
             new ItemBean("SATURATION", ImageShaderType.SATURATION),
             new ItemBean("HIGHTSHADOW", ImageShaderType.HIGHTSHADOW)
     };
+
+    public static Actor createGroup(ItemType itemType){
+        Actor actor = null;
+        switch (itemType){
+            case HIGHTSHADOW:
+                actor = new HighlightShadowImage();
+            break;
+            case SATURATION:
+                actor = new SaturationImage();
+                break;
+            case LUMIN:
+                actor = new LuminImage();
+                break;
+            case EDG:
+                actor = new EdegeImage();
+                break;
+            case EXPOSURE:
+                actor = new ExpuseImage();
+                break;
+            case DISSOLVE:
+                actor = new DissolveImage();
+                break;
+            case NOISEONE:
+                actor = new NoiseImage();
+                break;
+            case SOLARIZE:
+                actor = new SolarizeImage();
+                break;
+            case EDG2:
+                actor = new EdgeImage2();
+                break;
+            case GRAY:
+                actor = new GrayImage();
+                break;
+            case GRAY2:
+                actor = new GrayImage2();
+                break;
+            case CONTRAST:
+                actor = new ContractImage();
+                break;
+            case GAMMA:
+                actor = new GammaImage();
+                break;
+            case COLORINERT:
+                actor = new ColorInvertImage();
+                break;
+            case PIX:
+                actor = new PixImage();
+                break;
+            case HUE:
+                actor = new HueImage();
+                break;
+            case BRIGHT:
+                actor = new BrightImage();
+                break;
+            case SEPIA:
+                actor = new SepiaImage();
+                break;
+            case SHARPEN:
+                actor = new SharpenImage();
+                break;
+            case HREOHOLD:
+                actor = new ThreoholdImage();
+                break;
+            case POSTER:
+                actor = new PosterImage();
+                break;
+
+        }
+        if (actor instanceof BaseImage){
+            ((BaseImage)(actor)).initShader();
+        }
+        return actor;
+    }
 
     public static Actor createGroup(int index) {
         Actor actor = null;
