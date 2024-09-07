@@ -7,7 +7,7 @@ import kw.learn.base.BaseImage;
 
 public class SrcAlpha_One extends BaseImage {
     public SrcAlpha_One(){
-        setScale(4);
+
     }
 
     @Override

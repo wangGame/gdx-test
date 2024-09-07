@@ -4,9 +4,15 @@ import static kw.learn.interpolation.InterpolationShaderType.*;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import kw.learn.effect.BlurDemo;
+import kw.learn.effect.ERROR_RgbHsl;
+import kw.learn.effect.OutLight;
 import kw.learn.base.BaseImage;
 import kw.learn.bean.ItemBean;
+import kw.learn.blend.SrcAlpha_One;
 import kw.learn.constant.ImageShaderType;
+import kw.learn.effect.ERROR_HaHaJingDemo;
+import kw.learn.effect.ERROR_HUAIJIU;
 import kw.learn.image.BrightImage;
 import kw.learn.image.ColorInvertImage;
 import kw.learn.image.ContractImage;
@@ -29,8 +35,8 @@ import kw.learn.image.SharpenImage;
 import kw.learn.image.SolarizeImage;
 import kw.learn.image.ThreoholdImage;
 import kw.learn.interpolation.ExpGroup;
-import kw.learn.interpolation.InterpolationShaderType;
 import kw.learn.meiju.ItemType;
+import kw.learn.effect.ERROR_NomalMix;
 
 /**
  * @Auther jian xian si qi
@@ -159,7 +165,27 @@ public class GroupManager {
             case POSTER:
                 actor = new PosterImage();
                 break;
-
+            case OUTLIGHT:
+                actor = new OutLight();
+                break;
+            case SRCALPHA_ONE:
+                actor = new SrcAlpha_One();
+                break;
+            case RGBHSL:
+                actor = new ERROR_RgbHsl();
+                break;
+            case BLUR:
+                actor = new BlurDemo();
+                break;
+            case HAHAJING:
+                actor = new ERROR_HaHaJingDemo();
+                break;
+            case HUAIJIU:
+                actor = new ERROR_HUAIJIU();
+                break;
+            case MIX:
+                actor = new ERROR_NomalMix();
+                break;
         }
         if (actor instanceof BaseImage){
             ((BaseImage)(actor)).initShader();

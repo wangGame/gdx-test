@@ -1,12 +1,16 @@
 package com.tony.shader.screen;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.BaseGame;
+import com.kw.gdx.asset.Asset;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.group.ItemGroup;
+
+import kw.learn.blend.SrcAlpha_One;
 import kw.learn.meiju.ItemType;
 
 
@@ -18,6 +22,7 @@ public class MainScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
+
         ScrollPane scrollPane = new ScrollPane(
                 new Table(){{
                     for (ItemType value : ItemType.values()) {
@@ -32,6 +37,9 @@ public class MainScreen extends BaseScreen {
         addActor(scrollPane);
         scrollPane.setSize(Constant.GAMEWIDTH,Constant.GAMEHIGHT);
 
+//        SrcAlpha_One srcAlpha_one = new SrcAlpha_One();
+//        addActor(srcAlpha_one);
+//        setScreen(Transform.class);
 //        renderer = new ShapeRenderer();
 //        LightGroup lightGroup = new LightGroup();
 //        addActor(lightGroup);

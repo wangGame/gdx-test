@@ -52,6 +52,7 @@ public abstract class BaseImage extends Image {
 
    public void initShader(){
       if (program!=null)return;
+      if (frangShader == null)return;
       program = new ShaderProgram(
               Gdx.files.internal(vertShader),
               Gdx.files.internal(frangShader));
