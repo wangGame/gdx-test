@@ -11,7 +11,11 @@ import com.kw.gdx.screen.BaseScreen;
 import com.tony.shader.group.ItemGroup;
 
 import kw.learn.blend.SrcAlpha_One;
+import kw.learn.clip.ClipTest;
 import kw.learn.meiju.ItemType;
+import kw.learn.model.BgGroup;
+import kw.learn.model.BgGroup2;
+import kw.learn.model.BgGroup3;
 
 
 public class MainScreen extends BaseScreen {
@@ -22,6 +26,8 @@ public class MainScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
+        ClipTest bgGroup3 = new ClipTest();
+        addActor(bgGroup3);
 
         ScrollPane scrollPane = new ScrollPane(
                 new Table(){{

@@ -46,9 +46,9 @@ public class ClipTest extends Group {
 //                1.0f
 //        ));
         levelItemKuang = new Image(new NinePatch(
-                Asset.getAsset().getTexture("img_framenew.png"),
+                Asset.getAsset().getTexture("test.png"),
                 30,30,30,30));
-        levelPic = new Image(Asset.getAsset().getTexture("democir.jpg")){
+        levelPic = new Image(Asset.getAsset().getTexture("noise.png")){
             private float clipOffSetX;
             private float clipOffsetY;
             @Override
@@ -81,14 +81,14 @@ public class ClipTest extends Group {
         levelPic.setSize(srcWidth,srcHeght);
         levelPic.setPosition(getWidth()/2,getHeight()/2, Align.center);
         srcKuang = new Image(new NinePatch(
-                Asset.getAsset().getTexture("img_frame.png"),
+                Asset.getAsset().getTexture("test.png"),
                 40,40,40,40)){
             float clipOffsetX = 0;
             float clipOffsetY = 0;
             float ra = 0.f;
             private ShaderProgram program = new ShaderProgram(
-                    Gdx.files.internal("colormap/line.vert"),
-                    Gdx.files.internal("colormap/line1.frag")
+                    Gdx.files.internal("gamee/line.vert"),
+                    Gdx.files.internal("gamee/line1.frag")
                     );
             @Override
             public void act(float delta) {
