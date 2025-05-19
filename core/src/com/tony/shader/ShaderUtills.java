@@ -1,6 +1,7 @@
 package com.tony.shader;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.kw.gdx.BaseGame;
 import com.kw.gdx.constant.Constant;
 import com.kw.gdx.resource.annotation.GameInfo;
@@ -28,4 +29,5 @@ public class ShaderUtills extends BaseGame {
         }
         return riderGame;
     }
+
 }

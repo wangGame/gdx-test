@@ -10,7 +10,8 @@ java {
 }
 
 dependencies {
-    implementation 'com.github.wangGame.LibGdxTool:libGdx:release1.0.1'
+    implementation 'com.github.wangGame.LibGdxTool:libGdx:release2.0.2'
     //自己的工具包
-    implementation 'com.github.wangGame.LibGdxTool:libGdxLib:release1.0.1'
+    implementation 'com.github.wangGame.LibGdxTool:libGdxLib:release2.0.2'
+    implementation 'com.github.wangGame.LibGdxTool:libGdxJnigenLoader:release2.0.2'
 }

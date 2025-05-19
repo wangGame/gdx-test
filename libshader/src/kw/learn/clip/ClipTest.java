@@ -107,7 +107,6 @@ public class ClipTest extends Group {
             public void draw(Batch batch, float parentAlpha) {
                     batch.flush();
                     batch.setShader(program);
-                    program.setUniformf("ra",ra);
                     if (clipBegin(getX()+ clipOffsetX /2.0f,getY()+ clipOffsetY /2.0f,
                             getWidth()- clipOffsetX,getHeight()- clipOffsetY)) {
                         super.draw(batch, parentAlpha);
